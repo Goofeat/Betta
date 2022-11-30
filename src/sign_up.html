@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="sign_header">
+        <a href="index.html"><img src="icons/netflix-logo-png-2616.png" alt="netflix" class="sign_img"></a>
+    </header>
+
+    <div class="page sign_page">
+        <img src="img/bg_netflix.jpg" alt="sign_img" class="sign_bg">
+        <div class="sign">
+            <h1>Sign up now!</h1>
+            <div class="sign_card">
+                <input type="text" id="name" class="i" placeholder="Full name">
+                <hr class="sign_hr">
+                <input type="email" id="email" class="i" placeholder="Email">
+                <hr class="sign_hr">
+                <input type="text" id="phone" class="i" placeholder="Phone number">
+                <hr class="sign_hr">
+                <input type="password" id="password_1" class="i" placeholder="Password">
+                <hr class="sign_hr">
+                <input type="password" id="password_2" class="i" placeholder="Confirm Password">
+                <hr class="sign_hr">
+                <div class="sign_mistake" id="mistake">Fuck</div>
+                <input type="submit" class="sign_btn" value="Submit" id="submit">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="index.html">
+            <img src="icons/netflix_logo.png" class="netflix-logo" alt="netflix">
+        </a>
+        <div class="social-logos">
+            <a href="https://raiml.t.me/">
+                <img src="icons/telegram.svg" class="social-logo" alt="">
+            </a>
+            <a href="https://instagram.com/lucasair_bronte">
+                <img src="icons/instagram.svg" class="social-logo" alt="">
+            </a>
+            <a href="https://github.com/goofeat">
+                <img src="icons/github.svg" class="social-logo" alt="">
+            </a>
+        </div>
+    </footer>
+    
+
+
+    
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        var element = document.getElementById('phone');
+        var maskOptions = {
+        mask: '+{7}(000)000-00-00'
+        };
+        var mask = IMask(element, maskOptions);
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
