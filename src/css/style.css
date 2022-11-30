@@ -1,3 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Netflix Sans", serif;
+}
+
+body {
+  background-color: #141414;
+}
+
 .page {
   position: relative;
   min-height: 100vh;
@@ -12,16 +22,6 @@
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Netflix Sans", serif;
-}
-
-body {
-  background-color: #141414;
 }
 
 .promo {
