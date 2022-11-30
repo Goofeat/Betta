@@ -1,1 +1,223 @@
-.page{position:relative;min-height:100vh}.content-wrapper{padding-bottom:8vh}.non-copy{-moz-user-select:none;-webkit-user-select:none;user-select:none}*{margin:0;padding:0;font-family:"Netflix Sans",serif}body{background-color:#141414}.promo{height:100vh;width:100%;background:url(https://assets.nflxext.com/ffe/siteui/vlv3/e89c9679-2f5f-491d-924c-c58924a8ee4b/5b472740-1ef5-4f85-92c5-b697baff87ed/KZ-en-20221121-popsignuptwoweeks-perspective_alpha_website_medium.jpg) center center/cover no-repeat;z-index:-1;margin-top:-16vh;display:flex;color:#fff;border-bottom:#141414 1vh solid}.promo .cover{width:100%;background-color:rgba(0,0,0,.6);z-index:0;height:100vh;position:absolute}.promo .text{text-align:center;width:100%;display:flex;flex-direction:column;margin-top:30vh;z-index:4}.promo .text h1{font-size:6vw}.promo .text p{margin-top:6vh;font-size:3vw}.pro_netflix{padding:30px;text-align:center}.about{background-color:#000}.about-text-h2{width:34vw;color:#fff;font-weight:600;font-size:2vw}.about-text-p{width:34vw;padding-top:3vh;color:#fff;font-size:1.5vw}.about-image{width:35vw}.about-first{padding:0 7vw;display:flex;justify-content:space-evenly;padding-top:5vh;border-bottom:#141414 1vh solid}.about-first-half{display:flex;flex-direction:column}.about-first-half-text{margin:auto 0}.about-second{padding:0 7vw;display:flex;justify-content:space-evenly;padding-top:5vh;border-bottom:#141414 1vh solid}.about-second-half{display:flex;flex-direction:column}.about-second-half-text{margin:auto 0}body{background-color:#141414;font-family:"Netflix Sans",serif;margin:0;padding:0}.price_header{height:6vh;position:absolute;width:96.5vw;background-color:rgba(0,0,0,.1);padding:2vh}.price_promo img{width:100%;position:absolute;z-index:-1;height:130vh;margin-top:-2vh}.price_promo .price_cover{width:100%;height:128vh;background-color:rgba(0,0,0,.3);position:absolute}.price_promo .prices{display:flex;width:75vw;padding:10vw;z-index:2;color:#fff;position:absolute;justify-content:space-evenly;margin-left:3vw;margin-top:20vh}.price_promo .prices .basic{padding:3vw;border:3px solid #e50914;width:16vw;height:30vh;border-radius:20px;display:flex;flex-direction:column;justify-content:space-evenly;background-color:rgba(0,0,0,.6)}.price_promo .prices .basic_price{margin-bottom:2vh;text-align:center;font-size:2.2vw}.price_promo .prices .standart{padding:3vw;border:3px solid #e50914;width:16vw;height:30vh;border-radius:20px;display:flex;flex-direction:column;justify-content:space-evenly;background-color:rgba(0,0,0,.6)}.price_promo .prices .standart_price{margin-bottom:2vh;text-align:center;font-size:2.2vw}.price_promo .prices .premium{padding:3vw;border:3px solid #e50914;width:16vw;height:30vh;border-radius:20px;display:flex;flex-direction:column;justify-content:space-evenly;background-color:rgba(0,0,0,.6)}.price_promo .prices .premium_price{margin-bottom:2vh;text-align:center;font-size:2.2vw}li{margin-bottom:3vh}.price_footer{margin-top:120vh}.sign{transition:all .3s;font-family:"Netflix Sans",serif;padding:2vw;background-color:rgba(0,0,0,.8);width:30vw;margin:3vh auto;height:77vh;color:#fff;text-align:center;display:flex;flex-direction:column;justify-content:space-evenly;border-radius:20px}.sign_mistake{color:#e50914;margin-bottom:0;margin-top:2vh;-moz-text-align-last:left;text-align-last:left;font-size:1vw;display:none}.sign_page{min-height:92vh}.sign h1{color:#fff}.sign_bg{width:98.6vw;height:120vh;z-index:-1;position:absolute;top:-30vh}.sign_img{left:2vw;width:6vw;height:8vh;transition:all .6s;top:2vh}.sign_img:hover{width:7vw;height:9vh;top:1.5vh}.sign_header{position:static;height:10vh;padding:1vh;background-color:rgba(0,0,0,.6);transition:all .6s}.sign_data{display:flex;justify-content:start;width:100%;margin-top:3vh;margin-bottom:1vh;font-size:15px;margin-left:.5vw}.sign_btn{margin:0 auto;padding-left:2.2vw;padding-bottom:5vh;margin-top:2vh;width:10vw;height:6vh;border-radius:20px;font-size:20px;cursor:pointer;background-color:rgba(229,9,20,.3);border:2px solid #e50914;color:#fff;transition:all .3s}.sign_btn:hover{background-color:#e50914}.sign_hr{width:27vw;background-color:rgba(255,255,255,.3);border:.1px solid}.sign_hr:nth-child(10){margin-bottom:5vh}input{display:flex;align-self:flex-start;background-color:rgba(105,104,104,.6);border:none;padding:5px;width:28vw;height:4vh;font-size:3vh;color:#fff}.i{background-color:transparent;border:none;outline:0;margin-top:5vh;margin-bottom:1vh}.rec{font-family:"Netflix Sans",serif}.rec_header{justify-content:flex-start;z-index:5}.rec_btn{margin-left:3vw;margin-top:.6vh;width:10vw}.rec_img{max-width:98.7vw;margin-top:-16vh}.rec_cover{margin-top:-16vh;width:98.7vw;height:110vh;position:absolute;z-index:4;background-color:rgba(0,0,0,.5)}.rec_welcome{z-index:5;height:10vh;position:absolute;width:20vw;font-size:10vw;color:#fff;margin:20vh 27vw}.rec_welcome_2{z-index:5;height:6vh;position:absolute;width:50vw;font-size:5vw;color:#fff;margin:50vh 31vw}.category{margin-left:17vw;margin-top:.6vh}header{padding:4vh;display:flex;justify-content:space-evenly;z-index:4;background-color:#000}header a{height:50px;z-index:inherit}header button{cursor:pointer;background-color:rgba(229,9,20,.3);color:#fff;border:2px #e50914 solid;width:8vw;height:40px;font-size:20px;border-radius:20px;transition:all .5s;z-index:inherit}header button:hover{background-color:#e50914}header .price{margin-left:60vw}header .sign_up{position:absolute;right:2vw;background-color:rgba(229,9,20,.2);width:8vw;z-index:inherit}header img{position:absolute;left:4vw;width:150px;height:50px;cursor:pointer;z-index:inherit}footer{padding:2.5vh;display:flex;justify-content:end}footer a{text-decoration:none}.netflix-logo{position:absolute;left:3vw;width:7vw;cursor:pointer;z-index:4}.social-logo{padding-left:1vw;width:2vw;cursor:pointer}.social-logos{padding-right:3vw;z-index:4}
+.sign {
+    transition: all 0.3s;
+    font-family: "Netflix Sans", serif;
+    padding: 2vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 30vw;
+    margin: 3vh auto;
+    height: 77vh;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 20px;
+}
+.sign_mistake {
+    color: #E50914;
+    margin-bottom: 0;
+    margin-top: 2vh;
+    text-align-last: left;
+    font-size: 1vw;
+    display: none;
+}
+.sign_page {
+    min-height: 92vh;
+}
+.sign h1 {
+    color: #fff;
+}
+.sign_bg {
+    width: 98.6vw;
+    height: 120vh;
+    z-index: -1;
+    position: absolute;
+    top: -30vh;
+}
+.sign_img {
+    left: 2vw;
+    width: 6vw;
+    height: 8vh;
+    transition: all 0.6s;
+    top: 2vh;
+}
+.sign_img:hover {
+    width: 7vw;
+    height: 9vh;
+    top: 1.5vh;
+}
+.sign_header {
+    position: static;
+    height: 10vh;
+    padding: 1vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all 0.6s;
+}
+.sign_data {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+    font-size: 15px;
+    margin-left: 0.5vw;
+}
+.sign_btn {
+    margin: 0 auto;
+    padding-left: 2.2vw;
+    padding-bottom: 5vh;
+    margin-top: 2vh;
+    width: 10vw;
+    height: 6vh;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgba(229, 9, 20, 0.3);
+    border: 2px solid #E50914;
+    color: #fff;
+    transition: all 0.3s;
+}
+.sign_btn:hover {
+    background-color: #E50914;
+}
+.sign_hr {
+    width: 27vw;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 0.1px solid;
+}
+.sign_hr:nth-child(10) {
+    margin-bottom: 5vh;
+}
+
+  input {
+    display: flex;
+    align-self: flex-start;
+    background-color: rgba(105, 104, 104, 0.6);
+    border: none;
+    padding: 5px;
+    width: 28vw;
+    height: 4vh;
+    font-size: 3vh;
+    color: #fff;
+}
+.i {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-top: 5vh;
+    margin-bottom: 1vh;
+}
+.rec {
+    font-family: "Netflix Sans", serif;
+}
+.rec_header {
+    justify-content: flex-start;
+    z-index: 5;
+}
+.rec_btn {
+    margin-left: 3vw;
+    margin-top: 0.6vh;
+    width: 10vw;
+}
+.rec_img {
+    max-width: 98.7vw;
+    margin-top: -16vh;
+}
+.rec_cover {
+    margin-top: -16vh;
+    width: 98.7vw;
+    height: 110vh;
+    position: absolute;
+    z-index: 4;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.rec_welcome {
+    z-index: 5;
+    height: 10vh;
+    position: absolute;
+    width: 20vw;
+    font-size: 10vw;
+    color: #fff;
+    margin: 20vh 27vw;
+}
+.rec_welcome_2 {
+    z-index: 5;
+    height: 6vh;
+    position: absolute;
+    width: 50vw;
+    font-size: 5vw;
+    color: #fff;
+    margin: 50vh 31vw;
+}
+.category {
+    margin-left: 17vw;
+    margin-top: 0.6vh;
+}
+header {
+    padding: 4vh;
+    display: flex;
+    justify-content: space-evenly;
+    z-index: 4;
+    background-color: black;
+}
+header a {
+    height: 50px;
+    z-index: inherit;
+}
+header button {
+    cursor: pointer;
+    background-color: rgba(229, 9, 20, 0.3);
+    color: #ffffff;
+    border: 2px #E50914 solid;
+    width: 8vw;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 20px;
+    transition: all 0.5s;
+    z-index: inherit;
+}
+header button:hover {
+    background-color: #e50914;
+}
+header .price {
+    margin-left: 60vw;
+}
+header .sign_up {
+    position: absolute;
+    right: 2vw;
+    background-color: rgba(229, 9, 20, 0.2);
+    width: 8vw;
+    z-index: inherit;
+}
+header img {
+    position: absolute;
+    left: 4vw;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    z-index: inherit;
+}
+footer {
+    padding: 2.5vh;
+    display: flex;
+    justify-content: end;
+}
+footer a {
+    text-decoration: none;
+}
+.netflix-logo {
+    position: absolute;
+    left: 3vw;
+    width: 7vw;
+    cursor: pointer;
+    z-index: 4;
+}
+.social-logo {
+    padding-left: 1vw;
+    width: 2vw;
+    cursor: pointer;
+}
+.social-logos {
+    padding-right: 3vw;
+    z-index: 4;
+}
