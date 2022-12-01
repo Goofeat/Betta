@@ -1,11 +1,2 @@
-.sass-cache/
-*.css.map
-*.sass.map
-*.scss.map
 src/.DS_Store
 .DS_Store
-node_modules
-gulpfile.js
-package-lock.json
-package.json
-sass
