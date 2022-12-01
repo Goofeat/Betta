@@ -1,21 +1,113 @@
 * {
-  margin: 0;
-  padding: 0;
-  font-family: "Netflix Sans", serif;
+  	margin: 0;
+  	padding: 0;
+  	font-family: "Oswald", sans-serif;
 }
 
 .page {
-  position: relative;
-  min-height: 100vh;
+  	position: relative;
+  	min-height: 100vh;
 }
 
 .content-wrapper {
-  padding-bottom: 8vh;
+  	padding-bottom: 8vh;
 }
 
 .non-copy {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
+  	-moz-user-select: none;
+ 	-khtml-user-select: none;
+ 	-webkit-user-select: none;
+	user-select: none;
+}
+
+body {
+	background-color: aqua;
+}
+
+header {
+	background-color: rgba(0, 0, 0, 0);
+	color: #fff;
+	padding: 1.5vw;
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	text-align: center;
+	text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+}
+
+header:hover {
+	background-color: #fff;
+	color: #000;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+
+.left-side, .right-side {
+	font-size:small;
+	display: flex;
+	justify-content: space-between;
+	width: 20vw;
+}
+
+.first-category, .second-category, .third-category, .about-us, .account, .bag {
+	display: inline-block;
+	position: relative;
+	color: currentColor;
+}
+
+.first-category::after, 
+.second-category::after, 
+.third-category::after, 
+.about-us::after, 
+.account::after, 
+.bag::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 1px;
+	bottom: 0;
+	left: 0;
+	background-color: currentColor;
+	transform-origin: bottom right;
+	transition: transform 0.1s ease-out;
+	-webkit-transition: transform 0.1s ease-out;
+	-moz-transition: transform 0.1s ease-out;
+	-ms-transition: transform 0.1s ease-out;
+	-o-transition: transform 0.1s ease-out;
+}
+
+.first-category:hover::after, 
+.second-category:hover::after, 
+.third-category:hover::after, 
+.about-us:hover::after,
+.account:hover::after, 
+.bag:hover::after {
+	transform-origin: bottom left;
+	transform: scaleX(1);
+	-webkit-transform: scaleX(1);
+	-moz-transform: scaleX(1);
+	-ms-transform: scaleX(1);
+	-o-transform: scaleX(1);
+}
+
+.logo {
+	font-size: larger;
+	font-weight: 900;
+	display: flex;
+	justify-content: center;
+	width: 60vw;
+}
+
+.decor-none {
+	color: currentColor;
+	text-decoration: none;
+}
+
+/* you can delete this */
+.content-wrapper p {
+	text-align: center;
 }
