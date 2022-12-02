@@ -20,7 +20,7 @@ if (localStorage.getItem("cart")) {
             "<td>" + cartItem.category + ' ' + cartItem.company + ' ' + cartItem.name + ' ' + cartItem.color + "</td>" +
             "<td class='text-right'>" + Intl.NumberFormat("ru", {style: "currency", currency: "KZT"}).format(price) + " ₸</td>" +
             "<td class='text-right'>" + quantity + "</td>" +
-            "<td class='text-right'>" + subTotal + " ₸</td>" +
+            "<td class='text-right'>" + Intl.NumberFormat("ru", {style: "currency", currency: "KZT"}).format(subTotal) + " ₸</td>" +
             "</tr>";
 
         grandTotal += subTotal;

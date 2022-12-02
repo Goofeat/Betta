@@ -51,52 +51,52 @@ const products = [
     },
     {
         id: 6,
-        photo: "MacBook14Pro.jpg",
-        category: "",
-        company: "",
-        name: "",
-        color: "",
-        price: "599 990",
+        photo: "AppleMacBookAirM2.jpeg",
+        category: "Laptop",
+        company: "Apple",
+        name: "Macbook Air M2",
+        color: "Space Gray",
+        price: "799 990",
         quantity: 1
     },
     {
         id: 7,
-        photo: "LenovoIdeapad3.jpg",
-        category: "",
-        company: "",
-        name: "",
-        color: "",
-        price: "599 990",
+        photo: "AsusROGZephyrusDuo16.jpeg",
+        category: "Laptop",
+        company: "Asus",
+        name: "ROG Zephyrus Duo 16",
+        color: "Black",
+        price: "2 599 990",
         quantity: 1
     },
     {
         id: 8,
-        photo: "AsusZenbook14.jpg",
-        category: "",
-        company: "",
-        name: "",
-        color: "",
-        price: "599 990",
+        photo: "AsusTUFGamingF15.jpeg",
+        category: "Laptop",
+        company: "Asus",
+        name: "TUF Gaming F15",
+        color: "Black",
+        price: "489 990",
         quantity: 1
     },
     {
         id: 9,
-        photo: "LenovoYogaSlim7Pro.jpg",
-        category: "",
-        company: "",
-        name: "",
-        color: "",
-        price: "599 990",
+        photo: "AppleMacBookPro16M1.jpeg",
+        category: "Laptop",
+        company: "Apple",
+        name: "Macbook Pro 16",
+        color: "Space Gray",
+        price: "2 235 990",
         quantity: 1
     },
     {
         id: 10,
-        photo: "photo.jpeg",
-        category: "",
-        company: "",
-        name: "",
-        color: "",
-        price: "599 990",
+        photo: "AsusVivobookPro.jpeg",
+        category: "Laptop",
+        company: "Asus",
+        name: "Vivobook Pro 15",
+        color: "Black",
+        price: "469 990",
         quantity: 1
     },
     {
@@ -111,66 +111,69 @@ const products = [
     },
     {
         id: 12,
-        photo: "photo.jpeg",
-        category: "",
-        company: "",
-        name: "",
-        color: "",
-        price: "599 990",
+        photo: "LG32LEDFHDSmart.jpeg",
+        category: "TV",
+        company: "LG",
+        name: '32" LED FHD Smart',
+        color: "Black",
+        price: "149 990",
         quantity: 1
     },
     {
         id: 13,
-        photo: "photo.jpeg",
-        category: "",
-        company: "",
-        name: "",
-        color: "",
-        price: "599 990",
+        photo: "Samsung50LEDUHDSmart.jpeg",
+        category: "TV",
+        company: "Samsung",
+        name: '50" LED UHD Smart',
+        color: "Gray",
+        price: "294 990",
         quantity: 1
     },
     {
         id: 14,
-        photo: "photo.jpeg",
-        category: "",
-        company: "",
-        name: "",
-        color: "",
-        price: "599 990",
+        photo: "LG77OLED8KSmart.jpeg",
+        category: "TV",
+        company: "LG",
+        name: '77" OLED 8K Smart',
+        color: "Black",
+        price: "8 999 990",
         quantity: 1
     },
     {
         id: 15,
-        photo: "photo.jpeg",
-        category: "",
-        company: "",
-        name: "",
-        color: "",
-        price: "599 990",
+        photo: "Bang&Olufsen55BeoVisionEclipseOLED.jpeg",
+        category: "TV",
+        company: "B&O",
+        name: '55" BeoVision Eclipse OLED',
+        color: "Black",
+        price: "4 312 990",
         quantity: 1
-    },
+    }
 ];
 
-let is = true;
-
-if (is) {
-    loadProducts();
-    is = false;
-}
+loadProducts();
 
 function loadProducts() {
     products.forEach(product => {
         let cardImage = document.getElementById("product-card-image-" + product.id);
+        let cardCompany = document.getElementById("product-card-company-" + product.id);
         let cardTitle = document.getElementById("product-card-title-" + product.id);
         let cardPrice = document.getElementById("product-card-price-" + product.id);
 
-        cardImage.src = "img/" + product.photo;
-        cardTitle.innerHTML = product.company + " " + product.name + " " + product.color;
-        cardPrice.innerHTML = product.price + " ₸";
+        try {
+            cardImage.src = "img/" + product.photo;
+            cardCompany.innerHTML = product.company;
+            cardTitle.innerHTML = product.name + " " + product.color;
+            cardPrice.innerHTML = product.price + " ₸";
+        } catch (Exception) {}
     });
 }
 
 function addToCart(id) {
+    if (localStorage.getItem('cart')) {
+        
+    }
+
     let contains = false;
 
     let cart = new Array();
@@ -192,15 +195,16 @@ function addToCart(id) {
     if (!contains) {
         products.forEach(element => {
             if (element.id == id) {
-                var cartItemJSON = JSON.stringify(element);
+                let cartItemJSON = JSON.stringify(element);
 
                 cart.push(cartItemJSON);
             }
         });
     }
 
-	var cartJSON = JSON.stringify(cart);
+	let cartJSON = JSON.stringify(cart);
 	localStorage.setItem('cart', cartJSON);
+    myFunction();
 }
 
 function emptyCart() {
@@ -223,4 +227,14 @@ function show_main() {
 
 function show_cart() {
     document.location.href = 'cart.html';
+}
+
+function myFunction() {
+    let x = document.getElementById("snackbar");
+
+    x.className = "show";
+  
+    setTimeout(function() { 
+        x.className = x.className.replace("show", ""); 
+    }, 3000);
 }
