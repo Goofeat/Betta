@@ -23,12 +23,10 @@
                     <p>wishlist</p>
                 </div>
 
-                <a href="cart.html">
-                    <div class="cart" onclick="show_cart()">
-                        <img src="icons/cart.svg" alt="CART">
-                        <p>cart</p>
-                    </div>
-                </a>
+                <div class="cart" onclick="show_cart()">
+                    <img src="icons/cart.svg" alt="CART">
+                    <p>cart</p>
+                </div>
 
                 <div class="account">
                     <img src="icons/account.svg" alt="ACCOUNT">
@@ -52,57 +50,57 @@
             <section>
                 <div>
                     <div class="category-title">
-                        <img src="icons/phone.svg" alt="PHONE">
+                        <img src="icons/phone.svg" alt="Smartphones">
                         <h1>Smartphones</h1>
                     </div>
-                    <ul class="category-products">
+                    <ul class="category-products category-products-1">
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA52.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A52 128GB Black</p>
-                                <p class="card-price">149 990 ₸</p>
+                            <div class="product-card product-card-1">
+                                <img class="product-card-image" id="product-card-image-1" src="img/SamsungGalaxyA52.jpg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-1">Samsung Galaxy A52 128GB Black</p>
+                                <p class="product-card-price" id="product-card-price-1">149 990 ₸</p>
                                 <div class="add-button">
-                                    <button onclick="add_cart(1)">Add to Cart</button>
+                                    <button onclick="addToCart(1)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA13.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A13 64GB Black</p>
-                                <p class="card-price">99 990 ₸</p>
+                            <div class="product-card product-card-2">
+                                <img class="product-card-image" id="product-card-image-2" src="img/SamsungGalaxyA13.jpg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-2">Samsung Galaxy A13 64GB Black</p>
+                                <p class="product-card-price" id="product-card-price-2">99 990 ₸</p>
                                 <div class="add-button">
-                                    <button onclick="add_cart(2)">Add to Cart</button>
+                                    <button onclick="addToCart(2)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/AppleIPhone13.jpeg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Apple iPhone 13 128GB Midnight</p>
-                                <p class="card-price">459 990 ₸</p>
+                            <div class="product-card product-card-3">
+                                <img class="product-card-image" id="product-card-image-3" src="img/AppleIPhone13.jpeg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-3">Apple iPhone 13 128GB Midnight</p>
+                                <p class="product-card-price" id="product-card-price-3">459 990 ₸</p>
                                 <div class="add-button">
-                                    <button onclick="add_cart(3)">Add to Cart</button>
+                                    <button onclick="addToCart(3)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/AppleIPhone14Pro.jpeg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Apple iPhone 14 Pro 1TB Gold</p>
-                                <p class="card-price">1 049 990 ₸</p>
+                            <div class="product-card product-card-4">
+                                <img class="product-card-image" id="product-card-image-4" src="img/AppleIPhone14Pro.jpeg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-4">Apple iPhone 14 Pro 1TB Gold</p>
+                                <p class="product-card-price" id="product-card-price-4">1 049 990 ₸</p>
                                 <div class="add-button">
-                                    <button onclick="add_cart(4)">Add to Cart</button>
+                                    <button onclick="addToCart(4)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/HuaweiMate50Pro.jpeg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone HUAWEI Mate 50 Pro 512GB Orange</p>
-                                <p class="card-price">599 990 ₸</p>
+                            <div class="product-card product-card-5">
+                                <img class="product-card-image" id="product-card-image-5" src="img/HuaweiMate50Pro.jpeg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-5">HUAWEI Mate 50 Pro 512GB Orange</p>
+                                <p class="product-card-price" id="product-card-price-5">599 990 ₸</p>
                                 <div class="add-button">
-                                    <button onclick="add_cart(5)">Add to Cart</button>
+                                    <button onclick="addToCart(5)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
@@ -113,57 +111,57 @@
             <section>
                 <div>
                     <div class="category-title">
-                        <img src="icons/laptop.svg" alt="LAPTOP">
+                        <img src="icons/laptop.svg" alt="Laptops">
                         <h1>Laptops</h1>
                     </div>
-                    <ul class="category-products">
+                    <ul class="category-products category-products-2">
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA52.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A52 128GB Black</p>
-                                <p class="card-price">149 990 ₸</p>
+                            <div class="product-card product-card-6">
+                                <img class="product-card-image" id="product-card-image-6" src="img/SamsungGalaxyA52.jpg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-6">Samsung Galaxy A52 128GB Black</p>
+                                <p class="product-card-price" id="product-card-price-6">149 990 ₸</p>
                                 <div class="add-button">
-                                    <button>Add to Cart</button>
+                                    <button onclick="addToCart(6)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA52.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A52 128GB Black</p>
-                                <p class="card-price">149 990 ₸</p>
+                            <div class="product-card product-card-7">
+                                <img class="product-card-image" id="product-card-image-7" src="img/SamsungGalaxyA52.jpg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-7">Samsung Galaxy A52 128GB Black</p>
+                                <p class="product-card-price" id="product-card-price-7">149 990 ₸</p>
                                 <div class="add-button">
-                                    <button>Add to Cart</button>
+                                    <button onclick="addToCart(7)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA52.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A52 128GB Black</p>
-                                <p class="card-price">149 990 ₸</p>
+                            <div class="product-card product-card-8">
+                                <img class="product-card-image" id="product-card-image-8" src="img/SamsungGalaxyA52.jpg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-8">Samsung Galaxy A52 128GB Black</p>
+                                <p class="product-card-price" id="product-card-price-8">149 990 ₸</p>
                                 <div class="add-button">
-                                    <button>Add to Cart</button>
+                                    <button onclick="addToCart(8)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA52.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A52 128GB Black</p>
-                                <p class="card-price">149 990 ₸</p>
+                            <div class="product-card product-card-9">
+                                <img class="product-card-image" id="product-card-image-9" src="img/SamsungGalaxyA52.jpg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-9">Samsung Galaxy A52 128GB Black</p>
+                                <p class="product-card-price" id="product-card-price-9">149 990 ₸</p>
                                 <div class="add-button">
-                                    <button>Add to Cart</button>
+                                    <button onclick="addToCart(9)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA52.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A52 128GB Black</p>
-                                <p class="card-price">149 990 ₸</p>
+                            <div class="product-card product-card-10">
+                                <img class="product-card-image" id="product-card-image-10" src="img/SamsungGalaxyA52.jpg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-10">Samsung Galaxy A52 128GB Black</p>
+                                <p class="product-card-price" id="product-card-price-10">149 990 ₸</p>
                                 <div class="add-button">
-                                    <button>Add to Cart</button>
+                                    <button onclick="addToCart(10)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
@@ -177,54 +175,54 @@
                         <img src="icons/tv.svg" alt="TVs">
                         <h1>TVs</h1>
                     </div>
-                    <ul class="category-products">
+                    <ul class="category-products category-products-3">
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA52.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A52 128GB Black</p>
-                                <p class="card-price">149 990 ₸</p>
+                            <div class="product-card product-card-11">
+                                <img class="product-card-image" id="product-card-image-11" src="img/Samsung65LEDUHDSmart.jpeg" alt="Samsung 65 LED UHD Smart">
+                                <p class="product-card-title" id="product-card-title-11">Samsung 65" LED UHD Smart Black</p>
+                                <p class="product-card-price" id="product-card-price-11">499 990 ₸</p>
                                 <div class="add-button">
-                                    <button>Add to Cart</button>
+                                    <button onclick="addToCart(11)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA52.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A52 128GB Black</p>
-                                <p class="card-price">149 990 ₸</p>
+                            <div class="product-card product-card-12">
+                                <img class="product-card-image" id="product-card-image-12" src="img/SamsungGalaxyA52.jpg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-12">Samsung Galaxy A52 128GB Black</p>
+                                <p class="product-card-price" id="product-card-price-12">149 990 ₸</p>
                                 <div class="add-button">
-                                    <button>Add to Cart</button>
+                                    <button onclick="addToCart(12)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA52.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A52 128GB Black</p>
-                                <p class="card-price">149 990 ₸</p>
+                            <div class="product-card product-card-13">
+                                <img class="product-card-image" id="product-card-image-13" src="img/SamsungGalaxyA52.jpg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-13">Samsung Galaxy A52 128GB Black</p>
+                                <p class="product-card-price" id="product-card-price-13">149 990 ₸</p>
                                 <div class="add-button">
-                                    <button>Add to Cart</button>
+                                    <button onclick="addToCart(13)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA52.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A52 128GB Black</p>
-                                <p class="card-price">149 990 ₸</p>
+                            <div class="product-card product-card-14">
+                                <img class="product-card-image" id="product-card-image-14" src="img/SamsungGalaxyA52.jpg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-14">Samsung Galaxy A52 128GB Black</p>
+                                <p class="product-card-price" id="product-card-price-14">149 990 ₸</p>
                                 <div class="add-button">
-                                    <button>Add to Cart</button>
+                                    <button onclick="addToCart(14)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="card">
-                                <img class="card-image" src="img/SamsungGalaxyA52.jpg" alt="Samsung Galaxy A52">
-                                <p class="card-title">Smartphone Samsung Galaxy A52 128GB Black</p>
-                                <p class="card-price">149 990 ₸</p>
+                            <div class="product-card product-card-15">
+                                <img class="product-card-image" id="product-card-image-15" src="img/SamsungGalaxyA52.jpg" alt="Product Photo">
+                                <p class="product-card-title" id="product-card-title-15">Samsung Galaxy A52 128GB Black</p>
+                                <p class="product-card-price" id="product-card-price-15">149 990 ₸</p>
                                 <div class="add-button">
-                                    <button>Add to Cart</button>
+                                    <button onclick="addToCart(15)">Add to Cart</button>
                                 </div>
                             </div>
                         </li>
@@ -232,12 +230,8 @@
                 </div>
             </section>
 
-            <section id="cart-display">
-                <div>
-                    snfkasj.nfk
-                </div>
-            </section>
         </div>
+        <div class="add">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
 
         <footer>
             <div class="logo non-copy">
@@ -256,6 +250,8 @@
         </footer>
     </div>
 
+    
+    
     <script src="js/script.js"></script>
 </body>
 </html>

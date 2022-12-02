@@ -36,9 +36,36 @@
         </header>
 
         <div class="content-wrapper">
-            <section id="cart-display">
-                <div>
-                    snfkasj.nfk
+            <section>
+                <div id="cart-display">
+                    <div class="tbl-heading">
+                        <h1>Shopping cart</h1>
+                    </div>
+                    <button>
+                        <a onClick="emptyCart()" id="btnEmpty">Empty Cart</a>
+                    </button>
+                    <table class="tbl-cart" cellpadding="10" cellspacing="1">
+                        <thead>
+                            <tr>
+                                <th>Product name</th>
+                                <th class='text-right' width="10%">Price</th>
+                                <th class='text-right' width="5%">Quantity</th>
+                                <th class='text-right' width="10%">Sub Total</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody id="cartTableBody">
+    
+                        </tbody>
+    
+                        <tfoot>
+                            <tr>
+                                <td class="text-right">Total:</td>
+                                <td id="itemCount" class="text-right" colspan="2"></td>
+                                <td id="totalAmount" class="text-right"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </section>
         </div>
@@ -61,5 +88,6 @@
     </div>
 
     <script src="js/script.js"></script>
+    <script src="js/loadCart.js"></script>
 </body>
 </html>

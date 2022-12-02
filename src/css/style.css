@@ -29,6 +29,10 @@ section {
 	justify-content: center;
 }
 
+table, th, td {
+	border: 1px solid;
+}
+
 .non-copy {
   	-moz-user-select: none;
  	-khtml-user-select: none;
@@ -180,12 +184,10 @@ header {
 	font-weight: 400;
 }
 
-.card {
+.product-card {
 	cursor: pointer;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	min-width: 15vw;
 	width: 15vw;
-	max-width: 15vw;
 	text-align: start;
 	margin: 2vh;
 	border-radius: 1vw;
@@ -195,12 +197,12 @@ header {
 	-o-border-radius: 1vw;
 }
 
-.card-image {
+.product-card-image {
 	width: 90%;
 	padding: 2vh 1vw;
 }
 
-.card-title, .card-price {
+.product-card-title, .product-card-price {
 	margin-top: 1vh;
 	font-size: 1.3vw;
 	margin-bottom: 0.5vh;
@@ -208,7 +210,7 @@ header {
 	max-width: 13vw;
 }
   
-.card-price {
+.product-card-price {
 	color: var(--orange);
 	margin-bottom: 1.5vh;
 }
@@ -245,7 +247,7 @@ header {
 	-o-transition: max-height 0.8s;
 }
 
-.card:hover > .add-button {
+.product-card:hover > .add-button {
 	max-height: 7vh;
 }
 
@@ -265,4 +267,15 @@ footer {
     align-items: center;
 	text-align: center;
 	text-decoration: none 0.15em rgba(0, 0, 0, 0);
+}
+
+.add {
+	position: absolute;
+	border: 3px solid black;
+	border-radius: 20px;
+	width: 20vw;
+	z-index: 3;
+	top: 80vh;
+	right: 5vw;
+	background-color: rgba(0, 0, 0, 0.2)
 }
