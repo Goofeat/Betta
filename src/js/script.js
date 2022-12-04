@@ -1,3 +1,11 @@
+console.log(localStorage);
+
+if (localStorage.getItem('currentUser')) {
+    document.querySelector('div.account p').innerHTML = 'account';
+} else {
+    document.querySelector('div.account p').innerHTML = 'sign in';
+}
+
 const products = [
     {
         id: 1,
@@ -169,11 +177,7 @@ function loadProducts() {
     });
 }
 
-function addToCart(id) {
-    if (localStorage.getItem('cart')) {
-        
-    }
-
+function addToCart(id, is = false) {
     let contains = false;
 
     let cart = new Array();
@@ -204,7 +208,11 @@ function addToCart(id) {
 
 	let cartJSON = JSON.stringify(cart);
 	localStorage.setItem('cart', cartJSON);
-    myFunction();
+    if (is) {    
+        window.location.reload();
+    } else {
+        // successful();
+    }
 }
 
 function emptyCart() {
@@ -214,11 +222,62 @@ function emptyCart() {
 	}
 }
 
+function incrementItem(id) {
+	let cart = JSON.parse(localStorage.getItem('cart'));
+    
+    cart.forEach(item => {
+        let element = JSON.parse(item);
+        if (element.id == id) {
+            element.quantity++;
+
+            cart[cart.indexOf(item)] = JSON.stringify(element);
+        }
+    });
+
+    let cartJSON = JSON.stringify(cart);
+	localStorage.setItem('cart', cartJSON);
+    window.location.reload();
+}
+
+function decrementItem(id) {
+    let isRemove = false;
+
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    
+    cart.forEach(item => {
+        let element = JSON.parse(item);
+        if (element.id == id) {
+            if (element.quantity == 1) {
+                removeCartItem(id);
+                isRemove = true;
+            } else {
+                element.quantity--;        
+                cart[cart.indexOf(item)] = JSON.stringify(element);
+            }
+        }
+    });
+    
+    if (!isRemove) {
+        let cartJSON = JSON.stringify(cart);
+        localStorage.setItem('cart', cartJSON);
+        window.location.reload();   
+    }
+}
+
 function removeCartItem(id) {
-	if (localStorage.getItem('cart')) {
-		let shoppingCart = JSON.parse(localStorage.getItem('cart'));
-		localStorage.removeItem(shoppingCart[id]);
-	}
+    let shoppingCart = JSON.parse(localStorage.getItem('cart'));
+
+    for (let i = 0; i < shoppingCart.length; i++) {
+        const item = JSON.parse(shoppingCart[i]);
+        if (item.id == id) {
+            shoppingCart.splice(i, 1);
+            break;
+        }
+    }
+
+    let shoppingCartJSON = JSON.stringify(shoppingCart);
+    localStorage.setItem('cart', shoppingCartJSON);
+    window.location.reload();
 }
 
 function show_main() {
@@ -229,12 +288,79 @@ function show_cart() {
     document.location.href = 'cart.html';
 }
 
-function myFunction() {
-    let x = document.getElementById("snackbar");
+function setCoverProps() {
+    let pageHeight = document.querySelector("div.page").offsetHeight;
+    let pageWidth = document.querySelector("div.page").offsetWidth;
+    document.querySelector("div.cover").style = "height: " + pageHeight + "px; width: " + pageWidth + "px";
+}
 
-    x.className = "show";
-  
-    setTimeout(function() { 
-        x.className = x.className.replace("show", ""); 
-    }, 3000);
+var phoneMask = IMask(
+    document.getElementById('phone'), 
+    { mask: '+{7} ({7}00) 000 00 00' }
+);
+
+function loginDisplay() {
+    if (localStorage.getItem('currentUser')) {
+        // personalAccount(); // go to "личный кабинет"
+    } else {
+        setCoverProps();
+        document.querySelector('div.cover').classList.toggle('hide');
+        document.querySelector('div.sign').classList.toggle('hide');
+    }
+}
+
+function loginHide() {
+    document.querySelector('div.cover').classList.toggle('hide');
+    document.querySelector('div.sign').classList.toggle('hide');
+}
+
+function loginCheck() {
+    let phone = document.getElementById('phone').value;
+    let password = document.getElementById('password').value;
+
+    if (localStorage.getItem(phone)) {
+        let user = JSON.parse(localStorage.getItem(phone));
+
+        console.log(localStorage);
+
+        if (password == user.password) {
+            localStorage.setItem('currentUser', localStorage.getItem(phone));
+            window.location.reload();
+        }
+    }
+}
+
+function regCheck() {
+    let fname = String(document.getElementById('f_name').value);
+    let lname = String(document.getElementById('l_name').value);
+    let phone = String(document.getElementById('phone').value);
+    let new_password = String(document.getElementById('password').value);
+    let confirm_password = String(document.getElementById('confirm_password').value);
+
+    if (!fname.match(/[A-Z][a-z]{2,}/i)) {
+        console.log("1");
+        return;
+    }
+
+    if (!lname.match(/[A-Z][a-z]{2,}/i)) {
+        console.log("2");
+        return;
+    }
+
+    if (new_password != confirm_password && new_password.length < 6) {        
+        console.log("3");
+        return;
+    }
+
+    let user = {
+        firstName: fname.substring(0, 1).toUpperCase() + fname.substring(1).toLowerCase(),
+        lastName: lname.substring(0, 1).toUpperCase() + lname.substring(1).toLowerCase(),
+        phoneNumber: phone,
+        password: new_password
+    }
+
+    let userJSON = JSON.stringify(user);
+    localStorage.setItem(phone, userJSON);
+    localStorage.setItem('currentUser', userJSON);
+    show_main();
 }

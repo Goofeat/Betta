@@ -12,6 +12,7 @@
 </head>
 <body>
     <div class="page">
+        <div class="cover hide" onclick="loginHide()"></div>
         <header>
             <div class="logo non-copy">
                 <a href="#" class="decor-none">Betta</a>
@@ -28,12 +29,28 @@
                     <p>cart</p>
                 </div>
 
-                <div class="account">
+                <div class="account" onclick="loginDisplay()">
                     <img src="icons/account.svg" alt="ACCOUNT">
-                    <p>account</p>
+                    <p></p>
                 </div>
             </div>
         </header>
+
+        <section>
+            <div class="sign hide">
+                <h1>Login</h1>
+                <form action="#">
+                    <div class="sign_card">
+                        <input type="text" id="phone" class="i" placeholder="Phone number" autofocus autocomplete="off">
+                        <hr class="sign_hr">
+                        <input type="password" id="password" class="i" placeholder="Password" autocomplete="off">
+                        <hr class="sign_hr">
+                        <p>Don't have an account yet? <a href="register.html">Register</a></p>
+                        <button class="sign_btn" id="submit" onclick="loginCheck()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </section>
 
         <div class="content-wrapper">
             <section class="buttons">
@@ -44,8 +61,6 @@
                     <button>Everything for gamers</button>
                 </div>
             </section>
-
-            
 
             <section>
                 <div>
@@ -246,8 +261,6 @@
             </section>
         </div>
 
-        <div id="snackbar">Successful!</div>
-
         <footer>
             <div class="logo non-copy">
                 <a href="#" class="decor-none">Betta</a>
@@ -267,6 +280,7 @@
 
     
     
+    <script src="https://unpkg.com/imask"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@
 </head>
 <body>
     <div class="page">
+        <div class="cover hide" onclick="loginHide()"></div>
         <header>
             <div class="logo non-copy">
                 <a href="index.html" class="decor-none">Betta</a>
@@ -28,17 +29,34 @@
                     <p>cart</p>
                 </div>
 
-                <div class="account">
+                <div class="account" onclick="loginDisplay()">
                     <img src="icons/account.svg" alt="ACCOUNT">
-                    <p>account</p>
+                    <p></p>
                 </div>
             </div>
         </header>
 
+        <section>
+            <div class="sign hide">
+                <h1>Login</h1>
+                <form action="#">
+                    <div class="sign_card">
+                        <input type="text" id="phone" class="i" placeholder="Phone number" autofocus autocomplete="off">
+                        <hr class="sign_hr">
+                        <input type="password" id="password" class="i" placeholder="Password" autocomplete="off">
+                        <hr class="sign_hr">
+                        <p>Don't have an account yet? <a href="register.html">Register</a></p>
+                        <button class="sign_btn" id="submit" onclick="loginCheck()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
         <div class="content-wrapper">
             <section>
                 <div id="cart-is-empty">
-                    
+                    <h1>Oops...</h1>
+                    <h1>Your cart is empty!</h1>
                 </div>
                 <div id="cart-display">
                     <div class="tbl-heading">
@@ -53,6 +71,7 @@
                                     <th class='text-center' width="15%">Price</th>
                                     <th class='text-center' width="10%">Quantity</th>
                                     <th class='text-center' width="15%">Sub Total</th>
+                                    <th class='text-center' width="10%">Delete</th>
                                 </tr>
                             </thead>
                         </table>
@@ -74,6 +93,7 @@
                                     <td class="text-center" width="15%">Total:</td>
                                     <td id="itemCount" class="text-center" colspan="2" width="10%"></td>
                                     <td id="totalAmount" class="text-center" width="15%"></td>
+                                    <td width="10%"></td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -83,6 +103,10 @@
                         <button onClick="emptyCart()" id="btnEmpty">Empty Cart</button>
                     </div>
                 </div>
+            </section>
+
+            <section>
+                <div id="product-item-container"></div>
             </section>
         </div>
 
@@ -103,6 +127,7 @@
         </footer>
     </div>
 
+    <script src="https://unpkg.com/imask"></script>
     <script src="js/script.js"></script>
     <script src="js/loadCart.js"></script>
 </body>
