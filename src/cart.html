@@ -37,38 +37,51 @@
 
         <div class="content-wrapper">
             <section>
-                <div class="cart-is-empty">
+                <div id="cart-is-empty">
                     
                 </div>
                 <div id="cart-display">
                     <div class="tbl-heading">
                         <h1>Shopping cart</h1>
                     </div>
-                    <button>
-                        <a onClick="emptyCart()" id="btnEmpty">Empty Cart</a>
-                    </button>
-                    <table class="tbl-cart" cellpadding="10" cellspacing="1">
-                        <thead>
-                            <tr>
-                                <th>Product name</th>
-                                <th class='text-right' width="10%">Price</th>
-                                <th class='text-right' width="5%">Quantity</th>
-                                <th class='text-right' width="10%">Sub Total</th>
-                            </tr>
-                        </thead>
+
+                    <div class="tbl-header">
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th>Product name</th>
+                                    <th class='text-center' width="15%">Price</th>
+                                    <th class='text-center' width="10%">Quantity</th>
+                                    <th class='text-center' width="15%">Sub Total</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <div class="tbl-content">
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <tbody id="cartTableBody">
     
-                        <tbody id="cartTableBody">
-    
-                        </tbody>
-    
-                        <tfoot>
-                            <tr>
-                                <td class="text-right">Total:</td>
-                                <td id="itemCount" class="text-right" colspan="2"></td>
-                                <td id="totalAmount" class="text-right"></td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tbl-footer">
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-center" width="15%">Total:</td>
+                                    <td id="itemCount" class="text-center" colspan="2" width="10%"></td>
+                                    <td id="totalAmount" class="text-center" width="15%"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <div class="categories">
+                        <button onClick="emptyCart()" id="btnEmpty">Empty Cart</button>
+                    </div>
                 </div>
             </section>
         </div>
