@@ -1,9 +1,9 @@
-console.log(localStorage);
+const navbarElement = document.querySelector('div.account p');
 
 if (localStorage.getItem('currentUser')) {
-    document.querySelector('div.account p').innerHTML = 'account';
+    navbarElement.innerHTML = 'account';
 } else {
-    document.querySelector('div.account p').innerHTML = 'sign in';
+    navbarElement.innerHTML = 'sign in';
 }
 
 const products = [
