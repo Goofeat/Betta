@@ -1,5 +1,68 @@
+@font-face {
+	font-family: 'Alexandria';
+	font-style: normal;
+	font-weight: 100;
+	font-display: swap;
+	src: url('fonts/Alexandria-100.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Alexandria';
+	font-style: normal;
+	font-weight: 200;
+	font-display: swap;
+	src: url('fonts/Alexandria-200.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Alexandria';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url('fonts/Alexandria-300.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Alexandria';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('fonts/Alexandria-400.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Alexandria';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('fonts/Alexandria-500.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Alexandria';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url('fonts/Alexandria-600.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Alexandria';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('fonts/Alexandria-700.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Alexandria';
+	font-style: normal;
+	font-weight: 800;
+	font-display: swap;
+	src: url('fonts/Alexandria-800.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Alexandria';
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+	src: url('fonts/Alexandria-900.ttf') format('truetype');
+}
+
 :root {
-	--white: #fff;
 	--orange: #f95700;
 }
 
@@ -19,7 +82,7 @@ html {
 }
 
 .content-wrapper {
-  	padding-bottom: 4rem;
+  	padding-bottom: 7rem;
 }
 
 section {
@@ -37,12 +100,12 @@ section {
 }
 
 body {
-    background-color: var(--white);
+    background-color: #fff;
 }
 
 header {
 	background-color: var(--orange);
-	color: var(--white);
+	color: #fff;
 	padding: 0 2vw;
 	height: 4rem;
 	display: flex;
@@ -61,7 +124,7 @@ footer {
   	bottom: 0;
 	width: 100%;
     background-color: var(--orange);
-	color: var(--white);
+	color: #fff;
 	padding: 0 2vw;
 	height: 4rem;
 	display: flex;
@@ -157,7 +220,7 @@ footer {
 	padding: 1vh;
 	margin: 1vh;
 	color: var(--orange);
-	background-color: var(--white);
+	background-color: #fff;
 	text-align: center;
 	cursor: pointer;
 	width: 15vw;
@@ -192,7 +255,6 @@ footer {
 }
 
 .category-title h1 {
-	margin-left: 1vw;
 	font-weight: 400;
 }
 
@@ -217,7 +279,6 @@ footer {
 .product-card-company {
 	opacity: 0.5;
 	font-size: 1.1vw;
-	margin-left: 1vw;
 	margin-bottom: -0.8vh;
 	max-width: 13vw;
 }
@@ -230,7 +291,6 @@ footer {
 	margin-top: 1vh;
 	font-size: 1.3vw;
 	margin-bottom: 0.5vh;
-	margin-left: 1vw;
 	max-width: 13vw;
 }
   
@@ -245,7 +305,7 @@ footer {
 	outline: 0;
 	padding: 1vh;
 	margin: 1vh;
-	color: var(--white);
+	color: #fff;
 	background-color: var(--orange);
 	text-align: center;
 	cursor: pointer;
@@ -300,7 +360,7 @@ table {
 
 .tbl-header, .tbl-footer {
 	background-color: var(--orange);
-	color: var(--white);
+	color: #fff;
 }
 
 .tbl-content {
@@ -473,4 +533,39 @@ hr {
 .hide {
 	position: absolute;
 	visibility: hidden;
+}
+
+.btn-table {
+	height: 24px;
+	width: 24px;
+	border: 2px solid var(--orange);
+	border-radius: 100%;
+	color: var(--orange);
+	background-color: transparent;
+	text-align: center;
+	cursor: pointer;
+	font-size: 1vw;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	-ms-border-radius: 100%;
+	-o-border-radius: 100%;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+
+.btn-table:hover {
+	border: 2px solid var(--orange);
+	color: #fff;
+	background-color: var(--orange);
+}
+
+.ml-1 {
+	margin-left: 1vw;
+}
+
+.mr-1 {
+	margin-right: 1vw;
 }

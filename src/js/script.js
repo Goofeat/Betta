@@ -159,52 +159,38 @@ const products = [
     }
 ];
 
-if (window.location.href.includes('index.html')) {
+if (!window.location.href.includes('cart')) {
     let smartphones = "";
     let laptops = "";
     let tvs = "";
+    let add = "";
 
     shuffleArray(products);
     products.forEach(product => {
-        if (product.category == "Smartphone") {
-            smartphones +=
+        add =
             '<li>' +
                 '<div class="product-card">' +
                     '<img class="product-card-image" src="img/' + product.photo + '" alt="Product Photo">' +
-                    '<p class="product-card-company">' + product.company + '</p>' + 
-                    '<p class="product-card-title">' + product.name + ' ' + product.color + '</p>' + 
-                    '<p class="product-card-price">' + product.price + ' ₸</p>' +
+                    '<p class="product-card-company ml-1">' + product.company + '</p>' + 
+                    '<p class="product-card-title ml-1">' + product.name + ' ' + product.color + '</p>' + 
+                    '<p class="product-card-price ml-1">' + product.price + ' ₸</p>' +
                     '<div class="add-button">' +
                         '<button onclick="addToCart(' + product.id + ')">Add to Cart</button>' + 
                     '</div>' + 
                 '</div>' +
             '</li>';
-        } else if (product.category == "Laptop") {
-            laptops +=
-            '<li>' +
-                '<div class="product-card">' +
-                    '<img class="product-card-image" src="img/' + product.photo + '" alt="Product Photo">' +
-                    '<p class="product-card-company">' + product.company + '</p>' + 
-                    '<p class="product-card-title">' + product.name + ' ' + product.color + '</p>' + 
-                    '<p class="product-card-price">' + product.price + ' ₸</p>' +
-                    '<div class="add-button">' +
-                        '<button onclick="addToCart(' + product.id + ')">Add to Cart</button>' + 
-                    '</div>' + 
-                '</div>' +
-            '</li>';
-        } else if (product.category == "TV") {
-            tvs +=
-            '<li>' +
-                '<div class="product-card">' +
-                    '<img class="product-card-image" src="img/' + product.photo + '" alt="Product Photo">' +
-                    '<p class="product-card-company">' + product.company + '</p>' + 
-                    '<p class="product-card-title">' + product.name + ' ' + product.color + '</p>' + 
-                    '<p class="product-card-price">' + product.price + ' ₸</p>' +
-                    '<div class="add-button">' +
-                        '<button onclick="addToCart(' + product.id + ')">Add to Cart</button>' + 
-                    '</div>' + 
-                '</div>' +
-            '</li>';
+        console.log(add);
+
+        switch (product.category) {
+            case "Smartphone":
+                smartphones += add;
+                break;
+            case "Laptop":
+                laptops += add;
+                break;
+            case "TV":
+                tvs += add;
+                break;
         }
     });
 
@@ -421,7 +407,7 @@ function regCheck() {
     show_main();
 }
 
-if (window.location.href.includes('cart.html')) {
+if (window.location.href.includes('cart')) {
     let cartRowHTML = "";
     let itemCount = 0;
     let grandTotal = 0;
@@ -430,13 +416,16 @@ if (window.location.href.includes('cart.html')) {
     let quantity = 0;
     let subTotal = 0;
 
+    const emp1 = document.getElementById("cart-display");
+    const emp2 = document.getElementById("cart-is-empty");
+
     if (localStorage.getItem("cart")) {
         let shoppingCart = JSON.parse(localStorage.getItem("cart"));
 
         if (shoppingCart == 0) {
-            document.getElementById("cart-display").style = "position:absolute; visibility: hidden";
+            emp2.classList.remove('hide');
         } else {
-            document.getElementById("cart-is-empty").style = "position:absolute; visibility: hidden";
+            emp1.classList.remove('hide');
 
             shoppingCart.forEach(item => {
                 let cartItem = JSON.parse(item);
@@ -449,14 +438,14 @@ if (window.location.href.includes('cart.html')) {
                     "<tr>" +
                         "<td>" + cartItem.category + ' ' + cartItem.company + ' ' + cartItem.name + ' ' + cartItem.color + "</td>" +
                         "<td class='text-center' width='15%'>" + Intl.NumberFormat("ru").format(price) + " ₸</td>" +
-                        "<td class='text-center' width='10%'>" + 
-                            '<button class="btn-table" onclick="decrementItem(' + cartItem.id + ')">-</button>' + 
+                        "<td class='text-center' width='15%'>" + 
+                            '<button class="btn-table mr-1" onclick="decrementItem(' + cartItem.id + ')">-</button>' + 
                                 quantity + 
-                            '<button class="btn-table" onclick="incrementItem(' + cartItem.id + ')">+</button>' + 
+                            '<button class="btn-table ml-1" onclick="incrementItem(' + cartItem.id + ')">+</button>' + 
                         "</td>" +
                         "<td class='text-center' width='15%'>" + Intl.NumberFormat("ru").format(subTotal) + " ₸</td>" +
-                        '<td id="removeItem" class="text-center" width="10%">' +
-                            '<button class="btn-table" onclick="removeCartItem(' + cartItem.id + ')">x</button>' + 
+                        '<td id="removeItem" class="text-center" width="5%">' +
+                            '<button class="btn-table" onclick="removeCartItem(' + cartItem.id + ')">\u00d7</button>' + 
                         '</td>'
                     "</tr>";
         
@@ -464,7 +453,7 @@ if (window.location.href.includes('cart.html')) {
             });
         }
     } else {
-        document.getElementById("cart-display").style = "position:absolute; visibility: hidden";
+        emp2.classList.remove('hide');
     }
 
     document.getElementById("cartTableBody").innerHTML = cartRowHTML;
@@ -483,9 +472,9 @@ if (window.location.href.includes('cart.html')) {
         '<li>' +
             '<div class="product-card">' +
                 '<img class="product-card-image" src="img/' + item.photo + '" alt="Product Photo">' +
-                '<p class="product-card-company">' + item.company + '</p>' + 
-                '<p class="product-card-title">' + item.name + ' ' + item.color + '</p>' + 
-                '<p class="product-card-price">' + item.price + ' ₸</p>' +
+                '<p class="product-card-company ml-1">' + item.company + '</p>' + 
+                '<p class="product-card-title ml-1">' + item.name + ' ' + item.color + '</p>' + 
+                '<p class="product-card-price ml-1">' + item.price + ' ₸</p>' +
                 '<div class="add-button">' +
                     '<button onclick="addToCart(' + item.id + ', true)">Add to Cart</button>' + 
                 '</div>' + 
