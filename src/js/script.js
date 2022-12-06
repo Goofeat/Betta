@@ -159,22 +159,58 @@ const products = [
     }
 ];
 
-loadProducts();
+if (window.location.href.includes('index.html')) {
+    let smartphones = "";
+    let laptops = "";
+    let tvs = "";
 
-function loadProducts() {
+    shuffleArray(products);
     products.forEach(product => {
-        let cardImage = document.getElementById("product-card-image-" + product.id);
-        let cardCompany = document.getElementById("product-card-company-" + product.id);
-        let cardTitle = document.getElementById("product-card-title-" + product.id);
-        let cardPrice = document.getElementById("product-card-price-" + product.id);
-
-        try {
-            cardImage.src = "img/" + product.photo;
-            cardCompany.innerHTML = product.company;
-            cardTitle.innerHTML = product.name + " " + product.color;
-            cardPrice.innerHTML = product.price + " ₸";
-        } catch (Exception) {}
+        if (product.category == "Smartphone") {
+            smartphones +=
+            '<li>' +
+                '<div class="product-card">' +
+                    '<img class="product-card-image" src="img/' + product.photo + '" alt="Product Photo">' +
+                    '<p class="product-card-company">' + product.company + '</p>' + 
+                    '<p class="product-card-title">' + product.name + ' ' + product.color + '</p>' + 
+                    '<p class="product-card-price">' + product.price + ' ₸</p>' +
+                    '<div class="add-button">' +
+                        '<button onclick="addToCart(' + product.id + ')">Add to Cart</button>' + 
+                    '</div>' + 
+                '</div>' +
+            '</li>';
+        } else if (product.category == "Laptop") {
+            laptops +=
+            '<li>' +
+                '<div class="product-card">' +
+                    '<img class="product-card-image" src="img/' + product.photo + '" alt="Product Photo">' +
+                    '<p class="product-card-company">' + product.company + '</p>' + 
+                    '<p class="product-card-title">' + product.name + ' ' + product.color + '</p>' + 
+                    '<p class="product-card-price">' + product.price + ' ₸</p>' +
+                    '<div class="add-button">' +
+                        '<button onclick="addToCart(' + product.id + ')">Add to Cart</button>' + 
+                    '</div>' + 
+                '</div>' +
+            '</li>';
+        } else if (product.category == "TV") {
+            tvs +=
+            '<li>' +
+                '<div class="product-card">' +
+                    '<img class="product-card-image" src="img/' + product.photo + '" alt="Product Photo">' +
+                    '<p class="product-card-company">' + product.company + '</p>' + 
+                    '<p class="product-card-title">' + product.name + ' ' + product.color + '</p>' + 
+                    '<p class="product-card-price">' + product.price + ' ₸</p>' +
+                    '<div class="add-button">' +
+                        '<button onclick="addToCart(' + product.id + ')">Add to Cart</button>' + 
+                    '</div>' + 
+                '</div>' +
+            '</li>';
+        }
     });
+
+    document.getElementById('smartphones-category').innerHTML = smartphones;
+    document.getElementById('laptops-category').innerHTML = laptops;
+    document.getElementById('tvs-category').innerHTML = tvs;
 }
 
 function addToCart(id, is = false) {
@@ -294,18 +330,38 @@ function setCoverProps() {
     document.querySelector("div.cover").style = "height: " + pageHeight + "px; width: " + pageWidth + "px";
 }
 
-var phoneMask = IMask(
-    document.getElementById('phone'), 
-    { mask: '+{7} ({7}00) 000 00 00' }
-);
+try {
+    var phoneMask = IMask(
+        document.getElementById('phone'), 
+        { mask: '+{7} ({7}00) 000 00 00' }
+    );
+} catch (Exception) {}
 
 function loginDisplay() {
     if (localStorage.getItem('currentUser')) {
         // personalAccount(); // go to "личный кабинет"
     } else {
+        let tmp = 
+        '<section>' +
+            '<div class="sign">' +
+                '<h1>Login</h1>' +
+                '<form action="#">' +
+                    '<div class="sign_card">' +
+                        '<input type="text" id="phone" class="i" placeholder="Phone number" autofocus autocomplete="off">' +
+                        '<hr class="sign_hr">' +
+                        '<input type="password" id="password" class="i" placeholder="Password" autocomplete="off">' +
+                        '<hr class="sign_hr">' +
+                        '<p>Don\'t have an account yet? <a href="register.html">Register</a></p>' +
+                        '<button class="sign_btn" id="submit" onclick="loginCheck()">Submit</button>' +
+                    '</div>' +
+                '</form>' +
+            '</div>' +
+        '</section>' +
+        '<div class="cover" onclick="loginHide()"></div>';
+
+        document.getElementById('log-window').innerHTML = tmp;
+
         setCoverProps();
-        document.querySelector('div.cover').classList.toggle('hide');
-        document.querySelector('div.sign').classList.toggle('hide');
     }
 }
 
@@ -365,7 +421,7 @@ function regCheck() {
     show_main();
 }
 
-if (window.location.pathname == '/cart.html') {
+if (window.location.href.includes('cart.html')) {
     let cartRowHTML = "";
     let itemCount = 0;
     let grandTotal = 0;
