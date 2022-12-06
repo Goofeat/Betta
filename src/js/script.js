@@ -202,7 +202,7 @@ if (!window.location.href.includes('cart')) {
 function addToCart(id, is = false) {
     let contains = false;
 
-    let cart = new Array();
+    let cart = [];
 
     if (localStorage.getItem('cart')) {
 		cart = JSON.parse(localStorage.getItem('cart'));
@@ -210,7 +210,7 @@ function addToCart(id, is = false) {
     
     cart.forEach(item => {
         let element = JSON.parse(item);
-        if (element.id == id) {
+        if (element.id === id) {
             element.quantity++;
             contains = true;
 
@@ -220,7 +220,7 @@ function addToCart(id, is = false) {
 
     if (!contains) {
         products.forEach(element => {
-            if (element.id == id) {
+            if (element.id === id) {
                 let cartItemJSON = JSON.stringify(element);
 
                 cart.push(cartItemJSON);
@@ -249,7 +249,7 @@ function incrementItem(id) {
     
     cart.forEach(item => {
         let element = JSON.parse(item);
-        if (element.id == id) {
+        if (element.id === id) {
             element.quantity++;
 
             cart[cart.indexOf(item)] = JSON.stringify(element);
@@ -268,8 +268,8 @@ function decrementItem(id) {
     
     cart.forEach(item => {
         let element = JSON.parse(item);
-        if (element.id == id) {
-            if (element.quantity == 1) {
+        if (element.id === id) {
+            if (element.quantity === 1) {
                 removeCartItem(id);
                 isRemove = true;
             } else {
@@ -291,7 +291,7 @@ function removeCartItem(id) {
 
     for (let i = 0; i < shoppingCart.length; i++) {
         const item = JSON.parse(shoppingCart[i]);
-        if (item.id == id) {
+        if (item.id === id) {
             shoppingCart.splice(i, 1);
             break;
         }
@@ -302,11 +302,11 @@ function removeCartItem(id) {
     window.location.reload();
 }
 
-function show_main() {
+function showMain() {
     document.location.href = 'index.html';
 }
 
-function show_cart() {
+function showCart() {
     document.location.href = 'cart.html';
 }
 
@@ -317,9 +317,9 @@ function setCoverProps() {
 }
 
 try {
-    var phoneMask = IMask(
-        document.getElementById('phone'), 
-        { mask: '+{7} ({7}00) 000 00 00' }
+    const phoneMask = IMask(
+        document.getElementById('phone'),
+        {mask: '+{7} ({7}00) 000 00 00'}
     );
 } catch (Exception) {}
 
@@ -327,25 +327,23 @@ function loginDisplay() {
     if (localStorage.getItem('currentUser')) {
         // personalAccount(); // go to "личный кабинет"
     } else {
-        let tmp = 
-        '<section>' +
+        document.getElementById('log-window').innerHTML =
+            '<section>' +
             '<div class="sign">' +
-                '<h1>Login</h1>' +
-                '<form action="#">' +
-                    '<div class="sign_card">' +
-                        '<input type="text" id="phone" class="i" placeholder="Phone number" autofocus autocomplete="off">' +
-                        '<hr class="sign_hr">' +
-                        '<input type="password" id="password" class="i" placeholder="Password" autocomplete="off">' +
-                        '<hr class="sign_hr">' +
-                        '<p>Don\'t have an account yet? <a href="register.html">Register</a></p>' +
-                        '<button class="sign_btn" id="submit" onclick="loginCheck()">Submit</button>' +
-                    '</div>' +
-                '</form>' +
+            '<h1>Login</h1>' +
+            '<form action="#">' +
+            '<div class="sign-card">' +
+            '<input type="text" id="phone" class="i" placeholder="Phone number" autofocus autocomplete="off">' +
+            '<hr class="sign-hr">' +
+            '<input type="password" id="password" class="i" placeholder="Password" autocomplete="off">' +
+            '<hr class="sign-hr">' +
+            '<p>Don\'t have an account yet? <a href="register.html">Register</a></p>' +
+            '<button class="sign-btn" id="submit" onclick="loginCheck()">Submit</button>' +
             '</div>' +
-        '</section>' +
-        '<div class="cover" onclick="loginHide()"></div>';
-
-        document.getElementById('log-window').innerHTML = tmp;
+            '</form>' +
+            '</div>' +
+            '</section>' +
+            '<div class="cover" onclick="loginHide()"></div>';
 
         setCoverProps();
     }
@@ -365,7 +363,7 @@ function loginCheck() {
 
         console.log(localStorage);
 
-        if (password == user.password) {
+        if (password === user.password) {
             localStorage.setItem('currentUser', localStorage.getItem(phone));
             window.location.reload();
         }
@@ -373,30 +371,30 @@ function loginCheck() {
 }
 
 function regCheck() {
-    let fname = String(document.getElementById('f_name').value);
-    let lname = String(document.getElementById('l_name').value);
+    let firstName = String(document.getElementById('f_name').value);
+    let lastName = String(document.getElementById('l_name').value);
     let phone = String(document.getElementById('phone').value);
     let new_password = String(document.getElementById('password').value);
     let confirm_password = String(document.getElementById('confirm_password').value);
 
-    if (!fname.match(/[A-Z][a-z]{2,}/i)) {
+    if (!firstName.match(/[A-Z][a-z]{2,}/i)) {
         console.log("1");
         return;
     }
 
-    if (!lname.match(/[A-Z][a-z]{2,}/i)) {
+    if (!lastName.match(/[A-Z][a-z]{2,}/i)) {
         console.log("2");
         return;
     }
 
-    if (new_password != confirm_password && new_password.length < 6) {        
+    if (new_password !== confirm_password && new_password.length < 6) {
         console.log("3");
         return;
     }
 
     let user = {
-        firstName: fname.substring(0, 1).toUpperCase() + fname.substring(1).toLowerCase(),
-        lastName: lname.substring(0, 1).toUpperCase() + lname.substring(1).toLowerCase(),
+        firstName: firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase(),
+        lastName: lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase(),
         phoneNumber: phone,
         password: new_password
     }
@@ -404,7 +402,7 @@ function regCheck() {
     let userJSON = JSON.stringify(user);
     localStorage.setItem(phone, userJSON);
     localStorage.setItem('currentUser', userJSON);
-    show_main();
+    showMain();
 }
 
 if (window.location.href.includes('cart')) {
@@ -422,7 +420,7 @@ if (window.location.href.includes('cart')) {
     if (localStorage.getItem("cart")) {
         let shoppingCart = JSON.parse(localStorage.getItem("cart"));
 
-        if (shoppingCart == 0) {
+        if (shoppingCart === 0) {
             emp2.classList.remove('hide');
         } else {
             emp1.classList.remove('hide');
@@ -435,19 +433,19 @@ if (window.location.href.includes('cart')) {
                 subTotal = price * quantity;
         
                 cartRowHTML += 
-                    "<tr>" +
-                        "<td>" + cartItem.category + ' ' + cartItem.company + ' ' + cartItem.name + ' ' + cartItem.color + "</td>" +
-                        "<td class='text-center' width='15%'>" + Intl.NumberFormat("ru").format(price) + " ₸</td>" +
-                        "<td class='text-center' width='15%'>" + 
+                    '<tr>' +
+                        '<td>' + cartItem.category + ' ' + cartItem.company + ' ' + cartItem.name + ' ' + cartItem.color + '</td>' +
+                        '<td class="text-center" width="15%">' + Intl.NumberFormat("ru").format(price) + ' ₸</td>' +
+                        '<td class="text-center" width="15%">' +
                             '<button class="btn-table mr-1" onclick="decrementItem(' + cartItem.id + ')">-</button>' + 
                                 quantity + 
                             '<button class="btn-table ml-1" onclick="incrementItem(' + cartItem.id + ')">+</button>' + 
-                        "</td>" +
-                        "<td class='text-center' width='15%'>" + Intl.NumberFormat("ru").format(subTotal) + " ₸</td>" +
+                        '</td>' +
+                        '<td class="text-center" width="15%">' + Intl.NumberFormat("ru").format(subTotal) + ' ₸</td>' +
                         '<td id="removeItem" class="text-center" width="5%">' +
                             '<button class="btn-table" onclick="removeCartItem(' + cartItem.id + ')">\u00d7</button>' + 
-                        '</td>'
-                    "</tr>";
+                        '</td>' +
+                    '</tr>';
         
                 grandTotal += subTotal;
             });
@@ -460,10 +458,10 @@ if (window.location.href.includes('cart')) {
     document.getElementById("itemCount").innerHTML = itemCount;
     document.getElementById("totalAmount").innerHTML = Intl.NumberFormat("ru").format(grandTotal) + " ₸";
 
-    var productHTML =   '<div class="category-title">' +
-                            '<h1>Products</h1>' +
-                        '</div>' + 
-                        '<ul class="category-products">';
+    let productHTML = '<div class="category-title">' +
+        '<h1>Products</h1>' +
+        '</div>' +
+        '<ul class="category-products">';
 
     shuffleArray(products);
     for (let i = 0; i < 5; i++) {
