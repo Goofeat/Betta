@@ -76,6 +76,10 @@ html {
 	scroll-behavior: smooth;
 }
 
+a{
+	color: white;
+	text-decoration: none;
+}
 .page {
   	position: relative;
   	min-height: 100vh;
@@ -546,4 +550,9 @@ hr {
 
 .mr-1 {
 	margin-right: 1vw;
+}
+.aboutUs{
+	color: #f95700;
+	text-align: center;
+	size: 100px;
 }
