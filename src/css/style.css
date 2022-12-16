@@ -1,5 +1,21 @@
+<<<<<<< Updated upstream
 @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+@import url("header.css");
+@import url("footer.css");
+=======
+=======
+>>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
+=======
+>>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+>>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
+>>>>>>> Stashed changes
 :root {
 	--orange: #f95700;
 }
@@ -28,127 +44,15 @@ a{
 }
 
 section {
-	padding: 0 5vw;
+    padding: 0 5vw;
 	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 }
 
-.non-copy {
-  	-moz-user-select: none;
- 	-khtml-user-select: none;
- 	-webkit-user-select: none;
-	user-select: none;
-}
 
 body {
     background-color: #fff;
-}
-
-header {
-	background-color: var(--orange);
-	color: #fff;
-	padding: 0 2vw;
-	height: 4rem;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	text-align: center;
-	transition: all 0.3s;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	-ms-transition: all 0.3s;
-	-o-transition: all 0.3s;
-}
-
-footer {
-	position: absolute;
-  	bottom: 0;
-	width: 100%;
-    background-color: var(--orange);
-	color: #fff;
-	padding: 0 2vw;
-	height: 4rem;
-	display: flex;
-	justify-content: space-evenly;
-    align-items: center;
-	text-align: center;
-}
-
-.right-side {
-	font-size: medium;
-	display: flex;
-	justify-content: space-evenly;
-	width: 30vw;
-}
-
-.right-side img {
-	width: 1.5vw;
-}
-
-.wishlist, .contacts, .about-us, .account, .cart {
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-	position: relative;
-	color: currentColor;
-}
-
-.wishlist p, .contacts p, .about-us p, .account p, .cart p {
-	margin-left: 0.5vw;
-}
-
-.wishlist::after, 
-.contacts::after, 
-.about-us::after, 
-.account::after, 
-.cart::after {
-	content: '';
-	position: absolute;
-	width: 100%;
-	transform: scaleX(0);
-	height: 1px;
-	bottom: 0;
-	left: 0;
-	background-color: currentColor;
-	transform-origin: bottom right;
-	transition: transform 0.1s ease-out;
-	-webkit-transition: transform 0.1s ease-out;
-	-moz-transition: transform 0.1s ease-out;
-	-ms-transition: transform 0.1s ease-out;
-	-o-transition: transform 0.1s ease-out;
-}
-
-.wishlist:hover::after, 
-.contacts:hover::after, 
-.about-us:hover::after,
-.account:hover::after, 
-.cart:hover::after {
-	transform-origin: bottom left;
-	transform: scaleX(1);
-	-webkit-transform: scaleX(1);
-	-moz-transform: scaleX(1);
-	-ms-transform: scaleX(1);
-	-o-transform: scaleX(1);
-}
-
-.logo {
-	letter-spacing: 0.4vw;
-	text-transform: uppercase;
-	font-size: xx-large;
-	font-weight: 900;
-	display: flex;
-	justify-content: start;
-	width: 40vw;
-}
-
-.decor-none {
-	color: currentColor;
-	text-decoration: none;
-}
-
-.uppercase {
-	text-transform: uppercase;
 }
 
 .buttons {
@@ -489,6 +393,17 @@ hr {
 .mr-1 {
 	margin-right: 1vw;
 }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
+=======
+>>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
+>>>>>>> Stashed changes
 .aboutUs{
 	color: #f95700;
 	text-align: center;
@@ -546,4 +461,17 @@ hr {
 	padding: 70px;
 	border-radius: 20px;
 	text-align: center;
+<<<<<<< Updated upstream
 }
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+}
+>>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
+=======
+}
+>>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
+=======
+}
+>>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
+>>>>>>> Stashed changes
