@@ -1,21 +1,7 @@
-<<<<<<< Updated upstream
-@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 @import url("header.css");
 @import url("footer.css");
-=======
-=======
->>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
-=======
->>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
-@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
->>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
->>>>>>> Stashed changes
+
 :root {
 	--orange: #f95700;
 }
@@ -393,17 +379,7 @@ hr {
 .mr-1 {
 	margin-right: 1vw;
 }
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
-=======
->>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
->>>>>>> Stashed changes
+
 .aboutUs{
 	color: #f95700;
 	text-align: center;
@@ -461,17 +437,4 @@ hr {
 	padding: 70px;
 	border-radius: 20px;
 	text-align: center;
-<<<<<<< Updated upstream
 }
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
->>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
-=======
-}
->>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
-=======
-}
->>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
->>>>>>> Stashed changes
