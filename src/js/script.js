@@ -159,7 +159,7 @@ const products = [
     }
 ];
 
-if (!window.location.href.includes('cart')) {
+function loadProducts() {
     let smartphones = "";
     let laptops = "";
     let tvs = "";
@@ -179,7 +179,6 @@ if (!window.location.href.includes('cart')) {
                     '</div>' + 
                 '</div>' +
             '</li>';
-        console.log(add);
 
         switch (product.category) {
             case "Smartphone":
@@ -307,7 +306,7 @@ function showMain() {
 }
 
 function showCart() {
-    document.location.href = 'cart.html';
+    document.location.href = 'cart.php';
 }
 
 function setCoverProps() {
@@ -317,7 +316,7 @@ function setCoverProps() {
 }
 
 try {
-    const phoneMask = IMask(
+    let phoneMask = IMask(
         document.getElementById('phone'),
         {mask: '+{7} ({7}00) 000 00 00'}
     );
@@ -405,7 +404,7 @@ function regCheck() {
     showMain();
 }
 
-if (window.location.href.includes('cart')) {
+function loadCart() {
     let cartRowHTML = "";
     let itemCount = 0;
     let grandTotal = 0;
@@ -417,41 +416,38 @@ if (window.location.href.includes('cart')) {
     const emp1 = document.getElementById("cart-display");
     const emp2 = document.getElementById("cart-is-empty");
 
-    if (localStorage.getItem("cart")) {
-        let shoppingCart = JSON.parse(localStorage.getItem("cart"));
-
-        if (shoppingCart === 0) {
-            emp2.classList.remove('hide');
-        } else {
-            emp1.classList.remove('hide');
-
-            shoppingCart.forEach(item => {
-                let cartItem = JSON.parse(item);
-                price = parseInt(cartItem.price.replaceAll(" ", ""));
-                quantity = parseInt(cartItem.quantity);
-                itemCount += quantity;
-                subTotal = price * quantity;
         
-                cartRowHTML += 
-                    '<tr>' +
-                        '<td>' + cartItem.category + ' ' + cartItem.company + ' ' + cartItem.name + ' ' + cartItem.color + '</td>' +
-                        '<td class="text-center" width="15%">' + Intl.NumberFormat("ru").format(price) + ' ₸</td>' +
-                        '<td class="text-center" width="15%">' +
-                            '<button class="btn-table mr-1" onclick="decrementItem(' + cartItem.id + ')">-</button>' + 
-                                quantity + 
-                            '<button class="btn-table ml-1" onclick="incrementItem(' + cartItem.id + ')">+</button>' + 
-                        '</td>' +
-                        '<td class="text-center" width="15%">' + Intl.NumberFormat("ru").format(subTotal) + ' ₸</td>' +
-                        '<td id="removeItem" class="text-center" width="5%">' +
-                            '<button class="btn-table" onclick="removeCartItem(' + cartItem.id + ')">\u00d7</button>' + 
-                        '</td>' +
-                    '</tr>';
-        
-                grandTotal += subTotal;
-            });
-        }
-    } else {
+    let shoppingCart = JSON.parse(localStorage.getItem("cart"));
+
+    if (shoppingCart == 0) {
         emp2.classList.remove('hide');
+    } else {
+        emp1.classList.remove('hide');
+
+        shoppingCart.forEach(item => {
+            let cartItem = JSON.parse(item);
+            price = parseInt(cartItem.price.replaceAll(" ", ""));
+            quantity = parseInt(cartItem.quantity);
+            itemCount += quantity;
+            subTotal = price * quantity;
+    
+            cartRowHTML += 
+                '<tr>' +
+                    '<td>' + cartItem.category + ' ' + cartItem.company + ' ' + cartItem.name + ' ' + cartItem.color + '</td>' +
+                    '<td class="text-center" width="15%">' + Intl.NumberFormat("ru").format(price) + ' ₸</td>' +
+                    '<td class="text-center" width="15%">' +
+                        '<button class="btn-table mr-1" onclick="decrementItem(' + cartItem.id + ')">-</button>' + 
+                            quantity + 
+                        '<button class="btn-table ml-1" onclick="incrementItem(' + cartItem.id + ')">+</button>' + 
+                    '</td>' +
+                    '<td class="text-center" width="15%">' + Intl.NumberFormat("ru").format(subTotal) + ' ₸</td>' +
+                    '<td id="removeItem" class="text-center" width="5%">' +
+                        '<button class="btn-table" onclick="removeCartItem(' + cartItem.id + ')">\u00d7</button>' + 
+                    '</td>' +
+                '</tr>';
+    
+            grandTotal += subTotal;
+        });
     }
 
     document.getElementById("cartTableBody").innerHTML = cartRowHTML;
@@ -483,11 +479,11 @@ if (window.location.href.includes('cart')) {
     productHTML += '</ul>'
 
     document.getElementById("product-item-container").innerHTML = productHTML;
+}
 
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
