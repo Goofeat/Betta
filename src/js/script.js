@@ -306,7 +306,7 @@ function showMain() {
 }
 
 function showCart() {
-    document.location.href = 'cart.php';
+    document.location.href = 'cart.html';
 }
 
 function setCoverProps() {
