@@ -13,21 +13,91 @@
 }
 
 .user-info-item {
+    padding: 5vh;
     background-color: #f95700;
     height: 60vh;
-    width: 30vw;
+    width: 25vw;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
-.bought-items {
-    background-color: rgba(249, 87, 0, 0.3);
-    height: 60vh;
-    width: 60vw;
-    border-radius: 20px;
-    margin-left: 5vw;
-    border: 2px dashed #f95700;
+
+.user-info-item-header {
+    text-align: center;
+    margin-top: 3vh;
+    color: #fff;
+    margin-bottom: 5vh;
+    font-size: 3vw;
+}
+
+.user-info-item-data {
+    display: flex;
+    flex-direction: row;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2vh;
+    font-size: 1.3vw;
+}
+
+span {
+    color: #fff;
+    margin-left: 1vw;
+}
+
+.stick {
+    background-color: #fff;
+    width: 25vw;
+    height: 2px;
+    margin-bottom: 7vh;
 }
 
 .account-logo {
     background-color: #f95700;
     border-radius: 100%;
+    padding: 1vw;
+}
+
+.user-info-item-change {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.3vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.user-info-item-change p {
+    margin-right: 4vw;
+}
+
+.user-info-item-change button {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 100%;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 2px;
+}
+
+
+.bought-items {
+    padding: 5vh;
+    background-color: rgba(249, 87, 0, 0.3);
+    height: 69vh;
+    width: 50vw;
+    border-radius: 20px;
+    margin-left: 5vw;
+    border: 3px solid #f95700;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.bought-items-header {
+    color: #f95700;
+}
+
+.history-empty {
+    color: #f95700;
+    font-size: 2vw;
+    margin-top: 2vh;
 }

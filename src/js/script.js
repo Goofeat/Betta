@@ -1,7 +1,5 @@
 // localStorage.clear();
 
-const navbarElement = document.querySelector('div.account p');
-
 if (localStorage.getItem('currentUser')) {
     $('#sign-in').addClass('hide');
     $('#acc').removeClass('hide');
@@ -160,7 +158,7 @@ const products = [
     }
 ];
 
-function loadProducts() {
+$(document).ready(function() {
     let smartphones = "";
     let laptops = "";
     let tvs = "";
@@ -198,7 +196,7 @@ function loadProducts() {
     $('#smartphones-category').append(smartphones);
     $('#laptops-category').append(laptops);
     $('#tvs-category').append(tvs);
-}
+});
 
 function addToCart(id, is = false) {
     let contains = false;
@@ -395,6 +393,7 @@ function regCheck() {
     let firstName = String($('#f-name').val());
     let lastName = String($('#l-name').val());
     let phone = String($('#phone').val());
+    let email = String($('#email').val());
     let new_password = String($('#password').val());
     let confirm_password = String($('#confirm_password').val());
 
@@ -417,6 +416,7 @@ function regCheck() {
         firstName: firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase(),
         lastName: lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase(),
         phoneNumber: phone,
+        email: email,
         password: new_password
     }
 
@@ -455,7 +455,7 @@ function loadCart() {
     
             cartRowHTML += 
                 '<tr>' +
-                    '<td>' + cartItem.category + ' ' + cartItem.company + ' ' + cartItem.name + ' ' + cartItem.color + '</td>' +
+                    '<td width="50%">' + cartItem.category + ' ' + cartItem.company + ' ' + cartItem.name + ' ' + cartItem.color + '</td>' +
                     '<td class="text-center" width="15%">' + Intl.NumberFormat("ru").format(price) + ' ₸</td>' +
                     '<td class="text-center" width="15%">' +
                         '<button class="btn-table mr-1" onclick="decrementItem(' + cartItem.id + ')">-</button>' + 
@@ -487,6 +487,7 @@ function loadCart() {
         productHTML += 
         '<li>' +
             '<div class="product-card">' +
+                '<img class="wishlist-add" src="icons/add-wishlist.svg" onclick="addToWishlist(' + item.id + ')" alt="wishlist logo">' +
                 '<img class="product-card-image" src="img/' + item.photo + '" alt="Product Photo">' +
                 '<p class="product-card-company ml-1">' + item.company + '</p>' + 
                 '<p class="product-card-title ml-1">' + item.name + ' ' + item.color + '</p>' + 
@@ -689,3 +690,10 @@ function exitAccount() {
 		}        
     }
 })();
+
+function loadProfile() {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    $('span#full-name').html(currentUser.firstName + " " + currentUser.lastName);
+    $('span#phone-number').html(currentUser.phoneNumber);
+    $('span#email').html(currentUser.email);
+}
