@@ -398,25 +398,26 @@ hr {
 	color: white;
 	font-weight: 200;
 	font-size: 45px;
-	box-shadow: #d26023;
 }
 .foo{
 	display: flex;
 	margin: 100px;
-	margin-top: 70px;
-	margin-left: 200px;
-	margin-right: 200px;
+	margin-top: 100px;
+	margin-left: 150px;
+	margin-right: 150px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 30px;
 	font-weight: 150;
 	justify-content: space-between;
 }
 .foo1{
-	background-color: #f2efdf;
+	background-color:#f2efdf;
 	padding: 70px;
+	padding-left: 85px;
+	padding-right: 85px;
 	border-radius: 20px;
 	text-align: center;
-	box-shadow: #d26023;
+	box-shadow: 0px 6px 20px rgb(205, 129, 91);
 }
 .foo1-2 img{
 	align-items: center;
@@ -428,8 +429,11 @@ hr {
 .foo2{
 	background-color: #f2efdf;
 	padding: 70px;
+	padding-left: 40px;
+	padding-right: 40px;
 	border-radius: 20px;
 	text-align: center;
+	box-shadow: 0px 6px 20px rgb(205, 129, 91);
 }
 .foo2-2{
 	padding-left: 10px;
@@ -440,4 +444,14 @@ hr {
 	padding: 70px;
 	border-radius: 20px;
 	text-align: center;
+	box-shadow: 0px 6px 20px rgb(205, 129, 91);
+}
+.text-ab{
+	text-align: center;
+	font-size: 25px;
+	margin: 50px;
+	margin-left: 130px;
+	margin-right: 130px;
+	color: rgba(67, 67, 51, 0.649);
+	line-height: 35px;
 }
