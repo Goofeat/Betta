@@ -1,28 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/fonts.css">
-=======
->>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
-=======
->>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
-=======
->>>>>>> 106292768a4bbeee9ed8c18259095edab9421d0e
->>>>>>> Stashed changes
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
 <body onload="loadCart()">
     <div class="page">
         <div id="log-window"></div>
@@ -42,9 +29,14 @@
                     <p>cart</p>
                 </div>
 
-                <div class="account" onclick="loginDisplay()">
-                    <img src="icons/account.svg" alt="ACCOUNT">
-                    <p></p>
+                <div class="account" id="sign-in" onclick="loginDisplay()">
+                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <p>sign in</p>
+                </div>
+
+                <div class="account hide" id="acc" onclick="showProfile()">
+                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <p>account</p>
                 </div>
             </div>
         </header>
@@ -77,7 +69,7 @@
                     <div class="tbl-content">
                         <table cellpadding="0" cellspacing="0" border="0">
                             <tbody id="cartTableBody">
-    
+
                             </tbody>
                         </table>
                     </div>
@@ -127,4 +119,5 @@
     <script src="https://unpkg.com/imask"></script>
     <script src="js/script.js"></script>
 </body>
+
 </html>

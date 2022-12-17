@@ -1,9 +1,10 @@
+// localStorage.clear();
+
 const navbarElement = document.querySelector('div.account p');
 
 if (localStorage.getItem('currentUser')) {
-    navbarElement.innerHTML = 'account';
-} else {
-    navbarElement.innerHTML = 'sign in';
+    $('#sign-in').addClass('hide');
+    $('#acc').removeClass('hide');
 }
 
 const products = [
@@ -170,6 +171,7 @@ function loadProducts() {
         add =
             '<li>' +
                 '<div class="product-card">' +
+                    '<img class="wishlist-add" src="icons/add-wishlist.svg" onclick="addToWishlist(' + product.id + ')" alt="wishlist logo">' +
                     '<img class="product-card-image" src="img/' + product.photo + '" alt="Product Photo">' +
                     '<p class="product-card-company ml-1">' + product.company + '</p>' + 
                     '<p class="product-card-title ml-1">' + product.name + ' ' + product.color + '</p>' + 
@@ -193,9 +195,9 @@ function loadProducts() {
         }
     });
 
-    document.getElementById('smartphones-category').innerHTML = smartphones;
-    document.getElementById('laptops-category').innerHTML = laptops;
-    document.getElementById('tvs-category').innerHTML = tvs;
+    $('#smartphones-category').append(smartphones);
+    $('#laptops-category').append(laptops);
+    $('#tvs-category').append(tvs);
 }
 
 function addToCart(id, is = false) {
@@ -232,13 +234,48 @@ function addToCart(id, is = false) {
     if (is) {    
         window.location.reload();
     } else {
-        // successful();
+        toast("Item has been added successfully!", "success");
     }
+}
+
+function addToWishlist(id) {
+    let contains = false;
+
+    let wishlist = [];
+
+    if (localStorage.getItem('wishlist')) {
+		wishlist = JSON.parse(localStorage.getItem('wishlist'));
+	}
+    
+    wishlist.forEach(item => {
+        let element = JSON.parse(item);
+        if (element.id === id) {
+            element.quantity++;
+            contains = true;
+
+            wishlist[wishlist.indexOf(item)] = JSON.stringify(element);
+        }
+    });
+
+    if (!contains) {
+        products.forEach(element => {
+            if (element.id === id) {
+                let wishlistItemJSON = JSON.stringify(element);
+
+                wishlist.push(wishlistItemJSON);
+            }
+        });
+    }
+
+	let wishlistJSON = JSON.stringify(wishlist);
+	localStorage.setItem('wishlist', wishlistJSON);
+    toast("Item has been added successfully!", "success");
 }
 
 function emptyCart() {
 	if (localStorage.getItem('cart')) {
 		localStorage.removeItem('cart');
+        toast("Item has been added successfully!", "success");
         window.location.reload();
 	}
 }
@@ -257,6 +294,7 @@ function incrementItem(id) {
 
     let cartJSON = JSON.stringify(cart);
 	localStorage.setItem('cart', cartJSON);
+    toast("Item has been added successfully!", "success");
     window.location.reload();
 }
 
@@ -281,6 +319,7 @@ function decrementItem(id) {
     if (!isRemove) {
         let cartJSON = JSON.stringify(cart);
         localStorage.setItem('cart', cartJSON);
+        toast("Item has been added successfully!", "success");
         window.location.reload();   
     }
 }
@@ -305,6 +344,10 @@ function showMain() {
     document.location.href = 'index.html';
 }
 
+function showProfile () {
+    document.location.href = 'account.html';
+}
+
 function showCart() {
     document.location.href = 'cart.html';
 }
@@ -323,44 +366,23 @@ try {
 } catch (Exception) {}
 
 function loginDisplay() {
-    if (localStorage.getItem('currentUser')) {
-        // personalAccount(); // go to "личный кабинет"
-    } else {
-        document.getElementById('log-window').innerHTML =
-            '<section>' +
-            '<div class="sign">' +
-            '<h1>Login</h1>' +
-            '<form action="#">' +
-            '<div class="sign-card">' +
-            '<input type="text" id="phone" class="i" placeholder="Phone number" autofocus autocomplete="off">' +
-            '<hr class="sign-hr">' +
-            '<input type="password" id="password" class="i" placeholder="Password" autocomplete="off">' +
-            '<hr class="sign-hr">' +
-            '<p>Don\'t have an account yet? <a href="register.html">Register</a></p>' +
-            '<button class="sign-btn" id="submit" onclick="loginCheck()">Submit</button>' +
-            '</div>' +
-            '</form>' +
-            '</div>' +
-            '</section>' +
-            '<div class="cover" onclick="loginHide()"></div>';
-
-        setCoverProps();
-    }
+    $('#log-window').toggleClass('hide');
+    
+    setCoverProps();
 }
 
 function loginHide() {
-    document.querySelector('div.cover').classList.toggle('hide');
-    document.querySelector('div.sign').classList.toggle('hide');
+    $('#log-window').toggleClass('hide');
 }
 
+console.log(localStorage);
+
 function loginCheck() {
-    let phone = document.getElementById('phone').value;
-    let password = document.getElementById('password').value;
+    let phone = $('#phone').val();
+    let password = $('#password').val();
 
     if (localStorage.getItem(phone)) {
         let user = JSON.parse(localStorage.getItem(phone));
-
-        console.log(localStorage);
 
         if (password === user.password) {
             localStorage.setItem('currentUser', localStorage.getItem(phone));
@@ -370,11 +392,11 @@ function loginCheck() {
 }
 
 function regCheck() {
-    let firstName = String(document.getElementById('f_name').value);
-    let lastName = String(document.getElementById('l_name').value);
-    let phone = String(document.getElementById('phone').value);
-    let new_password = String(document.getElementById('password').value);
-    let confirm_password = String(document.getElementById('confirm_password').value);
+    let firstName = String($('#f-name').val());
+    let lastName = String($('#l-name').val());
+    let phone = String($('#phone').val());
+    let new_password = String($('#password').val());
+    let confirm_password = String($('#confirm_password').val());
 
     if (!firstName.match(/[A-Z][a-z]{2,}/i)) {
         console.log("1");
@@ -413,16 +435,16 @@ function loadCart() {
     let quantity = 0;
     let subTotal = 0;
 
-    const emp1 = document.getElementById("cart-display");
-    const emp2 = document.getElementById("cart-is-empty");
+    const emp1 = $('#cart-display');
+    const emp2 = $('#cart-is-empty');
 
         
     let shoppingCart = JSON.parse(localStorage.getItem("cart"));
 
-    if (shoppingCart == 0) {
-        emp2.classList.remove('hide');
+    if (shoppingCart == 0 || shoppingCart == null) {
+        emp2.removeClass('hide');
     } else {
-        emp1.classList.remove('hide');
+        emp1.removeClass('hide');
 
         shoppingCart.forEach(item => {
             let cartItem = JSON.parse(item);
@@ -450,9 +472,9 @@ function loadCart() {
         });
     }
 
-    document.getElementById("cartTableBody").innerHTML = cartRowHTML;
-    document.getElementById("itemCount").innerHTML = itemCount;
-    document.getElementById("totalAmount").innerHTML = Intl.NumberFormat("ru").format(grandTotal) + " ₸";
+    $("#cartTableBody").html(cartRowHTML);
+    $("#itemCount").html(itemCount);
+    $("#totalAmount").html(Intl.NumberFormat("ru").format(grandTotal) + " ₸");
 
     let productHTML = '<div class="category-title">' +
         '<h1>Products</h1>' +
@@ -478,7 +500,7 @@ function loadCart() {
 
     productHTML += '</ul>'
 
-    document.getElementById("product-item-container").innerHTML = productHTML;
+    $("#product-item-container").html(productHTML);
 }
 
 function shuffleArray(array) {
@@ -487,3 +509,183 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
+
+function toast(message, type){
+    $.Toast("Success!", message, type, {
+        has_icon:true,
+        has_close_btn:true,
+        stack: true,
+        fullscreen:true,
+        timeout:3000,
+        sticky:false,
+        has_progress:true,
+        rtl:false,
+    });
+}
+
+function exitAccount() {
+    localStorage.removeItem('currentUser');
+    showMain();
+}
+
+(function(){
+    "use strict";
+    $.Toast = function(title, message, type, options){
+        var defaultOptions = {
+            appendTo: "body",
+            stack: false,
+            position_class: "toast-bottom-right",
+            fullscreen:false,
+            width: 250,
+            spacing:20,
+            timeout: 4000,
+            has_close_btn:true,
+            has_icon:true,
+            sticky:false,
+            border_radius:6,
+            has_progress:false,
+            rtl:false
+        }
+
+        var $element = null;
+
+        var $options = $.extend(true, {}, defaultOptions, options);
+
+        var spacing = $options.spacing;
+
+        var css = {
+            "position":($options.appendTo == "body") ? "fixed" : "absolute",
+            "min-width":$options.width,
+            "display":"none",
+            "border-radius":$options.border_radius,
+            "z-index":99999
+        }
+
+        $element = $('<div class="toast-item-wrapper ' + type + ' ' + $options.position_class + '"></div>');
+        $('<p class="toast-title">' + title + '</p>').appendTo($element);
+        $('<p class="toast-message">' + message + '</p>').appendTo($element);
+
+        if($options.fullscreen){
+            $element.addClass( "fullscreen" );
+        }
+
+        if($options.rtl){
+            $element.addClass( "rtl" );
+        }
+
+        if($options.has_close_btn){
+            $('<span class="toast-close">&times;</span>').appendTo($element);
+            if( $options.rtl){
+                css["padding-left"] = 20;
+            } else {
+                css["padding-right"] = 20;
+            }
+        }
+
+        if($options.has_icon){
+            $('<i class="toast-icon toast-icon-' + type + '"></i>').appendTo($element);
+            if( $options.rtl){
+                css["padding-right"] = 50;
+            } else {
+                css["padding-left"] = 50;
+            }            
+        }
+
+        if($options.has_progress && $options.timeout > 0){
+            $('<div class="toast-progress"></div>').appendTo($element);
+        }
+
+        if($options.sticky){
+            $options.spacing = 0;
+            spacing = 0;
+
+            switch($options.position_class){
+                case "toast-top-left" : {
+                    css["top"] = 0;
+                    css["left"] = 0;
+                    break;
+                }
+                case "toast-top-right" : {
+                    css["top"] = 0;
+                    css["left"] = 0;                    
+                    break;
+                }
+                case "toast-top-center" : {
+                    css["top"] = 0;
+                    css["left"] = css["right"] = 0;  
+                    css["width"] = "100%";                  
+                    break;
+                }
+                case "toast-bottom-left" : {
+                    css["bottom"] = 0;
+                    css["left"] = 0;                     
+                    break;
+                }
+                case "toast-bottom-right" : {
+                    css["bottom"] = 0;
+                    css["right"] = 0;                     
+                    break;
+                }
+                case "toast-bottom-center" : {
+                    css["bottom"] = 0;
+                    css["left"] = css["right"] = 0;  
+                    css["width"] = "100%";                     
+                    break;
+                }
+                default : {
+                    break;
+                }                                                                        
+            }
+        }
+
+        if($options.stack){
+            if($options.position_class.indexOf("toast-top") !== -1 ){
+                $($options.appendTo).find('.toast-item-wrapper').each(function(){
+                    css["top"] = parseInt($(this).css("top")) + this.offsetHeight + spacing;
+                });
+            } else if($options.position_class.indexOf("toast-bottom") !== -1 ){
+                $($options.appendTo).find('.toast-item-wrapper').each(function(){
+                    css["bottom"] = parseInt($(this).css("bottom")) + this.offsetHeight + spacing;
+                });
+            }
+        }        
+
+        $element.css(css);
+
+        $element.appendTo($options.appendTo);
+
+		if($element.fadeIn) {
+            $element.fadeIn();
+        }else {
+            $alert.css({display: 'block', opacity: 1});
+        }
+
+		function removeToast(){          
+			$.Toast.remove( $element );
+		}
+
+		if($options.timeout > 0){
+			setTimeout(removeToast, $options.timeout);
+            if($options.has_progress){
+                $(".toast-progress", $element).animate({"width":"100%"}, $options.timeout);
+            }
+		}        
+
+        $(".toast-close", $element).click(removeToast)
+
+        return $element;
+    }
+
+    $.Toast.remove = function( $element ){
+        "use strict";        
+		if($element.fadeOut)
+		{
+			$element.fadeOut(function(){
+				return $element.remove();
+			});
+		}
+		else{
+			$element.remove();
+		}        
+    }
+})();

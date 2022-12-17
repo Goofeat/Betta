@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About us</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
 <body>
     <div class="page">
         <header>
             <div class="logo non-copy">
                 <a href="index.html" class="decor-none">Betta</a>
             </div>
-    
+
             <div class="right-side uppercase non-copy">
                 <div class="wishlist">
                     <img src="icons/wishlist.svg" alt="WISHLIST">
                     <p>wishlist</p>
                 </div>
-    
+
                 <div class="cart" onclick="showCart()">
                     <img src="icons/cart.svg" alt="CART">
                     <p>cart</p>
                 </div>
-    
-                <div class="account" onclick="loginDisplay()">
-                    <img src="icons/account.svg" alt="ACCOUNT">
-                    <p></p>
+
+                <div class="account" id="sign-in" onclick="loginDisplay()">
+                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <p>sign in</p>
+                </div>
+
+                <div class="account hide" id="acc" onclick="showProfile()">
+                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <p>account</p>
                 </div>
             </div>
         </header>
@@ -38,10 +45,14 @@
             </div>
             <div class="cont">
                 <div style="font-weight: 300;">
-                    <p>Betta is the largest trading company in Kazakhstan, a leader in the sale of electronics and home appliances.</p>
+                    <p>Betta is the largest trading company in Kazakhstan, a leader in the sale of electronics and home
+                        appliances.</p>
                 </div>
                 <div style="font-size: 25px; margin-top: 30px; text-align: right;">
-                    <p><em>Betta is a member of the European purchasing cooperative Euronics, which unites 29 retail organizations from 36 countries of the world, which allows the company to quickly respond to global trends in consumer demand and timely supply Kazakhstanis with the most popular new electrical appliances and electronics.</em></em></p>
+                    <p><em>Betta is a member of the European purchasing cooperative Euronics, which unites 29 retail
+                            organizations from 36 countries of the world, which allows the company to quickly respond to
+                            global trends in consumer demand and timely supply Kazakhstanis with the most popular new
+                            electrical appliances and electronics.</em></em></p>
                 </div>
             </div>
             <div class="foo">
@@ -71,7 +82,10 @@
                 </div>
             </div>
             <div class="text-ab">
-                <p>Inspired by the Dream, we reveal our potential and make people's lives brighter and life more comfortable. The management of the Betta company is aware of its responsibility for the future of the new generation, and in every possible way contributes to the training and career advancement of young employees</p>
+                <p>Inspired by the Dream, we reveal our potential and make people's lives brighter and life more
+                    comfortable. The management of the Betta company is aware of its responsibility for the future of
+                    the new generation, and in every possible way contributes to the training and career advancement of
+                    young employees</p>
             </div>
             <div class="foo">
                 <div class="foo1" style="padding-left: 75px; padding-right: 75px;">
@@ -107,20 +121,21 @@
             <div class="logo non-copy">
                 <a href="index.html" class="decor-none">Betta</a>
             </div>
-    
+
             <div class="right-side uppercase non-copy">
                 <div class="about-us">
-                    <a href="about-us.html" style="color: white;">about us</a>
+                    <a href="about-us.html">about us</a>
                 </div>
-    
+
                 <div class="contacts">
-                    <a href="contacts.html" style="color: white;">contacts</a>
+                    <a href="contacts.html">contacts</a>
                 </div>
             </div>
         </footer>
-  </div>
+    </div>
 
     <script src="https://unpkg.com/imask"></script>
     <script src="js/script.js"></script>
 </body>
+
 </html>
