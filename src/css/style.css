@@ -389,20 +389,23 @@ hr {
 }
 .cont{
 	padding: 70px;
-	margin-left: 80px;
-	margin-right: 80px;
-	background-color:#f86e23;
+	margin-left: 70px;
+	margin-right: 70px;
+	background-image:url("https://catherineasquithgallery.com/uploads/posts/2021-02/1613025011_50-p-kartinki-fona-oranzhevogo-tsveta-53.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	border-radius: 50px;
 	color: white;
 	font-weight: 200;
 	font-size: 45px;
+	box-shadow: #d26023;
 }
 .foo{
 	display: flex;
 	margin: 100px;
 	margin-top: 70px;
+	margin-left: 200px;
+	margin-right: 200px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 30px;
 	font-weight: 150;
@@ -413,11 +416,10 @@ hr {
 	padding: 70px;
 	border-radius: 20px;
 	text-align: center;
+	box-shadow: #d26023;
 }
 .foo1-2 img{
 	align-items: center;
-    height: 4vh;
-    width: 1.8vw;
 }
 .foo1-1{
 	font-size: 30px;
@@ -433,7 +435,7 @@ hr {
 	padding-left: 10px;
 	padding-right: 10px;
 }
-.foo3-2{
+.foo3{
 	background-color: #f2efdf;
 	padding: 70px;
 	border-radius: 20px;
