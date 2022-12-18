@@ -50,6 +50,7 @@
                 <div id="cart-is-empty" class="hide">
                     <h1>Oops...</h1>
                     <h1>Your cart is empty!</h1>
+                    <img src="icons/settings.gif" alt="" style="width: 5vh; height: 5vh;">
                 </div>
                 <div id="cart-display" class="hide">
                     <div class="tbl-heading">
@@ -93,7 +94,8 @@
                     </div>
 
                     <div class="categories">
-                        <button onClick="emptyCart()" id="btnEmpty">Empty Cart</button>
+                        <button onclick="buyCart()" id="btnBuy" class="btnBuy">Buy</button>
+                        <button onClick="emptyCart()" id="btnEmpty" class="btnEmpty">Empty Cart</button>
                     </div>
                 </div>
             </section>

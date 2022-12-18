@@ -54,6 +54,20 @@ span {
     background-color: #f95700;
     border-radius: 100%;
     padding: 1vw;
+    animation-name: logo_animate;
+    animation-duration: 2.2s;
+    animation-iteration-count: 1;
+}
+
+@keyframes logo_animate {
+    from {
+        margin-left: 1500px;
+        background-color: #fff;
+    }
+    to {
+        margin-left: 0;
+        background-color: #f95700;
+    }
 }
 
 .user-info-item-change {
@@ -120,4 +134,12 @@ span {
 
 .history-table {
     padding-top: 0;
+}
+
+.bg-account {
+    position: absolute;
+    z-index: -10;
+    width: 100vw;
+    height: 10vh;
+    top: -10vh;
 }
