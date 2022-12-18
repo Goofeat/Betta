@@ -697,3 +697,7 @@ function loadProfile() {
     $('span#phone-number').html(currentUser.phoneNumber);
     $('span#email').html(currentUser.email);
 }
+
+function settings() {
+    window.location.href = "settings.html";
+}
