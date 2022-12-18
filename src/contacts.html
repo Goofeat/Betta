@@ -10,54 +10,104 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <title>BETTA | Contacts</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/contacts.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <header>
-        <div class="logo non-copy">
-            <a href="index.html" class="decor-none">Betta</a>
+    <div class="page">
+        <header>
+            <div class="logo non-copy">
+                <a href="index.html" class="decor-none">Betta</a>
+            </div>
+    
+            <div class="right-side uppercase non-copy">
+                <div class="wishlist">
+                    <img src="icons/wishlist.svg" alt="WISHLIST" />
+                    <p>wishlist</p>
+                </div>
+                <div class="cart" onclick="showCart()">
+                    <img src="icons/cart.svg" alt="CART" />
+                    <p>cart</p>
+                </div>
+    
+                <div class="account" id="sign-in" onclick="loginDisplay()">
+                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <p>sign in</p>
+                </div>
+    
+                <div class="account hide" id="acc" onclick="showProfile()">
+                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <p>account</p>
+                </div>
+            </div>
+        </header>
+        <div class="all">
+            <div class="container">
+                <div class="content">
+                    <div class="left-side">
+                        <div class="address">
+                            <img src="icons/icons8-visit-32.png" alt="">
+                            <div class="topic">Address</div>
+                            <div class="text-one">Kaskelen</div>
+                            <div class="text-two">Abylayhana 1/1</div>
+                        </div>
+                        <div class="phone">
+                            <img src="icons/icons8-telephone-32.png" alt="">
+                            <div class="topic">Phone</div>
+                            <div class="text-one">8-701-700-00-00</div>
+                            <div class="text-two">8-729-211-11-11</div>
+                        </div>
+                        <div class="email">
+                            <img src="icons/icons8-secured-letter-32.png" alt="">
+                            <div class="topic">Email</div>
+                            <div class="text-one">betta.shop@gmail.com</div>
+                            <div class="text-two">support_betta@mail.ru</div>
+                        </div>
+                    </div>
+                    <div class="right-side1">
+                        <div class="topic-text">Send us a message</div>
+                        <p>If you have any questions or suggestions, please fill out the form below.</p>
+                        <form action="#">
+                            <div class="input-box">
+                                <input type="text" placeholder="Enter your name">
+                            </div>
+                            <div class="input-box">
+                                <input type="text" placeholder="Enter your email">
+                            </div>
+                            <div class="input-box">
+                                <input type="text" placeholder="Enter your phone number">
+                            </div>
+                            <div class="input-box message-box">
+                                <textarea placeholder="Message"></textarea>
+                            </div>
+                            <div class="button-cont">
+                                <input type="button" value="Send">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="right-side uppercase non-copy">
-            <div class="wishlist">
-                <img src="icons/wishlist.svg" alt="WISHLIST" />
-                <p>wishlist</p>
-            </div>
 
-            <div class="cart" onclick="showCart()">
-                <img src="icons/cart.svg" alt="CART" />
-                <p>cart</p>
-            </div>
 
-            <div class="account" id="sign-in" onclick="loginDisplay()">
-                <img src="icons/account.svg" alt="ACCOUNT" />
-                <p>sign in</p>
+        <footer>
+            <div class="logo non-copy">
+                <a href="index.html" class="decor-none">Betta</a>
             </div>
-
-            <div class="account hide" id="acc" onclick="showProfile()">
-                <img src="icons/account.svg" alt="ACCOUNT" />
-                <p>account</p>
+    
+            <div class="right-side uppercase non-copy">
+                <div class="about-us">
+                    <a href="about-us.html">about us</a>
+                </div>
+    
+                <div class="contacts">
+                    <a href="contacts.html">contacts</a>
+                </div>
             </div>
-        </div>
-    </header>
-
-    <footer>
-        <div class="logo non-copy">
-            <a href="index.html" class="decor-none">Betta</a>
-        </div>
-
-        <div class="right-side uppercase non-copy">
-            <div class="about-us">
-                <a href="about-us.html">about us</a>
-            </div>
-
-            <div class="contacts">
-                <a href="contacts.html">contacts</a>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://unpkg.com/imask"></script>

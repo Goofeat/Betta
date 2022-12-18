@@ -12,7 +12,7 @@
 * {
   	margin: 0;
   	padding: 0;
-  	font-family: "Alexandria", sans-serif;
+    box-sizing: border-box;
 }
 
 html {
@@ -47,9 +47,13 @@ section {
 }
 
 body {
-    background-color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+    background: -webkit-linear-gradient(45deg, rgb(255, 193, 135) 16%, rgb(255, 245, 236) 58%);
+    background: -moz-linear-gradient(45deg, rgb(255, 193, 135) 16%, rgb(255, 245, 236) 58%);
+    background: linear-gradient(45deg, rgb(255, 193, 135) 16%, rgb(255, 245, 236) 58%);
 }
-
 .buttons {
 	margin-top: 3vh;
 }
@@ -296,26 +300,8 @@ td {
     margin-bottom: 1vh;
 	color: var(--orange) !important;
 }
-
-input {
-    display: flex;
-    align-self: flex-start;
-    border: none;
-    padding: 0.5vh 0;
-    width: 22.5vw;
-	margin: 0 1vw;
-    color: var(--orange) !important;
-	font-size: 1.3vw;
-}
-
 #password, #confirm-password {
 	font-size: 2vw;
-}
-
-::placeholder {
-	font-size: 1.3vw;
-	color: var(--orange);
-	opacity: 0.7;
 }
 
 .sign-btn {
@@ -511,4 +497,126 @@ hr {
 
 ::-webkit-scrollbar-thumb:hover {
 	background: rgb(193, 81, 20);
+}
+.all{
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    margin-bottom: 50px;
+    padding: 60px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px 0 rgb(205, 129, 91);
+}
+.left-side{
+    width: 25%;
+    height: 100%;
+    position: relative ;
+}
+.left-side::before{
+    content: "";
+    position: absolute;
+    height: 70%;
+    width: 2px;
+    background: black;
+    right: -15px;
+    top:50%;
+    transform: translateY(-50%);
+}
+.right-side1{
+    width: 75%;
+    margin-left: 75px;
+}
+.address{
+    margin-bottom: 15px;
+    text-align: center;
+}
+.phone{
+    margin-bottom: 15px;
+    text-align: center;
+}
+.email{
+    margin-bottom: 15px;
+    text-align: center;
+}
+.topic{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+.text-one,
+.text-two {
+    font-size: 14px;
+    color: #afafb6;
+}
+.topic-text {
+    font-size: 23px;
+    font-weight: 600;
+    color: #f95700;
+    margin-bottom: 10px;
+}
+.right-side1 p{
+    margin-bottom: 20px;
+}
+
+.input-box{
+    width: 100%;
+    height: 50px;
+    margin: 20px 0;
+}
+.input-box input,
+.input-box textarea{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #f0f1f8;
+    padding: 0 20px;
+    border-radius: 10px;
+}
+.input-box textarea{
+    resize: none;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.message-box{
+    min-height: 110px;
+}
+.button-cont{
+    display: inline-block;
+}
+.button-cont input[type="button"] {
+    color:rgb(232, 226, 223);
+    background:#f95700;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: 0.2s;
+
+}
+.button-cont input[type="button"]:hover {
+    background:#ff955b;
 }
