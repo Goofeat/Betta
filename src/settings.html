@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <title>BETTA | Login</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>BETTA | Settings</title>
 </head>
-
 <body>
     <div class="page">
         <header>
@@ -31,27 +23,21 @@
                     <img src="icons/cart.svg" alt="CART">
                     <p>cart</p>
                 </div>
+
+                <div class="account" id="sign-in" onclick="loginDisplay()">
+                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <p>sign in</p>
+                </div>
+
+                <div class="account hide" id="acc" onclick="showProfile()">
+                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <p>account</p>
+                </div>
             </div>
         </header>
 
         <div class="content-wrapper">
-            <section>
-                <div class="login">
-                    <h1>Login</h1>
-                    <form action="index.html">
-                        <div class="sign-card">
-                            <input type="text" id="phone" class="i" placeholder="Phone number" autofocus
-                                autocomplete="off">
-                            <hr class="sign-hr">
-                            <input type="password" id="password" class="i" placeholder="Password" autocomplete="off">
-                            <hr class="sign-hr">
-                            <p>Don't have an account yet? <a href="register.html"
-                                    style="text-decoration: none;">Register</a></p>
-                            <button class="sign-btn" id="submit" onclick="loginCheck()">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
+            
         </div>
 
         <footer>
@@ -71,11 +57,7 @@
         </footer>
     </div>
 
-
-    <script></script>
-
     <script src="https://unpkg.com/imask"></script>
     <script src="js/script.js"></script>
 </body>
-
 </html>

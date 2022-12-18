@@ -28,7 +28,7 @@
     justify-content: space-between;
     background: white;
     margin-bottom: 50px;
-    padding: 60px;
+    padding: 30px 60px;
     border-radius: 10px;
     box-shadow: 4px 4px 8px 0 rgb(205, 129, 91);
 }
@@ -112,15 +112,16 @@
     width: 101%;
 }
 .button-cont input[type="button"] {
-    color:rgb(232, 226, 223);
-    background:#f95700;
-    border: none;
+    color: #f95700;
+    background:#fff;
+    border: 2px solid #f95700;
     outline: none;
     padding: 10px 20px;
     border-radius: 10px;
-    transition: 0.2s;
+    transition: all 0.3s;
 }
 .button-cont input[type="button"]:hover {
-    background:#ff955b;
+    color: #fff;
+    background-color: #f95700;
 }
 
