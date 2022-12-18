@@ -26,9 +26,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: row;
     background: white;
     margin-bottom: 50px;
-    padding: 30px 60px;
+    padding: 30px;
+    padding-left: 20px;
+    padding-right: 80px;
     border-radius: 10px;
     box-shadow: 4px 4px 8px 0 rgb(205, 129, 91);
 }
@@ -36,6 +39,7 @@
     width: 25%;
     height: 100%;
     position: relative ;
+    margin-top: -30px;
 }
 .left-side::before{
     content: "";
@@ -78,6 +82,7 @@
     font-weight: 600;
     color: #f95700;
     margin-bottom: 10px;
+    margin-top: 35px;
 }
 .right-side1 p{
     margin-bottom: 20px;
