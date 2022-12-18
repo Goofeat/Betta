@@ -106,7 +106,10 @@
     min-height: 110px;
 }
 .button-cont{
-    display: inline-block;
+    display: flex;
+    padding: 5vh;
+    justify-content: end;
+    width: 101%;
 }
 .button-cont input[type="button"] {
     color:rgb(232, 226, 223);
@@ -116,21 +119,8 @@
     padding: 10px 20px;
     border-radius: 10px;
     transition: 0.2s;
-
 }
 .button-cont input[type="button"]:hover {
     background:#ff955b;
 }
-@media (max-width: 800px) {
-    .content{
-        height: 100%;
-        flex-direction: column-reverse;
-        margin-top: 20px;
-    }
-    .left-side{
-        margin-top: 50px;
-    }
-    .left-side::before{
-        display: none;
-    }
-}
+

@@ -95,8 +95,6 @@
     animation-duration: 1s;
     animation-name: slidetop;
     animation-iteration-count: inherit;
-    box-shadow:  10px 10px 8px #fcfcfc,
-             -10px -10px 8px #fcfcfc;
 }
 
 @keyframes slidetop {

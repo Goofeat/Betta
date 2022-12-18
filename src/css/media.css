@@ -1,0 +1,13 @@
+@media (max-width: 800px) {
+    .content{
+        height: 100%;
+        flex-direction: column-reverse;
+        margin-top: 20px;
+    }
+    .left-side{
+        margin-top: 50px;
+    }
+    .left-side::before{
+        display: none;
+    }
+}
