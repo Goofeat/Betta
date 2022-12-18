@@ -65,9 +65,46 @@
                     </div>
                     <div class="bought-items">
                         <h2 class="bought-items-header">Storage of your purchases</h2>
-                        <div class="history-empty">
+                        <div class="history-empty hide">
                             <p>You haven't bought anything yet...</p>
-                            <img src="img/jdun.png" alt="jdun" style="margin-top: 5vh;">
+                            <img src="img/jdun.png" alt="jdun" style="margin-top: 4vh; height: 55vh;">
+                        </div>
+
+                        <div class="history-display">
+                            <div class="stick s_table"></div>
+                            <table cellpadding="0" cellspacing="0" border="0" class="history-table">
+                                <thead class="history-table">
+                                    <tr class="history-table">
+                                        <th width="50%">Product name</th>
+                                        <th class='text-center' width="15%">Price</th>
+                                        <th class='text-center' width="20%">Quantity</th>
+                                        <th class='text-center' width="20%">Sub Total</th>
+                                        <th width="5%"></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <div class="stick s_table"></div>
+
+                            <div class="tbl-content-history">
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tbody id="historyTableBody">
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="tbl-footer-history">
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tfoot>
+                                        <tr>
+                                            <td width="40%"></td>
+                                            <td class="text-center" width="15%">Total:</td>
+                                            <td class="text-center" colspan="2" width="15%"></td>
+                                            <td class="text-center" width="15%"></td>
+                                            <td width="5%"></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

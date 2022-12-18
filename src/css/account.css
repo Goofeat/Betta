@@ -80,7 +80,8 @@ span {
 
 
 .bought-items {
-    padding: 5vh;
+    padding: 3vh;
+    padding-top: 5vh;
     background-color: rgba(249, 87, 0, 0.3);
     height: 69vh;
     width: 50vw;
@@ -100,4 +101,23 @@ span {
     color: #f95700;
     font-size: 2vw;
     margin-top: 2vh;
+}
+
+.history-display {
+    color: #f95700;
+    padding-top: 5vh;
+}
+
+.s_table {
+    margin-left: 2vh;
+    width: 46vw;
+    margin-bottom: 3vh;
+}
+
+.tbl-footer-history {
+    margin-top: 35vh;
+}
+
+.history-table {
+    padding-top: 0;
 }
