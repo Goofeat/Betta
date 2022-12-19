@@ -15,7 +15,7 @@
 .user-info-item {
     padding: 5vh;
     background-color: var(--main);
-    height: 60vh;
+    height: fit-content;
     width: 25vw;
     border-radius: 20px;
     display: flex;
@@ -97,7 +97,6 @@ span {
     padding: 3vh;
     padding-top: 5vh;
     background-color: rgba(249, 87, 0, 0.3);
-    height: 69vh;
     width: 50vw;
     border-radius: 20px;
     margin-left: 5vw;
@@ -111,13 +110,13 @@ span {
     color: var(--main);
 }
 
-.history-empty {
+#history-empty {
     color: var(--main);
     font-size: 2vw;
     margin-top: 2vh;
 }
 
-.history-display {
+#history-display {
     color: var(--main);
     padding-top: 5vh;
 }

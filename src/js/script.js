@@ -1,4 +1,4 @@
-// localStorage.clear();
+// localStorage.removeItem('boughtProducts');
 
 if (localStorage.getItem('currentUser')) {
     $('#sign-in').addClass('hide');
@@ -158,7 +158,7 @@ const products = [
     }
 ];
 
-$(document).ready(function() {
+function loadProducts() {
     let smartphones = "";
     let laptops = "";
     let tvs = "";
@@ -195,7 +195,7 @@ $(document).ready(function() {
     $('#smartphones-category').append(smartphones);
     $('#laptops-category').append(laptops);
     $('#tvs-category').append(tvs);
-});
+};
 
 function addToCart(id) {
     let contains = false;
@@ -233,41 +233,6 @@ function addToCart(id) {
 	localStorage.setItem('cart', cartJSON); 
     $.Toast("Success!", product.name + " has been added successfully!", "success");
     loadCart();
-}
-
-function addToWishlist(id) {
-    let contains = false;
-
-    let wishlist = [];
-
-    if (localStorage.getItem('wishlist')) {
-		wishlist = JSON.parse(localStorage.getItem('wishlist'));
-	}
-    
-    wishlist.forEach(item => {
-        let element = JSON.parse(item);
-        if (element.id === id) {
-            element.quantity++;
-            contains = true;
-
-            wishlist[wishlist.indexOf(item)] = JSON.stringify(element);
-        }
-    });
-
-    if (!contains) {
-        products.forEach(element => {
-            if (element.id === id) {
-                let wishlistItemJSON = JSON.stringify(element);
-
-                wishlist.push(wishlistItemJSON);
-            }
-        });
-    }
-
-	let wishlistJSON = JSON.stringify(wishlist);
-	localStorage.setItem('wishlist', wishlistJSON);
-    $.Toast("Success!", "Item has been added successfully!", "success");
-
 }
 
 function emptyCart() {
@@ -365,16 +330,9 @@ function setCoverProps() {
     document.querySelector("div.cover").style = "height: " + pageHeight + "px; width: " + pageWidth + "px";
 }
 
-try {
-    let phoneMask = IMask(
-        document.getElementById('phone'),
-        {mask: '+{7} ({7}00) 000 00 00'}
-    );
-} catch (Exception) {}
-
 function loginDisplay() {
-    $('#log-window').toggleClass('hide');
     setCoverProps();
+    $('#log-window').toggleClass('hide');
 }
 
 function loginHide() {
@@ -436,6 +394,7 @@ function regCheck() {
 
 function loadCart() {
     let cartRowHTML = "";
+    let buyRowHTML = "";
     let itemCount = 0;
     let grandTotal = 0;
 
@@ -454,6 +413,10 @@ function loadCart() {
     } else {
         emp1.removeClass('hide');
         emp2.addClass('hide');
+
+        if (!localStorage.getItem('currentUser')) {
+            $('#btnBuy').addClass('hide');
+        }
 
         shoppingCart.forEach(item => {
             let cartItem = JSON.parse(item);
@@ -476,13 +439,17 @@ function loadCart() {
                         '<button class="btn-table" onclick="removeCartItem(' + cartItem.id + ')">\u00d7</button>' + 
                     '</td>' +
                 '</tr>';
+            
+            buyRowHTML += '<li>' + cartItem.category + ' ' + cartItem.company + ' ' + cartItem.name + ' ' + cartItem.color + ' \u00d7' + quantity + '</li>'
     
             grandTotal += subTotal;
         });
     }
 
     $("#cartTableBody").html(cartRowHTML);
+    $('#buyProducts').html(buyRowHTML);
     $("#itemCount").html(itemCount);
+    $("span#itemCount").html(itemCount + ' item' + (itemCount == 1 ? '' : 's'))
     $("#totalAmount").html(Intl.NumberFormat("ru").format(grandTotal) + " ₸");
 
     let productHTML = '<div class="category-title">' +
@@ -510,6 +477,54 @@ function loadCart() {
     productHTML += '</ul>'
 
     $("#product-item-container").html(productHTML);
+}
+
+function buy() {
+    buyHide();
+    let shopCartJSON = JSON.parse(localStorage.getItem("cart"));
+    let boughtJSON = [];
+
+    if (localStorage.getItem("boughtProducts")) {
+        boughtJSON = JSON.parse(localStorage.getItem("boughtProducts"));
+    }
+    
+    for (let i = 0; i < shopCartJSON.length; i++) {
+        let shopCartElement = JSON.parse(shopCartJSON[i]);
+        let is = false;
+        for (let j = 0; j < boughtJSON.length; j++) {
+            let boughtElement = boughtJSON[j];
+            if (boughtElement.id == shopCartElement.id) {
+                boughtElement.quantity += shopCartElement.quantity;
+
+                boughtJSON[i] = boughtElement;
+                is = true;
+            }
+        }
+        if (!is) {
+            boughtJSON.push(shopCartElement);
+        }
+    }
+
+    let CARD_NUMBER = String($('#card-number').val());
+    let EXP_DATE = String($('#exp-date').val());
+    let CVV = String($('#cvv').val());
+
+    let tmp = JSON.parse(localStorage.getItem('currentUser'));
+    let user = {
+        firstName: tmp.firstName,
+        lastName: tmp.lastName,
+        phoneNumber: tmp.phoneNumber,
+        email: tmp.email,
+        password: tmp.password,
+        cardNumber: CARD_NUMBER,
+        expDate: EXP_DATE,
+        cvv: CVV
+    }
+        
+    localStorage.setItem('currentUser', JSON.stringify(user));
+
+    localStorage.setItem('boughtProducts', JSON.stringify(boughtJSON));
+    emptyCart();
 }
 
 function shuffleArray(array) {
@@ -618,8 +633,103 @@ function loadProfile() {
     $('span#full-name').html(currentUser.firstName + " " + currentUser.lastName);
     $('span#phone-number').html(currentUser.phoneNumber);
     $('span#email').html(currentUser.email);
+
+    $("#bought-items").css("height", $("#user-info-item").height());
+
+    let boughtRowHTML = "";
+    let itemCount = 0;
+    let grandTotal = 0;
+
+    let price = 0;
+    let quantity = 0;
+    let subTotal = 0;
+
+    const emp1 = $('#history-display');
+    const emp2 = $('#history-empty');
+
+    let boughtProducts = JSON.parse(localStorage.getItem('boughtProducts'));
+
+    if (boughtProducts == 0 || boughtProducts == null) {
+        emp1.addClass('hide');
+        emp2.removeClass('hide');
+    } else {
+        emp1.removeClass('hide');
+        emp2.addClass('hide');
+
+        boughtProducts.forEach(item => {
+            price = parseInt(item.price.replaceAll(" ", ""));
+            quantity = parseInt(item.quantity);
+            itemCount += quantity;
+            subTotal = price * quantity;
+    
+            boughtRowHTML += 
+                '<tr>' +
+                    '<td width="40%">' + item.category + ' ' + item.company + ' ' + item.name + ' ' + item.color + '</td>' +
+                    '<td class="text-center" width="20%">' + Intl.NumberFormat("ru").format(price) + ' ₸</td>' +
+                    '<td class="text-center" width="20%">' + quantity + '</td>' +
+                    '<td class="text-center" width="20%">' + Intl.NumberFormat("ru").format(subTotal) + ' ₸</td>'
+                '</tr>';
+    
+            grandTotal += subTotal;
+        });
+    }
+
+    $("#historyTableBody").html(boughtRowHTML);
+    $("#history-item-count").html(itemCount);
+    $("#history-total-amount").html(Intl.NumberFormat("ru").format(grandTotal) + " ₸");
+    $('span#money-spent').html(Intl.NumberFormat("ru").format(grandTotal) + " ₸");
 }
 
 function settings() {
     window.location.href = "settings.html";
 }
+
+function buyDisplay() {
+    try {
+        let user = JSON.parse(localStorage.getItem('currentUser'));
+        $('#card-number').val(user.cardNumber);
+        $('#exp-date').val(user.expDate);
+        $('#cvv').val(user.cvv);
+    } catch (Exception) {}
+    setCoverProps();
+    $('#buy-window').toggleClass('hide');
+}
+
+function buyHide() {
+    $('#buy-window').toggleClass('hide');
+}
+
+try {
+    let phoneMask = IMask(
+        document.getElementById('phone'), {mask: '+{7} ({7}00) 000 00 00'}
+    );
+} catch (Exception) {}
+
+try {
+    let cardMask = IMask(
+        document.getElementById('card-number'), {mask: '0000-0000-0000-0000'}
+    );
+} catch (Exception) {}
+
+try {
+    let cardMask = IMask(
+        document.getElementById('exp-date'), {
+            mask: 'MM/YY',
+            blocks: {
+                YY: {
+                  mask: IMask.MaskedRange,
+                  from: 22,
+                  to: 35,
+                  placeholderChar: 'Y'
+                },
+            
+                MM: {
+                  mask: IMask.MaskedRange,
+                  from: 1,
+                  to: 12,
+                  placeholderChar: 'M'
+                }
+            }
+        }
+    );
+} catch (Exception) {}

@@ -34,6 +34,10 @@ a {
   	min-height: 100vh;
 }
 
+.cover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 .content-wrapper {
   	padding-bottom: 7rem;
 }
@@ -65,7 +69,7 @@ body {
     height: 5vh;
 }
 
-.categories button {
+.btn {
 	border: 2px solid var(--main);
 	border-radius: 2vw;
 	outline: 0;
@@ -89,7 +93,7 @@ body {
     height: 5vh;
 }
 
-.categories button:hover {
+.btn:hover {
 	border: 2px solid var(--main);
 	color: #fff;
 	background-color: var(--main);

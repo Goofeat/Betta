@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
     <title>BETTA | Cart</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,18 +17,76 @@
 
 <body onload="loadCart()">
     <div class="page">
-        <div id="log-window"></div>
-        <header class="hide">
+        <div id="log-window" class="hide">
+            <section>
+                <div class="sign">
+                    <h1>Login</h1>
+                    <form action="#">
+                        <div class="sign-card">
+                            <input type="text" id="phone" class="i" placeholder="Phone number">
+                            <hr class="sign-hr" />
+                            <input type="password" id="password" class="i" placeholder="Password" autocomplete="off" />
+                            <hr class="sign-hr" />
+                            <p>
+                                Don't have an account yet?
+                                <a href="register.html" style="text-decoration: underline;">Register</a>
+                            </p>
+                            <button class="sign-btn" id="log-btn" onclick="loginCheck()">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <div class="cover" onclick="loginHide()"></div>
+        </div>
+        
+        <div id="buy-window" class="hide">
+            <section>
+                <div class="modal">
+                    <div class="buy">
+                        <h3 class="buy-modal-header">Payment</h3>
+                        <form action="#">
+                            <div class="buy-card">
+                                <input type="text" id="card-number" class="i" placeholder="CARD NUMBER" required>
+                                <hr class="sign-hr">
+                                <div class="props">
+                                    <div class="exp-date-div">
+                                        <input type="text" id="exp-date" class="i" placeholder="MM/YY" required>
+                                        <hr class="sign-hr">
+                                    </div>
+                                    <div class="cvv-div">
+                                        <input type="password" id="cvv" maxlength="3" class="i" placeholder="CVV"
+                                            required>
+                                        <hr class="sign-hr">
+                                    </div>
+                                </div>
+                                <button class="buy-btn" onclick="buy()">
+                                    Buy
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="total" style="color: var(--main)">
+                        <h4><i class="fa fa-shopping-cart"></i> Cart
+                            <span id="itemCount" style="color: var(--main)">0</span>
+                        </h4>
+                        <ul id="buyProducts" style="list-style: none;text-align: left">
+
+                        </ul>
+                        <h4>Total <span id="totalAmount" style="color: var(--main)">0 ₸</span></h4>
+                    </div>
+                </div>
+            </section>
+            <div class="cover" onclick="buyHide()"></div>
+        </div>
+
+        <header>
             <div class="logo non-copy">
                 <a href="index.html" class="decor-none">Betta</a>
             </div>
 
             <div class="right-side uppercase non-copy">
-                <div class="wishlist">
-                    <img src="icons/wishlist.svg" alt="WISHLIST">
-                    <p>wishlist</p>
-                </div>
-
                 <div class="cart">
                     <img src="icons/cart.svg" alt="CART">
                     <p>cart</p>
@@ -52,40 +110,6 @@
                     <h1>Oops...</h1>
                     <h1>Your cart is empty!</h1>
                     <img src="icons/settings.gif" alt="" style="width: 5vh; height: 5vh;">
-                </div>
-                <div class="cover"></div>
-                <div class="buy">
-                    <div class="buy-modal">
-                        <h3 class="buy-modal-header">Payment</h3>
-                        <div class="icon-container">
-                        <i class="fa fa-cc-visa" style="color:navy;"></i>
-                        <i class="fa fa-cc-amex" style="color:blue;"></i>
-                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                        <i class="fa fa-cc-discover" style="color:orange;"></i>
-                        </div>
-                        <div class="card">
-                            <input type="text" id="ccnum" class="card-number" placeholder="1111-2222-3333-4444">
-                            <div class="stick"></div>
-                            <input type="text" id="cname" class="card-name" placeholder="John More Doe">
-                            <div class="stick"></div>
-                            <input type="text" id="expmonth" class="expmonth" placeholder="Se">
-                            <div class="stick"></div>
-                            <input type="text" id="cvv" class="cvv" placeholder="352">
-                        </div>
-                    </div>
-                    <div class="total">
-                        <h4>Cart
-                        <span class="price" style="color:black">
-                            <i class="fa fa-shopping-cart"></i>
-                            <b>4</b>
-                        </span>
-                        </h4>
-                        <p><a href="#">Product 1</a> $15</p>
-                        <p><a href="#">Product 2</a> $5</p>
-                        <p><a href="#">Product 3</a> $8</p>
-                        <p><a href="#">Product 4</a> $2</p>
-                        <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-                    </div>
                 </div>
                 <div id="cart-display" class="hide">
                     <div class="tbl-heading">
@@ -128,14 +152,14 @@
                         </table>
                     </div>
 
-                    <div class="categories">
-                        <button onclick="buyCart()" id="btnBuy" class="btnBuy">Buy</button>
-                        <button onClick="emptyCart()" id="btnEmpty" class="btnEmpty">Empty Cart</button>
+                    <div>
+                        <button onclick="buyDisplay()" id="btnBuy" class="btnBuy btn">Buy</button>
+                        <button onclick="emptyCart()" id="btnEmpty" class="btnEmpty btn">Empty Cart</button>
                     </div>
                 </div>
             </section>
 
-            <section>
+            <section style="padding-top: 10vh;">
                 <div id="product-item-container"></div>
             </section>
         </div>

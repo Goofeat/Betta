@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
     <title>BETTA | Profile</title>
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -21,11 +21,6 @@
             </div>
 
             <div class="right-side uppercase non-copy">
-                <div class="wishlist">
-                    <img src="icons/wishlist.svg" alt="WISHLIST" />
-                    <p>wishlist</p>
-                </div>
-
                 <div class="cart" onclick="showCart()">
                     <img src="icons/cart.svg" alt="CART" />
                     <p>cart</p>
@@ -56,6 +51,10 @@
                             <p>Email: <span id="email"></span></p>
                         </div>
                         <div class="stick"></div>
+                        <div class="user-info-item-data">
+                            <p>Total money spent: <span id="money-spent">0 ₸</span></p>
+                        </div>
+                        <div class="stick"></div>
                         <div class="user-info-item-change">
                             <p>Want to change anything? <br> Click here -></p>
                             <button class="user-info-change" onclick="settings()">
@@ -65,29 +64,27 @@
                     </div>
                     <div class="bought-items">
                         <h2 class="bought-items-header">Storage of your purchases</h2>
-                        <div class="history-empty">
+                        <div id="history-empty" class="hide">
                             <p>You haven't bought anything yet...</p>
                             <img src="img/jdun.png" alt="jdun" style="margin-top: 4vh; height: 55vh;">
                         </div>
 
-                        <div class="history-display hide">
-                            <div class="stick s_table"></div>
+                        <div id="history-display" class="hide">
                             <table cellpadding="0" cellspacing="0" border="0" class="history-table">
                                 <thead class="history-table">
                                     <tr class="history-table">
-                                        <th width="50%">Product name</th>
-                                        <th class='text-center' width="15%">Price</th>
+                                        <th width="40%">Product name</th>
+                                        <th class='text-center' width="20%">Price</th>
                                         <th class='text-center' width="20%">Quantity</th>
                                         <th class='text-center' width="20%">Sub Total</th>
-                                        <th width="5%"></th>
                                     </tr>
                                 </thead>
                             </table>
-                            <div class="stick s_table"></div>
 
                             <div class="tbl-content-history">
                                 <table cellpadding="0" cellspacing="0" border="0">
                                     <tbody id="historyTableBody">
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -97,10 +94,9 @@
                                     <tfoot>
                                         <tr>
                                             <td width="40%"></td>
-                                            <td class="text-center" width="15%">Total:</td>
-                                            <td class="text-center" colspan="2" width="15%"></td>
-                                            <td class="text-center" width="15%"></td>
-                                            <td width="5%"></td>
+                                            <td class="text-center" width="20%">Total:</td>
+                                            <td id="history-item-count" class="text-center" colspan="2" width="20%"></td>
+                                            <td id="history-total-amount" class="text-center" width="20%"></td>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -109,7 +105,6 @@
                     </div>
                 </div>
             </div>
-            <div class="wishlist-items"></div>
         </div>
 
         <footer>
