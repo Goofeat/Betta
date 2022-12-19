@@ -22,3 +22,18 @@
         justify-content: space-around;
     }
 }
+@media (max-width: 640px){
+    .foo{
+        align-items: center;
+    }
+    .cont{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .text-ab{
+        text-align: center;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+}
