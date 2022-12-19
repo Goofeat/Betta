@@ -15,4 +15,10 @@
     .right-side1{
         margin-left: 10px;
     }
+    .foo{
+        flex-direction: column-reverse;
+    }
+    .foo1{
+        justify-content: space-around;
+    }
 }
