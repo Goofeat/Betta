@@ -1,5 +1,5 @@
 .aboutUs{
-	color: #f95700;
+	color: var(--main);
 	text-align: center;
 	font-size: 50px;
 	margin: 50px;

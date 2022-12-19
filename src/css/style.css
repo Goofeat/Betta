@@ -5,12 +5,13 @@
 @import url("about-us.css");
 @import url("contacts.css");
 @import url("register.css");
+@import url("cart.css");
 @import url("toast.style.css");
 @import url("media.css");
 
 
 :root {
-	--orange: #f95700;
+	--main: #f95700;
 }
 
 * {
@@ -27,6 +28,7 @@ a {
 	color: currentColor;
 	text-decoration: none;
 }
+
 .page {
   	position: relative;
   	min-height: 100vh;
@@ -64,12 +66,12 @@ body {
 }
 
 .categories button {
-	border: 2px solid var(--orange);
+	border: 2px solid var(--main);
 	border-radius: 2vw;
 	outline: 0;
 	padding: 1vh;
 	margin: 1vh;
-	color: var(--orange);
+	color: var(--main);
 	background-color: #fff;
 	text-align: center;
 	cursor: pointer;
@@ -87,22 +89,10 @@ body {
     height: 5vh;
 }
 
-.btnEmpty {
-    position: absolute;
-    right: 27vw;
-    margin: 0;
-}
-
-.btnBuy {
-    width: 10vw;
-    position: absolute;
-    right: 13.5vw;
-}
-
 .categories button:hover {
-	border: 2px solid var(--orange);
+	border: 2px solid var(--main);
 	color: #fff;
-	background-color: var(--orange);
+	background-color: var(--main);
 }
 
 .category-title {
@@ -158,18 +148,18 @@ body {
 }
   
 .product-card-price {
-	color: var(--orange);
+	color: var(--main);
 	margin-bottom: 1.5vh;
 }
 
 .add-button button {
-	border: 2px solid #f95700;
+	border: 2px solid var(--main);
 	border-radius: 2vw;
 	outline: 0;
 	padding: 1vh;
 	margin-left: 1.8vh;
     margin-bottom: 1.5vh;
-	color: #f95700;
+	color: var(--main);
 	background-color: #fff;
 	text-align: center;
 	cursor: pointer;
@@ -184,7 +174,7 @@ body {
   
 .add-button button:hover {
 	color: #fff;
-    background-color: #f95700;
+    background-color: var(--main);
 }
 
 .add-button {
@@ -211,63 +201,6 @@ body {
 	flex-wrap: wrap;
 }
 
-table {
-	width: 100%;
-	table-layout: fixed;
-}
-
-.tbl-header, .tbl-footer {
-	background-color: var(--orange);
-	color: #fff;
-}
-
-.tbl-content {
-	max-height: 30vh;
-	overflow-x: auto;
-	margin-top: 0;
-	border: 1px solid var(--orange);
-}
-
-th {
-	padding: 20px 15px;
-	text-align: left;
-	font-weight: 500;
-	text-transform: uppercase;
-}
-
-td {
-	padding: 15px;
-	text-align: left;
-	vertical-align: middle;
-	font-weight: 300;
-	border-bottom: solid 1px var(--orange);
-}
-
-.text-center {
-	text-align: center;
-}
-
-#cart-display {
-	width: 80%;
-	padding-top: 5vh;
-}
-
-.tbl-heading {
-	padding-bottom: 2vh;
-}
-
-#btnEmpty {
-	padding: 5px 10px;
-	float: right;
-	text-decoration: none;
-	border-radius: 10vw;
-	cursor: pointer;
-	-webkit-border-radius: 10vw;
-	-moz-border-radius: 10vw;
-	-ms-border-radius: 10vw;
-	-o-border-radius: 10vw;
-}
-
 hr {
 	width: 23vw;
 	background-color: rgba(255, 255, 255, 0.3);
@@ -275,41 +208,9 @@ hr {
 	margin-left: 12px;
 }
 
-#cart-is-empty {
-	text-align: center;
-	padding: 15vh 0;
-}
-
 .hide {
 	position: absolute;
 	visibility: hidden;
-}
-
-.btn-table {
-	height: 24px;
-	width: 24px;
-	border: 2px solid var(--orange);
-	border-radius: 100%;
-	color: var(--orange);
-	background-color: transparent;
-	text-align: center;
-	cursor: pointer;
-	font-size: 1vw;
-	-webkit-border-radius: 100%;
-	-moz-border-radius: 100%;
-	-ms-border-radius: 100%;
-	-o-border-radius: 100%;
-	transition: all 0.3s;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	-ms-transition: all 0.3s;
-	-o-transition: all 0.3s;
-}
-
-.btn-table:hover {
-	border: 2px solid var(--orange);
-	color: #fff;
-	background-color: var(--orange);
 }
 
 .ml-1 {
@@ -344,11 +245,11 @@ hr {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #f95700;
+	background: var(--main);
 	border-radius: 10px; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: rgb(193, 81, 20);
+	background: #c15114;
 }
 

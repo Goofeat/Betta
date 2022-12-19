@@ -169,7 +169,6 @@ $(document).ready(function() {
         add =
             '<li>' +
                 '<div class="product-card">' +
-                    '<img class="wishlist-add" src="icons/add-wishlist.svg" onclick="addToWishlist(' + product.id + ')" alt="wishlist logo">' +
                     '<img class="product-card-image" src="img/' + product.photo + '" alt="Product Photo">' +
                     '<p class="product-card-company ml-1">' + product.company + '</p>' + 
                     '<p class="product-card-title ml-1">' + product.name + ' ' + product.color + '</p>' + 
@@ -198,8 +197,9 @@ $(document).ready(function() {
     $('#tvs-category').append(tvs);
 });
 
-function addToCart(id, is = false) {
+function addToCart(id) {
     let contains = false;
+    let product = null;
 
     let cart = [];
 
@@ -212,6 +212,7 @@ function addToCart(id, is = false) {
         if (element.id === id) {
             element.quantity++;
             contains = true;
+            product = element;
 
             cart[cart.indexOf(item)] = JSON.stringify(element);
         }
@@ -221,6 +222,7 @@ function addToCart(id, is = false) {
         products.forEach(element => {
             if (element.id === id) {
                 let cartItemJSON = JSON.stringify(element);
+                product = element;
 
                 cart.push(cartItemJSON);
             }
@@ -228,12 +230,9 @@ function addToCart(id, is = false) {
     }
 
 	let cartJSON = JSON.stringify(cart);
-	localStorage.setItem('cart', cartJSON);
-    if (is) {    
-        window.location.reload();
-    } else {
-        toast("Item has been added successfully!", "success");
-    }
+	localStorage.setItem('cart', cartJSON); 
+    $.Toast("Success!", product.name + " has been added successfully!", "success");
+    loadCart();
 }
 
 function addToWishlist(id) {
@@ -267,24 +266,28 @@ function addToWishlist(id) {
 
 	let wishlistJSON = JSON.stringify(wishlist);
 	localStorage.setItem('wishlist', wishlistJSON);
-    toast("Item has been added successfully!", "success");
+    $.Toast("Success!", "Item has been added successfully!", "success");
+
 }
 
 function emptyCart() {
 	if (localStorage.getItem('cart')) {
 		localStorage.removeItem('cart');
-        toast("Item has been added successfully!", "success");
-        window.location.reload();
+        $.Toast("Warning!", "Cart has been cleared!", "error");
+        loadCart();
 	}
 }
 
 function incrementItem(id) {
-	let cart = JSON.parse(localStorage.getItem('cart'));
+	let product = null;
+    
+    let cart = JSON.parse(localStorage.getItem('cart'));
     
     cart.forEach(item => {
         let element = JSON.parse(item);
         if (element.id === id) {
             element.quantity++;
+            product = element;
 
             cart[cart.indexOf(item)] = JSON.stringify(element);
         }
@@ -292,12 +295,14 @@ function incrementItem(id) {
 
     let cartJSON = JSON.stringify(cart);
 	localStorage.setItem('cart', cartJSON);
-    toast("Item has been added successfully!", "success");
-    window.location.reload();
+    $.Toast("Success!", "You have been added 1 " + product.name + "!", "success");
+    
+    loadCart();
 }
 
 function decrementItem(id) {
     let isRemove = false;
+    let product = null;
 
     let cart = JSON.parse(localStorage.getItem('cart'));
     
@@ -311,31 +316,35 @@ function decrementItem(id) {
                 element.quantity--;        
                 cart[cart.indexOf(item)] = JSON.stringify(element);
             }
+            product = element;
         }
     });
     
     if (!isRemove) {
         let cartJSON = JSON.stringify(cart);
         localStorage.setItem('cart', cartJSON);
-        toast("Item has been added successfully!", "success");
-        window.location.reload();   
+        $.Toast("Warning!", "You have been deleted 1 " + product.name +  "!", "warning");
+        loadCart(); 
     }
 }
 
 function removeCartItem(id) {
+    let product = null;
     let shoppingCart = JSON.parse(localStorage.getItem('cart'));
 
     for (let i = 0; i < shoppingCart.length; i++) {
         const item = JSON.parse(shoppingCart[i]);
         if (item.id === id) {
             shoppingCart.splice(i, 1);
+            product = item;
             break;
         }
     }
 
     let shoppingCartJSON = JSON.stringify(shoppingCart);
     localStorage.setItem('cart', shoppingCartJSON);
-    window.location.reload();
+    $.Toast("Warning!", "You have been deleted " + product.name + "!", "error");
+    loadCart();
 }
 
 function showMain() {
@@ -365,7 +374,6 @@ try {
 
 function loginDisplay() {
     $('#log-window').toggleClass('hide');
-    
     setCoverProps();
 }
 
@@ -438,13 +446,14 @@ function loadCart() {
     const emp1 = $('#cart-display');
     const emp2 = $('#cart-is-empty');
 
-        
     let shoppingCart = JSON.parse(localStorage.getItem("cart"));
 
     if (shoppingCart == 0 || shoppingCart == null) {
+        emp1.addClass('hide');
         emp2.removeClass('hide');
     } else {
         emp1.removeClass('hide');
+        emp2.addClass('hide');
 
         shoppingCart.forEach(item => {
             let cartItem = JSON.parse(item);
@@ -487,13 +496,12 @@ function loadCart() {
         productHTML += 
         '<li>' +
             '<div class="product-card">' +
-                '<img class="wishlist-add" src="icons/add-wishlist.svg" onclick="addToWishlist(' + item.id + ')" alt="wishlist logo">' +
                 '<img class="product-card-image" src="img/' + item.photo + '" alt="Product Photo">' +
                 '<p class="product-card-company ml-1">' + item.company + '</p>' + 
                 '<p class="product-card-title ml-1">' + item.name + ' ' + item.color + '</p>' + 
                 '<p class="product-card-price ml-1">' + item.price + ' ₸</p>' +
                 '<div class="add-button">' +
-                    '<button onclick="addToCart(' + item.id + ', true)">Add to Cart</button>' + 
+                    '<button onclick="addToCart(' + item.id + ')">Add to Cart</button>' + 
                 '</div>' + 
             '</div>' +
         '</li>';
@@ -511,19 +519,6 @@ function shuffleArray(array) {
     }
 }
 
-function toast(message, type){
-    $.Toast("Success!", message, type, {
-        has_icon:true,
-        has_close_btn:true,
-        stack: true,
-        fullscreen:true,
-        timeout:3000,
-        sticky:false,
-        has_progress:true,
-        rtl:false,
-    });
-}
-
 function exitAccount() {
     localStorage.removeItem('currentUser');
     showMain();
@@ -531,26 +526,20 @@ function exitAccount() {
 
 (function(){
     "use strict";
-    $.Toast = function(title, message, type, options){
+    $.Toast = function(title, message, type){
         var defaultOptions = {
             appendTo: "body",
-            stack: false,
-            position_class: "toast-bottom-right",
-            fullscreen:false,
+            stack: true,
             width: 250,
-            spacing:20,
-            timeout: 4000,
-            has_close_btn:true,
-            has_icon:true,
-            sticky:false,
-            border_radius:6,
-            has_progress:false,
-            rtl:false
+            spacing: 20,
+            timeout: 3000,
+            sticky: false,
+            border_radius: 6
         }
 
         var $element = null;
 
-        var $options = $.extend(true, {}, defaultOptions, options);
+        var $options = $.extend(true, {}, defaultOptions);
 
         var spacing = $options.spacing;
 
@@ -562,37 +551,17 @@ function exitAccount() {
             "z-index":99999
         }
 
-        $element = $('<div class="toast-item-wrapper ' + type + ' ' + $options.position_class + '"></div>');
+        $element = $('<div class="toast-item-wrapper ' + type + ' toast-bottom-right' + '"></div>');
         $('<p class="toast-title">' + title + '</p>').appendTo($element);
         $('<p class="toast-message">' + message + '</p>').appendTo($element);
 
-        if($options.fullscreen){
-            $element.addClass( "fullscreen" );
-        }
+        $('<span class="toast-close">&times;</span>').appendTo($element);
+        css["padding-right"] = 20;
 
-        if($options.rtl){
-            $element.addClass( "rtl" );
-        }
+        $('<i class="toast-icon toast-icon-' + type + '"></i>').appendTo($element);
+        css["padding-left"] = 50;      
 
-        if($options.has_close_btn){
-            $('<span class="toast-close">&times;</span>').appendTo($element);
-            if( $options.rtl){
-                css["padding-left"] = 20;
-            } else {
-                css["padding-right"] = 20;
-            }
-        }
-
-        if($options.has_icon){
-            $('<i class="toast-icon toast-icon-' + type + '"></i>').appendTo($element);
-            if( $options.rtl){
-                css["padding-right"] = 50;
-            } else {
-                css["padding-left"] = 50;
-            }            
-        }
-
-        if($options.has_progress && $options.timeout > 0){
+        if($options.timeout > 0){
             $('<div class="toast-progress"></div>').appendTo($element);
         }
 
@@ -600,56 +569,13 @@ function exitAccount() {
             $options.spacing = 0;
             spacing = 0;
 
-            switch($options.position_class){
-                case "toast-top-left" : {
-                    css["top"] = 0;
-                    css["left"] = 0;
-                    break;
-                }
-                case "toast-top-right" : {
-                    css["top"] = 0;
-                    css["left"] = 0;                    
-                    break;
-                }
-                case "toast-top-center" : {
-                    css["top"] = 0;
-                    css["left"] = css["right"] = 0;  
-                    css["width"] = "100%";                  
-                    break;
-                }
-                case "toast-bottom-left" : {
-                    css["bottom"] = 0;
-                    css["left"] = 0;                     
-                    break;
-                }
-                case "toast-bottom-right" : {
-                    css["bottom"] = 0;
-                    css["right"] = 0;                     
-                    break;
-                }
-                case "toast-bottom-center" : {
-                    css["bottom"] = 0;
-                    css["left"] = css["right"] = 0;  
-                    css["width"] = "100%";                     
-                    break;
-                }
-                default : {
-                    break;
-                }                                                                        
-            }
+            css["bottom"] = 0;
+            css["right"] = 0;                                                                   
         }
-
-        if($options.stack){
-            if($options.position_class.indexOf("toast-top") !== -1 ){
-                $($options.appendTo).find('.toast-item-wrapper').each(function(){
-                    css["top"] = parseInt($(this).css("top")) + this.offsetHeight + spacing;
-                });
-            } else if($options.position_class.indexOf("toast-bottom") !== -1 ){
-                $($options.appendTo).find('.toast-item-wrapper').each(function(){
-                    css["bottom"] = parseInt($(this).css("bottom")) + this.offsetHeight + spacing;
-                });
-            }
-        }        
+        
+        $($options.appendTo).find('.toast-item-wrapper').each(function(){
+            css["bottom"] = parseInt($(this).css("bottom")) + this.offsetHeight + spacing;
+        });      
 
         $element.css(css);
 
@@ -667,9 +593,7 @@ function exitAccount() {
 
 		if($options.timeout > 0){
 			setTimeout(removeToast, $options.timeout);
-            if($options.has_progress){
-                $(".toast-progress", $element).animate({"width":"100%"}, $options.timeout);
-            }
+            $(".toast-progress", $element).animate({"width":"100%"}, $options.timeout);
 		}        
 
         $(".toast-close", $element).click(removeToast)
@@ -679,13 +603,11 @@ function exitAccount() {
 
     $.Toast.remove = function( $element ){
         "use strict";        
-		if($element.fadeOut)
-		{
+		if($element.fadeOut) {
 			$element.fadeOut(function(){
 				return $element.remove();
 			});
-		}
-		else{
+		} else{
 			$element.remove();
 		}        
     }

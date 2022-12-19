@@ -2,7 +2,7 @@ footer {
 	position: absolute;
   	bottom: 0;
 	width: 100%;
-    background-color: var(--orange);
+    background-color: var(--main);
 	color: #fff;
 	padding: 0 0 0 0; 
 	height: 4rem;

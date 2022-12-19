@@ -11,13 +11,14 @@
     <link rel="manifest" href="/site.webmanifest">
     <title>BETTA | Cart</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body onload="loadCart()">
     <div class="page">
         <div id="log-window"></div>
-        <header>
+        <header class="hide">
             <div class="logo non-copy">
                 <a href="index.html" class="decor-none">Betta</a>
             </div>
@@ -51,6 +52,40 @@
                     <h1>Oops...</h1>
                     <h1>Your cart is empty!</h1>
                     <img src="icons/settings.gif" alt="" style="width: 5vh; height: 5vh;">
+                </div>
+                <div class="cover"></div>
+                <div class="buy">
+                    <div class="buy-modal">
+                        <h3 class="buy-modal-header">Payment</h3>
+                        <div class="icon-container">
+                        <i class="fa fa-cc-visa" style="color:navy;"></i>
+                        <i class="fa fa-cc-amex" style="color:blue;"></i>
+                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                        <i class="fa fa-cc-discover" style="color:orange;"></i>
+                        </div>
+                        <div class="card">
+                            <input type="text" id="ccnum" class="card-number" placeholder="1111-2222-3333-4444">
+                            <div class="stick"></div>
+                            <input type="text" id="cname" class="card-name" placeholder="John More Doe">
+                            <div class="stick"></div>
+                            <input type="text" id="expmonth" class="expmonth" placeholder="Se">
+                            <div class="stick"></div>
+                            <input type="text" id="cvv" class="cvv" placeholder="352">
+                        </div>
+                    </div>
+                    <div class="total">
+                        <h4>Cart
+                        <span class="price" style="color:black">
+                            <i class="fa fa-shopping-cart"></i>
+                            <b>4</b>
+                        </span>
+                        </h4>
+                        <p><a href="#">Product 1</a> $15</p>
+                        <p><a href="#">Product 2</a> $5</p>
+                        <p><a href="#">Product 3</a> $8</p>
+                        <p><a href="#">Product 4</a> $2</p>
+                        <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+                    </div>
                 </div>
                 <div id="cart-display" class="hide">
                     <div class="tbl-heading">
