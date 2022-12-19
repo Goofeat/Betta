@@ -33,6 +33,7 @@
     padding-left: 50px;
     padding-right: 100px;
     border-radius: 10px;
+    border: 2px solid #f95700;
     box-shadow: 4px 4px 8px 0 rgb(205, 129, 91);
 }
 .left-side{

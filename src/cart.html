@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,66 +17,60 @@
 <body onload="loadCart()">
     <div class="page">
         <div id="log-window" class="hide">
-            <section>
-                <div class="sign">
-                    <h1>Login</h1>
+            <div class="sign">
+                <h1>Login</h1>
+                <div class="sign-card">
+                    <input type="text" id="phone" class="i" placeholder="Phone number">
+                    <hr class="sign-hr">
+                    <input type="password" id="password" class="i" placeholder="Password" autocomplete="off">
+                    <hr class="sign-hr">
+                    <p>
+                        Don't have an account yet?
+                        <a href="register.html" style="text-decoration: underline;">Register</a>
+                    </p>
+                    <button class="sign-btn" id="log-btn" onclick="loginCheck()">
+                        Login
+                    </button>
+                </div>
+            </div>
+            <div class="cover" onclick="loginHide()"></div>
+        </div>
+
+        <div id="buy-window" class="hide">
+            <div class="modal">
+                <div class="buy">
+                    <h3 class="buy-modal-header">Payment</h3>
                     <form action="#">
-                        <div class="sign-card">
-                            <input type="text" id="phone" class="i" placeholder="Phone number">
+                        <div class="buy-card">
+                            <input type="text" id="card-number" class="i" placeholder="CARD NUMBER" required>
                             <hr class="sign-hr">
-                            <input type="password" id="password" class="i" placeholder="Password" autocomplete="off">
-                            <hr class="sign-hr">
-                            <p>
-                                Don't have an account yet?
-                                <a href="register.html" style="text-decoration: underline;">Register</a>
-                            </p>
-                            <button class="sign-btn" id="log-btn" onclick="loginCheck()">
-                                Login
+                            <div class="props">
+                                <div class="exp-date-div">
+                                    <input type="text" id="exp-date" class="i" placeholder="MM/YY" required>
+                                    <hr class="sign-hr">
+                                </div>
+                                <div class="cvv-div">
+                                    <input type="password" id="cvv" maxlength="3" class="i" placeholder="CVV" required>
+                                    <hr class="sign-hr">
+                                </div>
+                            </div>
+                            <button class="buy-btn" onclick="buy()">
+                                Buy
                             </button>
                         </div>
                     </form>
                 </div>
-            </section>
-        </div>
-        <div class="cover" onclick="loginHide()"></div>
-        <div id="buy-window" class="hide">
-            <section>
-                <div class="modal">
-                    <div class="buy">
-                        <h3 class="buy-modal-header">Payment</h3>
-                        <form action="#">
-                            <div class="buy-card">
-                                <input type="text" id="card-number" class="i" placeholder="CARD NUMBER" required>
-                                <hr class="sign-hr">
-                                <div class="props">
-                                    <div class="exp-date-div">
-                                        <input type="text" id="exp-date" class="i" placeholder="MM/YY" required>
-                                        <hr class="sign-hr">
-                                    </div>
-                                    <div class="cvv-div">
-                                        <input type="password" id="cvv" maxlength="3" class="i" placeholder="CVV"
-                                            required>
-                                        <hr class="sign-hr">
-                                    </div>
-                                </div>
-                                <button class="buy-btn" onclick="buy()">
-                                    Buy
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="total" style="color: var(--main)">
-                        <h4><i class="fa fa-shopping-cart"></i> Cart
-                            <span id="itemCount" style="color: var(--main)">0</span>
-                        </h4>
-                        <ul id="buyProducts" style="list-style: none;text-align: left">
+                <div class="total" style="color: var(--main)">
+                    <h4><i class="fa fa-shopping-cart"></i> Cart
+                        <span id="itemCount" style="color: var(--main)">0</span>
+                    </h4>
+                    <ul id="buyProducts" style="list-style: none;text-align: left">
 
-                        </ul>
-                        <h4>Total <span id="totalAmount" style="color: var(--main)">0 ₸</span></h4>
-                    </div>
+                    </ul>
+                    <h4>Total <span id="totalAmount" style="color: var(--main)">0 ₸</span></h4>
                 </div>
-            </section>
-            <div class="cover" onclick="buyHide()"></div>
+            </div>
+            <div class="cover1" onclick="buyHide()"></div>
         </div>
 
         <header>
@@ -141,8 +136,8 @@
                                 <tr>
                                     <td width="50%"></td>
                                     <td class="text-center" width="15%">Total:</td>
-                                    <td id="itemCount" class="text-center" colspan="2" width="15%"></td>
-                                    <td id="totalAmount" class="text-center" width="15%"></td>
+                                    <td id="table-itemCount" class="text-center" colspan="2" width="15%"></td>
+                                    <td id="table-totalAmount" class="text-center" width="15%"></td>
                                     <td width="5%"></td>
                                 </tr>
                             </tfoot>

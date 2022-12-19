@@ -1,4 +1,4 @@
-.aboutUs{
+.aboutUs {
 	color: var(--main);
 	text-align: center;
 	font-size: 50px;
@@ -6,22 +6,25 @@
 	font-weight: 100;
 	animation-duration: 1s;
 	animation-name: slidein;
-	animation-iteration-count:inherit;
+	animation-iteration-count: inherit;
 }
-@keyframes slidein{
-	from{
+
+@keyframes slidein {
+	from {
 		margin-left: 100%;
 		width: 50%;
 	}
-	to{
+
+	to {
 		text-align: center;
 	}
 }
-.cont{
+
+.cont {
 	padding: 70px;
 	margin-left: 70px;
 	margin-right: 70px;
-	background-image:url("https://catherineasquithgallery.com/uploads/posts/2021-02/1613025011_50-p-kartinki-fona-oranzhevogo-tsveta-53.jpg");
+	background-image: url("https://catherineasquithgallery.com/uploads/posts/2021-02/1613025011_50-p-kartinki-fona-oranzhevogo-tsveta-53.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	border-radius: 50px;
@@ -29,7 +32,8 @@
 	font-weight: 200;
 	font-size: 45px;
 }
-.foo{
+
+.foo {
 	display: flex;
 	margin: 100px;
 	margin-top: 100px;
@@ -40,8 +44,9 @@
 	font-weight: 150;
 	justify-content: space-between;
 }
-.foo1{
-	background-color:#f2efdf;
+
+.foo1 {
+	background-color: #f2efdf;
 	padding: 70px;
 	padding-left: 85px;
 	padding-right: 85px;
@@ -49,14 +54,17 @@
 	text-align: center;
 	box-shadow: 0px 6px 20px rgb(205, 129, 91);
 }
-.foo1-2 img{
+
+.foo1-2 img {
 	align-items: center;
 }
-.foo1-1{
+
+.foo1-1 {
 	font-size: 30px;
 	font-weight: 150;
 }
-.foo2{
+
+.foo2 {
 	background-color: #f2efdf;
 	padding: 70px;
 	padding-left: 40px;
@@ -65,18 +73,21 @@
 	text-align: center;
 	box-shadow: 0px 6px 20px rgb(205, 129, 91);
 }
-.foo2-2{
+
+.foo2-2 {
 	padding-left: 10px;
 	padding-right: 10px;
 }
-.foo3{
+
+.foo3 {
 	background-color: #f2efdf;
 	padding: 70px;
 	border-radius: 20px;
 	text-align: center;
 	box-shadow: 0px 6px 20px rgb(205, 129, 91);
 }
-.text-ab{
+
+.text-ab {
 	text-align: center;
 	font-size: 25px;
 	margin: 50px;

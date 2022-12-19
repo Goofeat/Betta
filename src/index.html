@@ -17,26 +17,22 @@
 <body onload="loadProducts()">
     <div class="page">
         <div id="log-window" class="hide">
-            <section>
-                <div class="sign">
-                    <h1>Login</h1>
-                    <form action="#">
-                        <div class="sign-card">
-                            <input type="text" id="phone" class="i" placeholder="Phone number">
-                            <hr class="sign-hr">
-                            <input type="password" id="password" class="i" placeholder="Password" autocomplete="off">
-                            <hr class="sign-hr">
-                            <p>
-                                Don't have an account yet?
-                                <a href="register.html" style="text-decoration: underline;">Register</a>
-                            </p>
-                            <button class="sign-btn" id="log-btn" onclick="loginCheck()">
-                                Login
-                            </button>
-                        </div>
-                    </form>
+            <div class="sign">
+                <h1>Login</h1>
+                <div class="sign-card">
+                    <input type="text" id="phone" class="i" placeholder="Phone number">
+                    <hr class="sign-hr">
+                    <input type="password" id="password" class="i" placeholder="Password" autocomplete="off">
+                    <hr class="sign-hr">
+                    <p>
+                        Don't have an account yet?
+                        <a href="register.html" style="text-decoration: underline;">Register</a>
+                    </p>
+                    <button class="sign-btn" id="log-btn" onclick="loginCheck()">
+                        Login
+                    </button>
                 </div>
-            </section>
+            </div>
             <div class="cover" onclick="loginHide()"></div>
         </div>
 

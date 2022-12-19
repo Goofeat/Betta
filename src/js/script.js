@@ -1,4 +1,20 @@
-// localStorage.removeItem('boughtProducts');
+console.log(localStorage);
+
+function showMain() {
+    document.location.href = "index.html";
+}
+
+function showProfile() {
+    document.location.href = "account.html";
+}
+
+function showCart() {
+    document.location.href = "cart.html";
+}
+
+function showSettings() {
+    window.location.href = "settings.html";
+}
 
 if (localStorage.getItem("currentUser")) {
     $("#sign-in").addClass("hide");
@@ -159,46 +175,23 @@ const products = [
 ];
 
 function loadProducts() {
-    let smartphones = "";
-    let laptops = "";
-    let tvs = "";
-    let add = "";
+    let smartphones = '';
+    let laptops = '';
+    let tvs = '';
+    let add = '';
 
     shuffleArray(products);
     products.forEach((product) => {
-        add =
-            "<li>" +
-            '<div class="product-card">' +
-            '<img class="product-card-image" src="img/' +
-            product.photo +
-            '" alt="Product Photo">' +
-            '<p class="product-card-company ml-1">' +
-            product.company +
-            "</p>" +
-            '<p class="product-card-title ml-1">' +
-            product.name +
-            " " +
-            product.color +
-            "</p>" +
-            '<p class="product-card-price ml-1">' +
-            product.price +
-            " ₸</p>" +
-            '<div class="add-button">' +
-            '<button onclick="addToCart(' +
-            product.id +
-            ')">Add to Cart</button>' +
-            "</div>" +
-            "</div>" +
-            "</li>";
+        add = makeProduct(product)
 
         switch (product.category) {
-            case "Smartphone":
+            case 'Smartphone':
                 smartphones += add;
                 break;
-            case "Laptop":
+            case 'Laptop':
                 laptops += add;
                 break;
-            case "TV":
+            case 'TV':
                 tvs += add;
                 break;
         }
@@ -215,8 +208,8 @@ function addToCart(id) {
 
     let cart = [];
 
-    if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
+    if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart'));
     }
 
     cart.forEach((item) => {
@@ -242,11 +235,11 @@ function addToCart(id) {
     }
 
     let cartJSON = JSON.stringify(cart);
-    localStorage.setItem("cart", cartJSON);
+    localStorage.setItem('cart', cartJSON);
     $.Toast(
-        "Success!",
-        product.name + " has been added successfully!",
-        "success"
+        'Success!',
+        product.name + ' has been added successfully!',
+        'success'
     );
     loadCart();
 }
@@ -277,7 +270,7 @@ function incrementItem(id) {
     let cartJSON = JSON.stringify(cart);
     localStorage.setItem("cart", cartJSON);
     $.Toast(
-        "Success!",
+        'Success!',
         "You have been added 1 " + product.name + "!",
         "success"
     );
@@ -336,23 +329,18 @@ function removeCartItem(id) {
     loadCart();
 }
 
-function showMain() {
-    document.location.href = "index.html";
-}
-
-function showProfile() {
-    document.location.href = "account.html";
-}
-
-function showCart() {
-    document.location.href = "cart.html";
-}
-
 function setCoverProps() {
-    let pageHeight = document.querySelector("div.page").offsetHeight;
-    let pageWidth = document.querySelector("div.page").offsetWidth;
-    document.querySelector("div.cover").style =
-        "height: " + pageHeight + "px; width: " + pageWidth + "px";
+    let pageHeight = $("div.page").height();
+    let pageWidth = $("div.page").width();
+
+    $("div.cover").css({
+        height: pageHeight + "px",
+        width: pageWidth + "px"
+    });
+    $("div.cover1").css({
+        height: pageHeight + "px",
+        width: pageWidth + "px"
+    });
 }
 
 function loginDisplay() {
@@ -364,18 +352,30 @@ function loginHide() {
     $("#log-window").toggleClass("hide");
 }
 
-console.log(localStorage);
-
 function loginCheck() {
     let phone = $("#phone").val();
     let password = $("#password").val();
 
-    if (localStorage.getItem(phone)) {
-        let user = JSON.parse(localStorage.getItem(phone));
+    if (phone.length !== 18) {
+        $.Toast("Error!", "Incorrect phone number!", "error");
+        $("#phone").css('border', '2px solid red');
+        return;
+    } else {
+        $("#phone").css('border', 'none');
 
-        if (password === user.password) {
-            localStorage.setItem("currentUser", localStorage.getItem(phone));
-            window.location.reload();
+        if (localStorage.getItem(phone)) {
+            let user = JSON.parse(localStorage.getItem(phone));
+    
+            if (password === user.password) {
+                localStorage.setItem("currentUser", localStorage.getItem(phone));
+                showProfile();
+            } else {
+                $.Toast("Error!", "Wrong password!", "error");
+                $("#password").css('border', '2px solid red');
+            }
+        } else {
+            $.Toast("Error!", "There is no user with this number!", "error");
+            $("#phone").css('border', '2px solid red');
         }
     }
 }
@@ -386,21 +386,54 @@ function regCheck() {
     let phone = $("#phone").val();
     let email = $("#email").val();
     let new_password = $("#password").val();
-    let confirm_password = $("#confirm_password").val();
+    let confirm_password = $("#confirm-password").val();
 
     if (!firstName.match(/[A-Z][a-z]{2,}/i)) {
-        console.log("1");
+        $.Toast("Error!", "Incorrect first name!", "error");
+        $("#f-name").css('border', '2px solid red');
         return;
+    } else {
+        $("#f-name").css('border', 'none');
     }
 
     if (!lastName.match(/[A-Z][a-z]{2,}/i)) {
-        console.log("2");
+        $.Toast("Error!", "Incorrect last name!", "error");
+        $("#l-name").css('border', '2px solid red');
         return;
+    } else {
+        $("#l-name").css('border', 'none');
+    }
+
+    if (phone.length !== 18) {
+        $.Toast("Error!", "Incorrect phone number!", "error");
+        $("#phone").css('border', '2px solid red');
+        return;
+    } else {
+        if (localStorage.getItem(phone)) {
+            $.Toast("Error!", "This phone number has been used!", "error");
+            $("#phone").css('border', '2px solid red');
+            return;
+        } else {
+            $("#phone").css('border', 'none');
+        }
+    }
+
+    if (!email.includes('@')) {
+        $.Toast("Error!", "Incorrect email!", "error");
+        $("#email").css('border', '2px solid red');
+        return;
+    } else {
+        $("#email").css('border', 'none');
     }
 
     if (new_password !== confirm_password && new_password.length < 6) {
-        console.log("3");
+        $.Toast("Error!", "Passwords do not match!", "error");
+        $("#password").css('border', '2px solid red');
+        $("#confirm-password").css('border', '2px solid red');
         return;
+    } else {
+        $("#password").css('border', 'none');
+        $("#confirm-password").css('border', 'none');
     }
 
     let user = {
@@ -412,18 +445,19 @@ function regCheck() {
             lastName.substring(1).toLowerCase(),
         phoneNumber: phone,
         email: email,
-        password: new_password,
+        password: new_password
     };
 
     let userJSON = JSON.stringify(user);
     localStorage.setItem(phone, userJSON);
     localStorage.setItem("currentUser", userJSON);
+
     showMain();
 }
 
 function loadCart() {
-    let cartRowHTML = "";
-    let buyRowHTML = "";
+    let cartRowHTML = '';
+    let buyRowHTML = '';
     let itemCount = 0;
     let grandTotal = 0;
 
@@ -449,56 +483,30 @@ function loadCart() {
 
         shoppingCart.forEach((item) => {
             let cartItem = JSON.parse(item);
-            price = parseInt(cartItem.price.replaceAll(" ", ""));
+            price = parseInt(cartItem.price.replaceAll(' ', ''));
             quantity = parseInt(cartItem.quantity);
             itemCount += quantity;
             subTotal = price * quantity;
 
             cartRowHTML +=
-                "<tr>" +
-                '<td width="50%">' +
-                cartItem.category +
-                " " +
-                cartItem.company +
-                " " +
-                cartItem.name +
-                " " +
-                cartItem.color +
-                "</td>" +
-                '<td class="text-center" width="15%">' +
-                Intl.NumberFormat("ru").format(price) +
-                " ₸</td>" +
-                '<td class="text-center" width="15%">' +
-                '<button class="btn-table mr-1" onclick="decrementItem(' +
-                cartItem.id +
-                ')">-</button>' +
-                quantity +
-                '<button class="btn-table ml-1" onclick="incrementItem(' +
-                cartItem.id +
-                ')">+</button>' +
-                "</td>" +
-                '<td class="text-center" width="15%">' +
-                Intl.NumberFormat("ru").format(subTotal) +
-                " ₸</td>" +
-                '<td id="removeItem" class="text-center" width="5%">' +
-                '<button class="btn-table" onclick="removeCartItem(' +
-                cartItem.id +
-                ')">\u00d7</button>' +
-                "</td>" +
-                "</tr>";
+                '<tr>' +
+                    '<td width="50%">' + cartItem.category + ' ' + cartItem.company + ' ' + cartItem.name + ' ' + cartItem.color + '</td>' +
+                    '<td class="text-center" width="15%">' + Intl.NumberFormat("ru").format(price) + ' ₸</td>' +
+                    '<td class="text-center" width="15%">' +
+                        '<button class="btn-table mr-1" onclick="decrementItem(' + cartItem.id + ')">-</button>' +
+                            quantity +
+                        '<button class="btn-table ml-1" onclick="incrementItem(' + cartItem.id + ')">+</button>' +
+                    '</td>' +
+                    '<td class="text-center" width="15%">' + Intl.NumberFormat("ru").format(subTotal) + ' ₸</td>' +
+                    '<td id="removeItem" class="text-center" width="5%">' +
+                        '<button class="btn-table" onclick="removeCartItem(' + cartItem.id + ')">\u00d7</button>' +
+                    '</td>' +
+                '</tr>';
 
             buyRowHTML +=
-                "<li>" +
-                cartItem.category +
-                " " +
-                cartItem.company +
-                " " +
-                cartItem.name +
-                " " +
-                cartItem.color +
-                " \u00d7" +
-                quantity +
-                "</li>";
+                '<li>' +
+                    cartItem.category +' ' + cartItem.company + ' ' + cartItem.name + ' ' + cartItem.color + " \u00d7" + quantity +
+                '</li>';
 
             grandTotal += subTotal;
         });
@@ -506,48 +514,39 @@ function loadCart() {
 
     $("#cartTableBody").html(cartRowHTML);
     $("#buyProducts").html(buyRowHTML);
-    $("#itemCount").html(itemCount);
-    $("span#itemCount").html(itemCount + " item" + (itemCount == 1 ? "" : "s"));
-    $("#totalAmount").html(Intl.NumberFormat("ru").format(grandTotal) + " ₸");
-
+    $("#table-itemCount").html(itemCount);
+    $("span#itemCount").html(itemCount + ' item' + (itemCount == 1 ? '' : 's'));
+    $("#table-totalAmount").html(Intl.NumberFormat("ru").format(grandTotal) + ' ₸');
+    $("#totalAmount").html(Intl.NumberFormat("ru").format(grandTotal) + ' ₸');
+    
     let productHTML =
         '<div class="category-title">' +
-        "<h1>Products</h1>" +
-        "</div>" +
+            '<h1>Products</h1>' +
+        '</div>' +
         '<ul class="category-products">';
 
     shuffleArray(products);
     for (let i = 0; i < 5; i++) {
-        const item = products[i];
-        productHTML +=
-            "<li>" +
-            '<div class="product-card">' +
-            '<img class="product-card-image" src="img/' +
-            item.photo +
-            '" alt="Product Photo">' +
-            '<p class="product-card-company ml-1">' +
-            item.company +
-            "</p>" +
-            '<p class="product-card-title ml-1">' +
-            item.name +
-            " " +
-            item.color +
-            "</p>" +
-            '<p class="product-card-price ml-1">' +
-            item.price +
-            " ₸</p>" +
-            '<div class="add-button">' +
-            '<button onclick="addToCart(' +
-            item.id +
-            ')">Add to Cart</button>' +
-            "</div>" +
-            "</div>" +
-            "</li>";
+        productHTML += makeProduct(products[i]);
     }
 
     productHTML += "</ul>";
 
     $("#product-item-container").html(productHTML);
+}
+
+function makeProduct(item) {
+    return  '<li>' +
+                '<div class="product-card">' +
+                    '<img class="product-card-image" src="img/' + item.photo + '" alt="Product Photo">' + 
+                    '<p class="product-card-company ml-1">' + item.company + '</p>' +
+                    '<p class="product-card-title ml-1">' + item.name + ' ' + item.color + '</p>' +
+                    '<p class="product-card-price ml-1">' + item.price + ' ₸</p>' +
+                    '<div class="add-button">' +
+                        '<button onclick="addToCart(' + item.id + ')">Add to Cart</button>' +
+                    '</div>' +
+                '</div>' +
+            '</li>';
 }
 
 function buy() {
@@ -590,11 +589,11 @@ function buy() {
         cardNumber: CARD_NUMBER,
         expDate: EXP_DATE,
         cvv: CVV,
+        boughtProducts: JSON.stringify(boughtJSON)
     };
 
     localStorage.setItem("currentUser", JSON.stringify(user));
 
-    localStorage.setItem("boughtProducts", JSON.stringify(boughtJSON));
     emptyCart();
 }
 
@@ -606,6 +605,9 @@ function shuffleArray(array) {
 }
 
 function exitAccount() {
+    let user = JSON.parse(localStorage.getItem('currentUser'));
+
+    localStorage.setItem(user.phoneNumber, JSON.stringify(user));
     localStorage.removeItem("currentUser");
     showMain();
 }
@@ -643,8 +645,8 @@ function exitAccount() {
                 " toast-bottom-right" +
                 '"></div>'
         );
-        $('<p class="toast-title">' + title + "</p>").appendTo($element);
-        $('<p class="toast-message">' + message + "</p>").appendTo($element);
+        $('<p class="toast-title">' + title + '</p>').appendTo($element);
+        $('<p class="toast-message">' + message + '</p>').appendTo($element);
 
         $('<span class="toast-close">&times;</span>').appendTo($element);
         css["padding-right"] = 20;
@@ -716,15 +718,14 @@ function exitAccount() {
 
 function loadProfile() {
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    $("span#full-name").html(
-        currentUser.firstName + " " + currentUser.lastName
-    );
+
+    $("span#full-name").html(currentUser.firstName + ' ' + currentUser.lastName);
     $("span#phone-number").html(currentUser.phoneNumber);
     $("span#email").html(currentUser.email);
 
     $("#bought-items").css("height", $("#user-info-item").height());
 
-    let boughtRowHTML = "";
+    let boughtRowHTML = '';
     let itemCount = 0;
     let grandTotal = 0;
 
@@ -735,7 +736,11 @@ function loadProfile() {
     const emp1 = $("#history-display");
     const emp2 = $("#history-empty");
 
-    let boughtProducts = JSON.parse(localStorage.getItem("boughtProducts"));
+    let boughtProducts = [];
+    
+    try {
+        boughtProducts = JSON.parse(currentUser.boughtProducts);
+    } catch (Exception) {}
 
     if (boughtProducts == 0 || boughtProducts == null) {
         emp1.addClass("hide");
@@ -745,49 +750,29 @@ function loadProfile() {
         emp2.addClass("hide");
 
         boughtProducts.forEach((item) => {
-            price = parseInt(item.price.replaceAll(" ", ""));
+            price = parseInt(item.price.replaceAll(' ', ''));
             quantity = parseInt(item.quantity);
             itemCount += quantity;
             subTotal = price * quantity;
 
             boughtRowHTML +=
-                "<tr>" +
-                '<td width="40%">' +
-                item.category +
-                " " +
-                item.company +
-                " " +
-                item.name +
-                " " +
-                item.color +
-                "</td>" +
-                '<td class="text-center" width="20%">' +
-                Intl.NumberFormat("ru").format(price) +
-                " ₸</td>" +
-                '<td class="text-center" width="20%">' +
-                quantity +
-                "</td>" +
-                '<td class="text-center" width="20%">' +
-                Intl.NumberFormat("ru").format(subTotal) +
-                " ₸</td>";
-            ("</tr>");
+                '<tr>' +
+                    '<td width="40%">' + item.category + ' ' + item.company + ' ' + item.name + ' ' + item.color +'</td>' +
+                    '<td class="text-center" width="20%">' + Intl.NumberFormat("ru").format(price) + ' ₸</td>' +
+                    '<td class="text-center" width="20%">' + quantity + '</td>' +
+                    '<td class="text-center" width="20%">' + Intl.NumberFormat("ru").format(subTotal) +' ₸</td>' +
+                '</tr>';
 
             grandTotal += subTotal;
         });
     }
 
+    grandTotal = Intl.NumberFormat("ru").format(grandTotal) + " ₸";
+
     $("#historyTableBody").html(boughtRowHTML);
     $("#history-item-count").html(itemCount);
-    $("#history-total-amount").html(
-        Intl.NumberFormat("ru").format(grandTotal) + " ₸"
-    );
-    $("span#money-spent").html(
-        Intl.NumberFormat("ru").format(grandTotal) + " ₸"
-    );
-}
-
-function settings() {
-    window.location.href = "settings.html";
+    $("#history-total-amount").html(grandTotal);
+    $("span#money-spent").html(grandTotal);
 }
 
 function buyDisplay() {
@@ -798,11 +783,43 @@ function buyDisplay() {
         $("#cvv").val(user.cvv);
     } catch (Exception) {}
     setCoverProps();
-    $("#buy-window").toggleClass("hide");
+    $("#buy-window").removeClass("hide");
 }
 
 function buyHide() {
-    $("#buy-window").toggleClass("hide");
+    $("#buy-window").addClass("hide");
+}
+
+function sendFeedback() {
+    let NAME = $("#contacts-name").val();
+    let EMAIL = $("#contacts-email").val();
+    let PHONE = $("#contacts-phone").val();
+    let MESSAGE = $("#contacts-message").val();
+
+    let feedbacks = [];
+
+    if (localStorage.getItem("feedbacks")) {
+        feedbacks = JSON.parse(localStorage.getItem("feedbacks"));
+    }
+
+    feedbacks.push({
+        name: NAME,
+        email: EMAIL,
+        phone: PHONE,
+        message: MESSAGE,
+    });
+
+    localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+    $.Toast(
+        'Success!',
+        "You has been sent your message successfully!",
+        "success"
+    );
+
+    $("#contacts-name").val(null);
+    $("#contacts-email").val(null);
+    $("#contacts-phone").val(null);
+    $("#contacts-message").val(null);
 }
 
 try {
@@ -833,41 +850,32 @@ try {
                 to: 35,
                 placeholderChar: "Y",
             },
-
             MM: {
                 mask: IMask.MaskedRange,
                 from: 1,
                 to: 12,
                 placeholderChar: "M",
-            },
-        },
+            }
+        }
     });
 } catch (Exception) {}
 
-function sendFeedback() {
-    let NAME = $('#contacts-name').val();
-    let EMAIL = $('#contacts-email').val();
-    let PHONE = $('#contacts-phone').val();
-    let MESSAGE = $('#contacts-message').val();
+function loadSettings() {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    let feedbacks = []
+    $('span#full-name').html(currentUser.firstName + ' ' + currentUser.lastName).css('color', '#f95700');
+    $('span#phone-number').html(currentUser.phoneNumber).css('color', '#f95700');
+    $('span#email').html(currentUser.email).css('color', '#f95700');
+}
 
-    if (localStorage.getItem('feedbacks')) {
-        feedbacks = JSON.parse(localStorage.getItem('feedbacks'));
-    }
+function settingName() {
 
-    feedbacks.push({
-        name: NAME,
-        email: EMAIL,
-        phone: PHONE,
-        message: MESSAGE
-    });
+}
 
-    localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
-    $.Toast("Success!", "You has been sent your message successfully!", "success");
+function settingPhone() {
 
-    $('#contacts-name').val(null);
-    $('#contacts-email').val(null);
-    $('#contacts-phone').val(null);
-    $('#contacts-message').val(null);
+}
+
+function settingEmail() {
+
 }

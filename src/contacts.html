@@ -17,26 +17,22 @@
 <body>
     <div class="page">
         <div id="log-window" class="hide">
-            <section>
-                <div class="sign">
-                    <h1>Login</h1>
-                    <form action="#">
-                        <div class="sign-card">
-                            <input type="text" id="phone" class="i" placeholder="Phone number">
-                            <hr class="sign-hr">
-                            <input type="password" id="password" class="i" placeholder="Password" autocomplete="off">
-                            <hr class="sign-hr">
-                            <p>
-                                Don't have an account yet?
-                                <a href="register.html" style="text-decoration: underline;">Register</a>
-                            </p>
-                            <button class="sign-btn" id="log-btn" onclick="loginCheck()">
-                                Login
-                            </button>
-                        </div>
-                    </form>
+            <div class="sign">
+                <h1>Login</h1>
+                <div class="sign-card">
+                    <input type="text" id="phone" class="i" placeholder="Phone number">
+                    <hr class="sign-hr">
+                    <input type="password" id="password" class="i" placeholder="Password" autocomplete="off">
+                    <hr class="sign-hr">
+                    <p>
+                        Don't have an account yet?
+                        <a href="register.html" style="text-decoration: underline;">Register</a>
+                    </p>
+                    <button class="sign-btn" id="log-btn" onclick="loginCheck()">
+                        Login
+                    </button>
                 </div>
-            </section>
+            </div>
             <div class="cover" onclick="loginHide()"></div>
         </div>
 
@@ -68,19 +64,19 @@
                 <div class="content">
                     <div class="left-side">
                         <div class="address">
-                            <img src="icons/icons8-visit-32.png" alt="">
+                            <img src="icons/place-maker.svg" alt="">
                             <div class="topic">Address</div>
                             <div class="text-one">Kaskelen</div>
                             <div class="text-two">Abylayhana 1/1</div>
                         </div>
                         <div class="phone" style="padding: 4vh 0;">
-                            <img src="icons/icons8-telephone-32.png" alt="">
+                            <img src="icons/telephone.svg" alt="">
                             <div class="topic">Phone</div>
                             <div class="text-one">8-701-700-00-00</div>
                             <div class="text-two">8-729-211-11-11</div>
                         </div>
                         <div class="email">
-                            <img src="icons/icons8-secured-letter-32.png" alt="">
+                            <img src="icons/secured-letter.svg" alt="">
                             <div class="topic">Email</div>
                             <div class="text-one">betta.shop@gmail.com</div>
                             <div class="text-two">support_betta@mail.ru</div>
@@ -89,21 +85,21 @@
                     <div class="right-side1">
                         <div class="topic-text">Send us a message</div>
                         <p>If you have any questions or suggestions, please fill out the form below.</p>
-                        <form action="#">
+                        <form action="contacts.php" method="POST">
                             <div class="input-box">
-                                <input type="text" id="contacts-name" placeholder="Enter your name" required>
+                                <input type="text" name= "name" id="contacts-name" placeholder="Enter your name" required>
                             </div>
                             <div class="input-box">
-                                <input type="text" id="contacts-email" placeholder="Enter your email" required>
+                                <input type="email" name="email" id="contacts-email" placeholder="Enter your email" required>
                             </div>
                             <div class="input-box">
-                                <input type="text" id="contacts-phone" placeholder="Enter your phone number" required>
+                                <input type="text" name="phone" id="contacts-phone" placeholder="Enter your phone number" required>
                             </div>
                             <div class="input-box message-box">
                                 <textarea id="contacts-message" placeholder="Message" required></textarea>
                             </div>
                             <div class="button-cont">
-                                <input type="button" onclick="sendFeedback()" value="Send">
+                                <input type="submit" onclick="sendFeedback()" value="Send">
                             </div>
                         </form>
                     </div>
