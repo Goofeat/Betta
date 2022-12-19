@@ -28,10 +28,10 @@
     justify-content: space-between;
     flex-direction: row;
     background: white;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
     padding: 30px;
-    padding-left: 20px;
-    padding-right: 80px;
+    padding-left: 50px;
+    padding-right: 100px;
     border-radius: 10px;
     box-shadow: 4px 4px 8px 0 rgb(205, 129, 91);
 }
