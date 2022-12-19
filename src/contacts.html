@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
@@ -16,29 +16,53 @@
 
 <body>
     <div class="page">
+        <div id="log-window" class="hide">
+            <section>
+                <div class="sign">
+                    <h1>Login</h1>
+                    <form action="#">
+                        <div class="sign-card">
+                            <input type="text" id="phone" class="i" placeholder="Phone number">
+                            <hr class="sign-hr">
+                            <input type="password" id="password" class="i" placeholder="Password" autocomplete="off">
+                            <hr class="sign-hr">
+                            <p>
+                                Don't have an account yet?
+                                <a href="register.html" style="text-decoration: underline;">Register</a>
+                            </p>
+                            <button class="sign-btn" id="log-btn" onclick="loginCheck()">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <div class="cover" onclick="loginHide()"></div>
+        </div>
+
         <header>
             <div class="logo non-copy">
                 <a href="index.html" class="decor-none">Betta</a>
             </div>
-    
+
             <div class="right-side uppercase non-copy">
                 <div class="cart" onclick="showCart()">
-                    <img src="icons/cart.svg" alt="CART" />
+                    <img src="icons/cart.svg" alt="CART">
                     <p>cart</p>
                 </div>
-    
+
                 <div class="account" id="sign-in" onclick="loginDisplay()">
-                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <img src="icons/account.svg" alt="ACCOUNT">
                     <p>sign in</p>
                 </div>
-    
+
                 <div class="account hide" id="acc" onclick="showProfile()">
-                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <img src="icons/account.svg" alt="ACCOUNT">
                     <p>account</p>
                 </div>
             </div>
         </header>
-        
+
         <div class="all">
             <div class="container">
                 <div class="content">
@@ -49,7 +73,7 @@
                             <div class="text-one">Kaskelen</div>
                             <div class="text-two">Abylayhana 1/1</div>
                         </div>
-                        <div class="phone">
+                        <div class="phone" style="padding: 4vh 0;">
                             <img src="icons/icons8-telephone-32.png" alt="">
                             <div class="topic">Phone</div>
                             <div class="text-one">8-701-700-00-00</div>
@@ -67,19 +91,19 @@
                         <p>If you have any questions or suggestions, please fill out the form below.</p>
                         <form action="#">
                             <div class="input-box">
-                                <input type="text" placeholder="Enter your name">
+                                <input type="text" id="contacts-name" placeholder="Enter your name" required>
                             </div>
                             <div class="input-box">
-                                <input type="text" placeholder="Enter your email">
+                                <input type="text" id="contacts-email" placeholder="Enter your email" required>
                             </div>
                             <div class="input-box">
-                                <input type="text" placeholder="Enter your phone number">
+                                <input type="text" id="contacts-phone" placeholder="Enter your phone number" required>
                             </div>
                             <div class="input-box message-box">
-                                <textarea placeholder="Message"></textarea>
+                                <textarea id="contacts-message" placeholder="Message" required></textarea>
                             </div>
                             <div class="button-cont">
-                                <input type="button" value="Send">
+                                <input type="button" onclick="sendFeedback()" value="Send">
                             </div>
                         </form>
                     </div>
@@ -93,12 +117,12 @@
             <div class="logo non-copy">
                 <a href="index.html" class="decor-none">Betta</a>
             </div>
-    
+
             <div class="right-side uppercase non-copy">
                 <div class="about-us">
                     <a href="about-us.html">about us</a>
                 </div>
-    
+
                 <div class="contacts">
                     <a href="contacts.html">contacts</a>
                 </div>

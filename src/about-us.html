@@ -18,6 +18,30 @@
 background: -moz-linear-gradient(45deg, rgb(255, 193, 135) 4%, rgb(255, 245, 236) 58%);
 background: linear-gradient(45deg, rgb(255, 193, 135) 4%, rgb(255, 245, 236) 58%);">
     <div class="page">
+        <div id="log-window" class="hide">
+            <section>
+                <div class="sign">
+                    <h1>Login</h1>
+                    <form action="#">
+                        <div class="sign-card">
+                            <input type="text" id="phone" class="i" placeholder="Phone number">
+                            <hr class="sign-hr">
+                            <input type="password" id="password" class="i" placeholder="Password" autocomplete="off">
+                            <hr class="sign-hr">
+                            <p>
+                                Don't have an account yet?
+                                <a href="register.html" style="text-decoration: underline;">Register</a>
+                            </p>
+                            <button class="sign-btn" id="log-btn" onclick="loginCheck()">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <div class="cover" onclick="loginHide()"></div>
+        </div>
+
         <header>
             <div class="logo non-copy">
                 <a href="index.html" class="decor-none">Betta</a>
@@ -30,12 +54,12 @@ background: linear-gradient(45deg, rgb(255, 193, 135) 4%, rgb(255, 245, 236) 58%
                 </div>
 
                 <div class="account" id="sign-in" onclick="loginDisplay()">
-                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <img src="icons/account.svg" alt="ACCOUNT">
                     <p>sign in</p>
                 </div>
 
                 <div class="account hide" id="acc" onclick="showProfile()">
-                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <img src="icons/account.svg" alt="ACCOUNT">
                     <p>account</p>
                 </div>
             </div>
@@ -50,7 +74,8 @@ background: linear-gradient(45deg, rgb(255, 193, 135) 4%, rgb(255, 245, 236) 58%
                         appliances.</p>
                 </div>
                 <div style="font-size: 25px; margin-top: 30px; text-align: right;">
-                    <p><em style="font-style: normal;">Betta is a member of the European purchasing cooperative Euronics, which unites 29 retail
+                    <p><em style="font-style: normal;">Betta is a member of the European purchasing cooperative
+                            Euronics, which unites 29 retail
                             organizations from 36 countries of the world, which allows the company to quickly respond to
                             global trends in consumer demand and timely supply Kazakhstanis with the most popular new
                             electrical appliances and electronics.</em></em></p>

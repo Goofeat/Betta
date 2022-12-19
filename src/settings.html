@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,14 +26,28 @@
                 </div>
 
                 <div class="account" id="acc" onclick="showProfile()">
-                    <img src="icons/account.svg" alt="ACCOUNT" />
+                    <img src="icons/account.svg" alt="ACCOUNT">
                     <p>account</p>
                 </div>
             </div>
         </header>
 
         <div class="content-wrapper">
-            
+            <div class="settings-data">
+                <p class="settings-data-header">Settings</p>
+                <div class="user-info-item-data set">
+                    <p>Full name: <span id="full-name"></span></p>
+                </div>
+                <div class="stick set-st"></div>
+                <div class="user-info-item-data set">
+                    <p>Phone number: <span id="phone-number"></span></p>
+                </div>
+                <div class="stick set-st"></div>
+                <div class="user-info-item-data set">
+                    <p>Email: <span id="email"></span></p>
+                </div>
+                <div class="stick set-st"></div>
+            </div>
         </div>
 
         <footer>
@@ -55,4 +70,5 @@
     <script src="https://unpkg.com/imask"></script>
     <script src="js/script.js"></script>
 </body>
+
 </html>

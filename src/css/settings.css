@@ -1,0 +1,22 @@
+.settings-data {
+    padding: 5vw;
+    text-align: center;
+    background-color: rgba(224, 224, 224, 0.4);
+    border: 2px solid #f95700;
+    width: 45vw;
+    height: 35vw;
+    margin: 3vw auto;
+    border-radius: 20px;
+    box-shadow:  14px 14px 22px #d5d5d5,
+             -14px -14px 22px #ebebeb;
+    color: #f95700;
+}
+
+.settings-data-header {
+    font-size: 3vw;
+}
+
+.set {
+    color: #f95700;
+    margin-top: 7vw;
+}
