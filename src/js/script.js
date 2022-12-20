@@ -892,12 +892,8 @@ function loadSettings() {
     $('span#email').html(currentUser.email).css('color', '#f95700');
 }
 
-function settingName() {
-
-}
-
 function settingPhone() {
-
+    
 }
 
 function settingEmail() {
