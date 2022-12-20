@@ -129,5 +129,6 @@
 .button-cont input[type="button"]:hover {
     color: #fff;
     background-color: var(--main);
+    cursor: pointer;
 }
 
