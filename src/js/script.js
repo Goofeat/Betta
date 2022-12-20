@@ -269,11 +269,6 @@ function incrementItem(id) {
 
     let cartJSON = JSON.stringify(cart);
     localStorage.setItem("cart", cartJSON);
-    $.Toast(
-        'Success!',
-        "You have been added 1 " + product.name + "!",
-        "success"
-    );
 
     loadCart();
 }
@@ -301,11 +296,6 @@ function decrementItem(id) {
     if (!isRemove) {
         let cartJSON = JSON.stringify(cart);
         localStorage.setItem("cart", cartJSON);
-        $.Toast(
-            "Warning!",
-            "You have been deleted 1 " + product.name + "!",
-            "warning"
-        );
         loadCart();
     }
 }
@@ -941,6 +931,7 @@ function changePhone() {
         } else {
             $.Toast("Success!", "Phone number has been changed!", "success");
             $("#phone").css('border', 'none');
+            localStorage.removeItem(currentUser.phoneNumber);
             currentUser.phoneNumber = phone;
             localStorage.setItem('currentUser', JSON.stringify(currentUser));
             localStorage.setItem(phone, JSON.stringify(currentUser));
@@ -968,8 +959,9 @@ function changeEmail() {
         $("#email").css('border', '2px solid red');
         return;
     } else {
-        $.Toast("Success!", "Phone number has been changed!", "success");
+        $.Toast("Success!", "Email has been changed!", "success");
         $("#email").css('border', 'none');
+        localStorage.removeItem(currentUser.phoneNumber);
         currentUser.email = email;
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
         localStorage.setItem(currentUser.phoneNumber, JSON.stringify(currentUser));
