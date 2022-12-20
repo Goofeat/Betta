@@ -892,10 +892,88 @@ function loadSettings() {
     $('span#email').html(currentUser.email).css('color', '#f95700');
 }
 
-function settingPhone() {
-    
+function phoneDisplay() {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    $('#phone').val(currentUser.phoneNumber);
+
+    setCoverProps();
+    $("#phone-modal").toggleClass("hide");
 }
 
-function settingEmail() {
+function phoneHide() {
+    $("#phone-modal").toggleClass("hide");   
+}
 
+function emailDisplay() {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    $('#email').val(currentUser.email);
+
+    setCoverProps();
+    $("#email-modal").toggleClass("hide");
+}
+
+function emailHide() {
+    $("#email-modal").toggleClass("hide");   
+}
+
+function changePhone() {
+    let phone = $("#phone").val();
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    if (phone == currentUser.phoneNumber) {
+        $.Toast("Error!", "You haven't changed anything!", "error");
+        $("#phone").css('border', '2px solid red');
+        return;
+    } else {
+        $("#phone").css('border', 'none');
+    }
+
+    if (phone.length !== 18) {
+        $.Toast("Error!", "Incorrect phone number!", "error");
+        $("#phone").css('border', '2px solid red');
+        return;
+    } else {
+        if (localStorage.getItem(phone)) {
+            $.Toast("Error!", "This phone number has been used!", "error");
+            $("#phone").css('border', '2px solid red');
+            return;
+        } else {
+            $.Toast("Success!", "Phone number has been changed!", "success");
+            $("#phone").css('border', 'none');
+            currentUser.phoneNumber = phone;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            localStorage.setItem(phone, JSON.stringify(currentUser));
+            phoneHide();
+            loadSettings();
+        }
+    }
+}
+
+function changeEmail() {
+    let email = $("#email").val();
+
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    if (email == currentUser.email) {
+        $.Toast("Error!", "You haven't changed anything!", "error");
+        $("#email").css('border', '2px solid red');
+        return;
+    } else {
+        $("#email").css('border', 'none');
+    }
+
+    if (!email.includes('@')) {
+        $.Toast("Error!", "Incorrect email!", "error");
+        $("#email").css('border', '2px solid red');
+        return;
+    } else {
+        $.Toast("Success!", "Phone number has been changed!", "success");
+        $("#email").css('border', 'none');
+        currentUser.email = email;
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        localStorage.setItem(currentUser.phoneNumber, JSON.stringify(currentUser));
+        emailHide();
+        loadSettings();
+    }
 }

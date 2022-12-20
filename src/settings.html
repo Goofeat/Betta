@@ -16,6 +16,34 @@
 
 <body onload="loadSettings()">
     <div class="page">
+        <div id="phone-modal" class="hide">
+            <div class="sign">
+                <h1>Change</h1>
+                <div class="sign-card">
+                    <input type="text" id="phone" class="i" placeholder="Phone number">
+                    <hr class="sign-hr">
+                    <button class="sign-btn" id="log-btn" onclick="changePhone()">
+                        Change
+                    </button>
+                </div>
+            </div>
+            <div class="cover" onclick="phoneHide()"></div>
+        </div>
+
+        <div id="email-modal" class="hide">
+            <div class="sign">
+                <h1>Change</h1>
+                <div class="sign-card">
+                    <input type="text" id="email" class="i" placeholder="Email">
+                    <hr class="sign-hr">
+                    <button class="sign-btn" id="log-btn" onclick="changeEmail()">
+                        Change
+                    </button>
+                </div>
+            </div>
+            <div class="cover" onclick="emailHide()"></div>
+        </div>
+
         <header>
             <div class="logo non-copy">
                 <a href="index.html" class="decor-none">Betta</a>
@@ -39,11 +67,11 @@
                 <p class="settings-data-header">Settings <img src="icons/settings.gif" alt="" style="width: 5vh; height: 5vh;"></p>
                 <div class="user-info-item-data set">
                     <p>Phone: <span id="phone-number"></span> 
-                        <img src="icons/pencil.svg" alt="pencil" class="i2" style="width:18px; height: 18px; cursor:pointer;" onclick="settingPhone()"></p>
+                        <img src="icons/pencil.svg" alt="pencil" class="i2" style="width:18px; height: 18px; cursor:pointer;" onclick="phoneDisplay()"></p>
                 </div>
                 <div class="stick set-st"></div>
                 <div class="user-info-item-data set">
-                    <p>Email: <span id="email"></span> <img src="icons/pencil.svg" alt="pencil" class="i3" style="width:18px; height: 18px; cursor:pointer" onclick="settingEmail()"></p>
+                    <p>Email: <span id="email"></span> <img src="icons/pencil.svg" alt="pencil" class="i3" style="width:18px; height: 18px; cursor:pointer" onclick="emailDisplay()"></p>
                 </div>
                 <div class="stick set-st"></div>
             </div>
