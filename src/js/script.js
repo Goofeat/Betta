@@ -550,6 +550,34 @@ function makeProduct(item) {
 }
 
 function buy() {
+    let CARD_NUMBER = $("#card-number").val();
+    let EXP_DATE = $("#exp-date").val();
+    let CVV = $("#cvv").val();
+
+    if (CARD_NUMBER.length != 19) {
+        $.Toast('Error', 'Incorrect card number!', 'error');
+        $("#card-number").css('border', '2px solid red');
+        return;
+    } else {
+        $("#card-number").css('border', 'none');
+    }
+
+    if (EXP_DATE.length != 5) {
+        $.Toast('Error', 'Incorrect expiration date!', 'error');
+        $("#exp-date").css('border', '2px solid red');
+        return;
+    } else {
+        $("#exp-date").css('border', 'none');
+    }
+
+    if (CVV.length != 3) {
+        $.Toast('Error', 'Incorrect CVV!', 'error');
+        $("#cvv").css('border', '2px solid red');
+        return;
+    } else {
+        $("#cvv").css('border', 'none');
+    }
+
     buyHide();
     let shopCartJSON = JSON.parse(localStorage.getItem("cart"));
     let boughtJSON = [];
@@ -574,10 +602,6 @@ function buy() {
             boughtJSON.push(shopCartElement);
         }
     }
-
-    let CARD_NUMBER = $("#card-number").val();
-    let EXP_DATE = $("#exp-date").val();
-    let CVV = $("#cvv").val();
 
     let tmp = JSON.parse(localStorage.getItem("currentUser"));
     let user = {
