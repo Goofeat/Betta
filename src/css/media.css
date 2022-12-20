@@ -56,8 +56,8 @@
         font-size: 14px;
     }
     .account-logo {
-        width: 25px;
-        height: 25px;
+        width: 30px;
+        height: 30px;
     }
     .user-info-change img {
         width: 20px;
@@ -154,7 +154,7 @@
     }
 
     .main_bg {
-        height: 50vh;
+        height: 35vh;
         width: 100%;
     }
     .foo {
@@ -177,13 +177,16 @@
         justify-content: center;
     }
     .user-info-item {
-        width: 50vw;
+        width: 60vw;
         padding: 3vh;
         align-items: left;
         margin: 0 auto;
     }
     .user-info-item p {
-        font-size: 10px !important;
+        font-size: 15px !important;
+    }
+    .user-info-item-header {
+        font-size: 20px !important;
     }
     .stick {
         width: 50vw;
@@ -196,8 +199,8 @@
     }
     .bought-items {
         margin: 0 auto;
-        
-        margin-top: 20vh;
+        width: 60vw !important;
+        margin-top: 10vh;
     }
     .user-info-item-change button {
         padding: 2.777px;
@@ -205,11 +208,19 @@
         height: 6vw;
         margin-left: 10vh;
     }
+    .history-empty img {
+        height: 30vh !important;
+    }
     .settings-data {
-        margin-top: 5vw;
+        margin-top: 30vw;
         width: 55vw;
         height: fit-content;
         padding: 3vw !important;
+    }
+    .settings-data-header img {
+        width: 2vh !important;
+        height: 2vh !important;
+        margin-bottom: 0 !important;
     }
     .settings-data p {
         padding: 0 !important;
@@ -261,13 +272,41 @@
         font-size: 3vw !important;
     }
     .sign-card hr {
-        width: 42vw;
-        margin-left: 0;
+        width: 50vw;
+        margin-left: 2px;
     }
     .sign-btn {
         width: 15vw;
     }
     .register {
+        width: 70vw;
+    }
+    .register sign-card hr {
+        width: 62vw;
+    }
+    .blob {
+        height: 50vh;
+    }
+    .product-card-title .product-card-price {
+        font-size: 6.5vw;
+        width: 25vw;
+    }
+    .product-card-company {
+        font-size: 5vw;
+    }
+    .add-button {
+        margin-left: 0.5vh;
+        font-size: 3vw;
+    }
+    .product-card {
+        margin: 2vh auto;
         width: 50vw;
+    }
+    .sf {
+        display:  block !important;
+        margin-top: 3px;
+        height: 8px;
+        width: 1.5px;
+        background-color: #fff;
     }
 }
