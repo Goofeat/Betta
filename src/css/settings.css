@@ -21,6 +21,11 @@
     margin-top: 5vw;
     font-size: 3vh;
 }
+.set p {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+}
 
 .set-st {
     width: 45vw;
