@@ -63,6 +63,9 @@
         width: 20px;
         height: 20px;
     }
+    .user-info-change {
+        margin-top: 30px;
+    }
     .set {
         font-size: 3vh;
     }
@@ -177,7 +180,7 @@
         justify-content: center;
     }
     .user-info-item {
-        width: 60vw;
+        width: 70vw;
         padding: 3vh;
         align-items: left;
         margin: 0 auto;
@@ -189,7 +192,7 @@
         font-size: 20px !important;
     }
     .stick {
-        width: 50vw;
+        width: 65vw;
         margin-bottom: 5vh;
     }
     .user-info {
@@ -272,11 +275,14 @@
         font-size: 3vw !important;
     }
     .sign-card hr {
-        width: 50vw;
+        width: 78vw;
         margin-left: 2px;
     }
+    .register .sign-card hr {
+        width: 65vw;
+    }
     .sign-btn {
-        width: 15vw;
+        width: 20vw;
     }
     .register {
         width: 70vw;
@@ -285,14 +291,14 @@
         width: 62vw;
     }
     .blob {
-        height: 50vh;
+        height: 50vh !important;
     }
     .product-card-title .product-card-price {
         font-size: 6.5vw;
         width: 25vw;
     }
     .product-card-company {
-        font-size: 5vw;
+        font-size: 7vw;
     }
     .add-button {
         margin-left: 0.5vh;
