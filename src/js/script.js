@@ -1,5 +1,3 @@
-console.log(localStorage);
-
 function showMain() {
     document.location.href = "index.html";
 }
